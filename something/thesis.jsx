@@ -1,10 +1,17 @@
 import React from 'react';
 
 class Thesis extends React.Component {
+  constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.props.handleChange(event);
+  }
   render() {
     return (
       <div>
-        <input type='text' onChange={this.props.handleChange} onKeyUp={this.props.handleKeyUp} value={this.props.thesis_value} />
+        <input type='text' onChange={this.handleChange} onKeyUp={this.props.handleKeyUp} value={this.props.thesis_value} />
       </div>
     );
   }

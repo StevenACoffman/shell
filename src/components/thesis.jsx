@@ -1,28 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-export default class Thesis extends React.Component {
-  constructor() {
-    super(...arguments);
-    this.propTypes = {
-      handleChange: React.PropTypes.func.isRequired,
-      handleKeyUp: React.PropTypes.func.isRequired,
-      thesis_value: React.PropTypes.string
-    };
-    this.defaultProps = {
-      thesis_value: ''
-    };
+class Thesis extends React.Component {
+  constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
   }
-  handleMessageClick(index) {
-    const message = this.state.messages.get(index);
-    this.setState({
-      messages: this.state.messages.set(index, message.set('completed', !message.get('completed'))),
-    });
+  handleChange(event) {
+    this.props.handleChange(event);
   }
   render() {
     return (
       <div>
-        <input type='text' onChange={this.props.handleChange} onKeyUp={this.props.handleKeyUp} value={this.state.message} />
+        <input type='text' onChange={this.handleChange} onKeyUp={this.props.handleKeyUp} value={this.props.thesis_value} />
       </div>
     );
   }
