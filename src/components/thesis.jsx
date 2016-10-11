@@ -4,7 +4,6 @@ import { changeThesis } from '../actions';
 import store from '../containers/store';
 
 class Thesis extends React.Component {
-
   render() {
     return (
       <div>
@@ -25,8 +24,6 @@ Thesis.defaultProps = {
 };
 
 const mapStateToProps = function(store) {
-  console.log("mapStateToProps called");
-  console.log(store);
   return {
     thesis_value: store.thesisState.thesis_value
   };
