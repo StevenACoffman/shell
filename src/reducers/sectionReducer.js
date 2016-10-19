@@ -5,7 +5,10 @@ const defaultSectionFactory = (id) => ({
   id: 'section_' + id,
   name: '',
   notes: '',
-  citations: ['Citation 1']
+  citations: ['Citation 1', 'Citation 2'],
+  moveSectionUpIsEnabled: true,
+  moveSectionDownIsEnabled: true,
+  deleteSectionIsEnabled: true
 });
 
 const sectionReducer = (state = [defaultSectionFactory(0)], action) => {
