@@ -2,13 +2,14 @@ import React from 'react';
 
 class SectionName extends React.Component {
   render() {
+    const {nameId, name}  = this.props;
     return (
       <div>
-        <label htmlFor={this.props.nameId} >Section Name</label>
+        <label htmlFor={nameId} >Section Name</label>
         <input
           type="text"
-          id={this.props.nameId}
-          defaultValue={this.props.name}
+          id={nameId}
+          defaultValue={name}
         />
       </div>
     );

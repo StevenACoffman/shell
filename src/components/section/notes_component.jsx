@@ -2,16 +2,17 @@ import React from 'react';
 
 class SectionNotes extends React.Component {
   render() {
+    const {notesId, notes} = this.props;
     return (
       <div>
-        <label htmlFor={this.props.notesId} >Section Notes</label>
+        <label htmlFor={notesId} >Section Notes</label>
         <textarea
           name="notes"
-          id={this.props.notesId}
+          id={notesId}
           rows="5"
-          defaultValue={this.props.notes}
+          defaultValue={notes}
         />
-      </div>    
+      </div>
     );
   }
 }

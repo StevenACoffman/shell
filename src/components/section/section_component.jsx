@@ -6,7 +6,7 @@ import AddCitation from './add_citation_component.jsx';
 
 class SectionComponent extends React.Component {
   render() {
-    let {id, name, notes, citations} = this.props;
+    const {id, name, notes, citations} = this.props;
     return (
       <div>
         <SectionName name={name} nameId={`name_${id}`} />

@@ -5,9 +5,10 @@ import SectionComponent from './section/section_component.jsx';
 
 class SectionList extends React.Component {
   render() {
+    const {sections} = this.props;
     return (
       <div>
-        {this.props.sections && this.props.sections.map(section =>
+        {sections && sections.map(section =>
           <SectionComponent
             key={section.id}
             {...section}
