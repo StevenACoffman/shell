@@ -5,7 +5,8 @@ const citationsReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_CITATION':
       return [...state,{
-        id: 'citation_' + action.citationId,
+        id: action.citationId,
+        sectionId: action.sectionId,
         text: action.text
       }];
     default:

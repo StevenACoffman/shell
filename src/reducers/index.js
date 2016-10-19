@@ -2,12 +2,12 @@
 
 import { combineReducers } from 'redux';
 import thesisReducer from './thesisReducer';
-import sectionReducer from './sectionReducer';
+import sectionsReducer from './sectionsReducer';
 
 // Combine Reducers
 const reducers = combineReducers({
     thesisState: thesisReducer,
-    sectionState: sectionReducer
+    sectionState: sectionsReducer
 });
 
 export default reducers;
