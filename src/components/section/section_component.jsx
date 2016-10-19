@@ -6,12 +6,13 @@ import AddCitation from './add_citation_component.jsx';
 
 class SectionComponent extends React.Component {
   render() {
+    let {id, name, notes, citations} = this.props;
     return (
       <div>
-        <SectionName name={this.props.name} nameId={"name_" + this.props.id} />
-        <SectionNotes notes={this.props.notes} notesId={"notes_" + this.props.id }/>
-        <Citations citations={this.props.citations} citationsId={"citations_" + this.props.id} />
-        <AddCitation sectionId={this.props.id} citations={this.props.citations} />
+        <SectionName name={name} nameId={`name_${id}`} />
+        <SectionNotes notes={notes} notesId={`notes_${id}`}/>
+        <Citations citations={citations} citationsId={`citations_${id}`} />
+        <AddCitation sectionId={id} citations={citations} />
       </div>
     );
   }
@@ -21,7 +22,7 @@ SectionComponent.propTypes = {
   name: React.PropTypes.string.isRequired,
   notes: React.PropTypes.string.isRequired,
   citations: React.PropTypes.array.isRequired,
-  id: React.PropTypes.string.isRequired
+  id: React.PropTypes.number.isRequired
 };
 
 SectionComponent.defaultProps = {

@@ -19,7 +19,7 @@ const sectionReducer = (state = {}, action) => {
 }
 
 const defaultSectionFactory = (id) => ({
-  id: 'section_' + id,
+  id,
   name: '',
   notes: '',
   citations: []
