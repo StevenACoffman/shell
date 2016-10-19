@@ -1,24 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { changeThesis } from '../../actions';
+import { addCitation } from '../../actions';
 import store from '../../containers/store';
 
 class AddCitation extends React.Component {
   render() {
     return (
-      <button class="button button-jstor" onClick={event => {
-        store.dispatch(changeThesis(event.target.value));
-      }}>+ Add Section</button>
+      <button className="button button-jstor" onClick={event => {
+        store.dispatch(addCitation(this.props.sectionId, this.props.citations.length, 'Such Citation #' + this.props.citations.length));
+      }}>+ Add Citation From List</button>
     );
   }
 }
 
 AddCitation.propTypes = {
-  handleAddCitation: React.PropTypes.func.isRequired
-};
-
-AddCitation.defaultProps = {
-  handleAddCitation: () => {}
+  citations: React.PropTypes.array.isRequired,
+  sectionId: React.PropTypes.string.isRequired
 };
 
 export default AddCitation;
