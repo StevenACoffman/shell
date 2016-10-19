@@ -20,11 +20,7 @@ class AddSection extends React.Component {
   }
 }
 
-const mapStateToProps = function (store) {
-  return {
-    sections: store.sectionState
-  };
-}
+const mapStateToProps = (store) => ({ sections: store.sectionState });
 
 AddSection = connect(mapStateToProps)(AddSection);
 

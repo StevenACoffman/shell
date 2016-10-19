@@ -30,11 +30,7 @@ Thesis.defaultProps = {
   thesis_value: ''
 };
 
-const mapStateToProps = function (store) {
-  return {
-    thesis_value: store.thesisState.thesis_value
-  };
-}
+const mapStateToProps = (store) => ({ thesis_value: store.thesisState.thesis_value });
 
 Thesis = connect(mapStateToProps)(Thesis);
 export default Thesis;

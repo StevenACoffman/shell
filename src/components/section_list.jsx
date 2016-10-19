@@ -30,11 +30,7 @@ SectionList.defaultProps = {
   sections: store.getState().sectionState
 };
 
-const mapStateToProps = function (store) {
-  return {
-    sections: store.sectionState
-  };
-}
+const mapStateToProps = (store) => ({ sections: store.sectionState });
 
 SectionList = connect(mapStateToProps)(SectionList);
 
