@@ -7,8 +7,8 @@ class Citations extends React.Component {
     })
     return (
       <div>
-        <h3>Citations</h3>
-        <ul>
+        <span className="subheader">Citations</span>
+        <ul id={this.props.citationsId}>
           {citations}
         </ul>
       </div>
@@ -17,11 +17,8 @@ class Citations extends React.Component {
 }
 
 Citations.propTypes = {
-  citations: React.PropTypes.array.isRequired
-};
-
-Citations.defaultProps = {
-  citations: ['Citation 1', 'Citation 2', 'Citation 3']
+  citations: React.PropTypes.array.isRequired,
+  citationsId: React.PropTypes.string.isRequired
 };
 
 export default Citations;

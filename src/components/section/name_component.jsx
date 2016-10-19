@@ -1,12 +1,13 @@
 import React from 'react';
 
-class Name extends React.Component {
+class SectionName extends React.Component {
   render() {
     return (
       <div>
-        <label>Name:</label>
+        <label htmlFor={this.props.nameId} >Section Name</label>
         <input
           type="text"
+          id={this.props.nameId}
           defaultValue={this.props.name}
         />
       </div>
@@ -14,12 +15,13 @@ class Name extends React.Component {
   }
 }
 
-Name.propTypes = {
-  name: React.PropTypes.string.isRequired
+SectionName.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  nameId: React.PropTypes.string.isRequired
 };
 
-Name.defaultProps = {
+SectionName.defaultProps = {
   name: 'Default Name'
 };
 
-export default Name;
+export default SectionName;

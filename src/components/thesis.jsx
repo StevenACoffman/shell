@@ -6,19 +6,17 @@ import store from '../containers/store';
 class Thesis extends React.Component {
   render() {
     return (
-      <div class="row">
-        <div class="small-12 columns" id="thesis-component">
-          <label for="thesis-body">Thesis Statement</label>
-          <textarea
-            type="text"
-            rows="5"
-            id="thesis-body"
-            placeholder="Placeholder..."
-            value={this.props.thesis_value}
-            onChange={event => {
-              store.dispatch(changeThesis(event.target.value));
-            }}></textarea>
-        </div>
+      <div id="thesis-component">
+        <label htmlFor="thesis-body">Thesis Statement</label>
+        <textarea
+          type="text"
+          rows="5"
+          id="thesis-body"
+          placeholder="Placeholder..."
+          value={this.props.thesis_value}
+          onChange={event => {
+            store.dispatch(changeThesis(event.target.value));
+          }}></textarea>
       </div>
     );
   }

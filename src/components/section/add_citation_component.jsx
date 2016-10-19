@@ -1,14 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { changeThesis } from '../../actions';
 import store from '../../containers/store';
 
 class AddCitation extends React.Component {
   render() {
     return (
-      <button class="button button-jstor" onClick={event => {
+      <button className="button button-jstor" onClick={event => {
         store.dispatch(changeThesis(event.target.value));
-      }}>+ Add Section</button>
+      }}>+ Add Citation From List</button>
     );
   }
 }
