@@ -1,18 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 import { moveSectionUp, moveSectionDown } from '../../actions';
 import store from '../../containers/store';
 
 
 class SectionButtons extends React.Component {
-  constructor() {
-    super();
-    this.getButtonClassName = this.getButtonClassName.bind(this);
-  }
-
-  getButtonClassName(isEnabled) {
-    return `button button-jstor ${isEnabled ? '' : 'secondary disabled'}`;
-  }
-
   render() {
     const {sectionId, canMoveSectionUp, canMoveSectionDown} = this.props;
     return (
@@ -20,7 +12,10 @@ class SectionButtons extends React.Component {
         <button
           id={`move_section_up_button_${sectionId}`}
           type="button"
-          className={this.getButtonClassName(canMoveSectionUp)}
+          className={classNames({
+            'button button-jstor': true,
+            'secondary disabled': !canMoveSectionUp
+          })}
           disabled={!canMoveSectionUp}
           onClick={event => {
             store.dispatch(moveSectionUp(sectionId))
@@ -31,7 +26,10 @@ class SectionButtons extends React.Component {
         <button
           id={`move_section_down_button_${sectionId}`}          
           type="button"
-          className={this.getButtonClassName(canMoveSectionDown)}
+          className={classNames({
+            'button button-jstor': true,
+            'secondary disabled': !canMoveSectionDown
+          })}
           disabled={!canMoveSectionDown}
           onClick={event => {
             store.dispatch(moveSectionDown(sectionId))
