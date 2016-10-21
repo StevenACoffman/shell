@@ -26,8 +26,3 @@ export const moveSectionDown = (sectionId) => ({
   type: 'MOVE_SECTION_DOWN',
   sectionId
 });
-
-export const deleteSection = (sectionId) => ({
-  type: 'DELETE_SECTION',
-  sectionId
-});

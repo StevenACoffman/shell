@@ -24,8 +24,7 @@ const defaultSectionFactory = (id) =>({
     notes: '',
     citations: [],
     canMoveSectionUp: false,
-    canMoveSectionDown: false,
-    canDeleteSection: false
+    canMoveSectionDown: false
 });
 
 const updateSections = sections => {
@@ -33,7 +32,6 @@ const updateSections = sections => {
   return sections.map((section, index) => {
     section.canMoveSectionUp = sectionsLength > 1 && index !== 0;
     section.canMoveSectionDown = sectionsLength > 1 && index !== sectionsLength - 1;
-    section.canDeleteSection = sectionsLength > 1;
     return section;
   });
 }

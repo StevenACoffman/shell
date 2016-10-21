@@ -1,5 +1,5 @@
 import React from 'react';
-import { moveSectionUp, moveSectionDown, deleteSection } from '../../actions';
+import { moveSectionUp, moveSectionDown } from '../../actions';
 import store from '../../containers/store';
 
 
@@ -14,7 +14,7 @@ class SectionButtons extends React.Component {
   }
 
   render() {
-    const {sectionId, canMoveSectionUp, canMoveSectionDown, canDeleteSection} = this.props;
+    const {sectionId, canMoveSectionUp, canMoveSectionDown} = this.props;
     return (
       <div className="mtxl action-buttons">
         <button
@@ -39,17 +39,6 @@ class SectionButtons extends React.Component {
           >
           Move Section Down
         </button>
-        <button
-          id={`delete_section_button_${sectionId}`}          
-          type="button"
-          className={this.getButtonClassName(canDeleteSection)}
-          disabled={!canDeleteSection}
-          onClick={event => {
-            store.dispatch(deleteSection(sectionId))
-          }}
-          >
-          Delete Section
-        </button>
       </div>
     );
   }
@@ -58,8 +47,7 @@ class SectionButtons extends React.Component {
 SectionButtons.propTypes = {
   sectionId: React.PropTypes.number.isRequired,
   canMoveSectionUp: React.PropTypes.bool.isRequired,
-  canMoveSectionDown: React.PropTypes.bool.isRequired,
-  canDeleteSection: React.PropTypes.bool.isRequired
+  canMoveSectionDown: React.PropTypes.bool.isRequired
 };
 
 export default SectionButtons;
