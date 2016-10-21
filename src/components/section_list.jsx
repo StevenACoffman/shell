@@ -8,7 +8,7 @@ class SectionList extends React.Component {
     const {sections} = this.props;
     return (
       <div>
-        {sections && sections.map((section, index) =>
+        {sections && sections.map(section=>
           <SectionComponent
             key={section.id}
             sectionId={section.id}
