@@ -49,10 +49,10 @@ const swapSectionsItem = (sections, sourceId, targetId) => {
 const sectionsReducer = (state = [defaultSectionFactory(0)], action) => {
   switch (action.type) {
     case 'ADD_SECTION':
-      return [
+      return updateSections([
         ...state,
         defaultSectionFactory(action.id)
-      ];
+      ]);
     case 'MOVE_SECTION_UP':
       return updateSections(swapSectionsItem(
         state.slice(),
