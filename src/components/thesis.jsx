@@ -5,6 +5,7 @@ import store from '../containers/store';
 
 class Thesis extends React.Component {
   render() {
+    const {thesis_value} = this.props;
     return (
       <div id="thesis-component">
         <label htmlFor="thesis-body">Thesis Statement</label>
@@ -13,7 +14,7 @@ class Thesis extends React.Component {
           rows="5"
           id="thesis-body"
           placeholder="Placeholder..."
-          value={this.props.thesis_value}
+          value={thesis_value}
           onChange={event => {
             store.dispatch(changeThesis(event.target.value));
           }}></textarea>

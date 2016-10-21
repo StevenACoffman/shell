@@ -7,19 +7,22 @@ import AddCitation from './add_citation_component.jsx';
 
 class SectionComponent extends React.Component {
   render() {
+    const {id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, canDeleteSection, sectionIndex} = this.props;
     return (
       <div className="row">
         <div className="small-9 columns">
-          <SectionName name={this.props.name} nameId={"name_" + this.props.id} />
-          <SectionNotes notes={this.props.notes} notesId={"notes_" + this.props.id }/>
-          <Citations citations={this.props.citations} citationsId={"citations_" + this.props.id} />
-          <AddCitation handleAddCitation={this.props.handleAddCitation} />
+          <SectionName name={name} nameId={"name_" + id} />
+          <SectionNotes notes={notes} notesId={"notes_" + id}/>
+          <Citations citations={citations} citationsId={"citations_" + id} />
+          <AddCitation sectionId={id} citations={citations} />
         </div>
         <div className="small-3 columns">
           <SectionButtons
-            moveSectionUpState={this.props.moveSectionUpIsEnabled}
-            moveSectionDownState={this.props.moveSectionDownIsEnabled}
-            deleteSectionState={this.props.deleteSectionIsEnabled}
+            sectionId={id}
+            canMoveSectionUp={canMoveSectionUp}
+            canMoveSectionDown={canMoveSectionDown}
+            canDeleteSection={canDeleteSection}
+            sectionIndex={sectionIndex}
             />
         </div>
       </div>
@@ -31,7 +34,8 @@ SectionComponent.propTypes = {
   name: React.PropTypes.string.isRequired,
   notes: React.PropTypes.string.isRequired,
   citations: React.PropTypes.array.isRequired,
-  id: React.PropTypes.string.isRequired
+  id: React.PropTypes.number.isRequired,
+  sectionIndex: React.PropTypes.number.isRequired
 };
 
 SectionComponent.defaultProps = {

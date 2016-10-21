@@ -4,9 +4,10 @@ import store from '../../containers/store';
 
 class AddCitation extends React.Component {
   render() {
+    const {sectionId, citations} = this.props;
     return (
       <button className="button button-jstor" onClick={event => {
-        store.dispatch(addCitation(this.props.sectionId, this.props.citations.length, 'Such Citation #' + this.props.citations.length));
+        store.dispatch(addCitation(sectionId, citations.length, 'Such Citation #' + citations.length));
       }}>+ Add Citation From List</button>
     );
   }
@@ -14,7 +15,7 @@ class AddCitation extends React.Component {
 
 AddCitation.propTypes = {
   citations: React.PropTypes.array.isRequired,
-  sectionId: React.PropTypes.string.isRequired
+  sectionId: React.PropTypes.number.isRequired
 };
 
 export default AddCitation;

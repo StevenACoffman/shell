@@ -1,35 +1,54 @@
 import React from 'react';
+import { moveSectionUp, moveSectionDown, deleteSection } from '../../actions';
 import store from '../../containers/store';
 
 
 class SectionButtons extends React.Component {
+  constructor() {
+    super();
+    this.getButtonClassName = this.getButtonClassName.bind(this);
+  }
+
+  getButtonClassName(isEnabled) {
+    return `button button-jstor ${isEnabled ? '' : 'secondary disabled'}`;
+  }
+
   render() {
-    console.log(store.getState());
-    let moveSectionUpClass = !this.props.moveSectionUpIsEnabled ? 'secondary disabled' : '';
-    let moveSectionDownClass = !this.props.moveSectionDownIsEnabled ? 'secondary disabled' : '';
-    let deleteSectionClass = !this.props.deleteSectionIsEnabled ? 'secondary disabled' : '';
+    const {canMoveSectionUp, canMoveSectionDown, canDeleteSection, sectionIndex} = this.props;
     return (
       <div className="mtxl action-buttons">
         <button
           type="button"
-          className={`button button-jstor ${moveSectionUpClass}`}
+          className={this.getButtonClassName(canMoveSectionUp)}
+          disabled={!canMoveSectionUp}
+          onClick={event => {
+            store.dispatch(moveSectionUp(sectionIndex))
+          }}
           >
           Move Section Up
         </button>
         <button
           type="button"
-          className={`button button-jstor ${moveSectionDownClass}`}
+          className={this.getButtonClassName(canMoveSectionDown)}
+          disabled={!canMoveSectionDown}
+          onClick={event => {
+            store.dispatch(moveSectionDown(sectionIndex))
+          }}
           >
           Move Section Down
         </button>
         <button
           type="button"
-          className={`button button-jstor ${deleteSectionClass}`}
+          className={this.getButtonClassName(canDeleteSection)}
+          disabled={!canDeleteSection}
+          onClick={event => {
+            store.dispatch(deleteSection(sectionIndex))
+          }}
           >
           Delete Section
         </button>
       </div>
-    )
+    );
   }
 }
 
