@@ -17,17 +17,17 @@ export const addSection = (id) => ({
   id
 });
 
-export const moveSectionUp = (sectionIndex) => ({
+export const moveSectionUp = (sectionId) => ({
   type: 'MOVE_SECTION_UP',
-  sectionIndex
+  sectionId
 });
 
-export const moveSectionDown = (sectionIndex) => ({
+export const moveSectionDown = (sectionId) => ({
   type: 'MOVE_SECTION_DOWN',
-  sectionIndex
+  sectionId
 });
 
-export const deleteSection = (id) => ({
+export const deleteSection = (sectionId) => ({
   type: 'DELETE_SECTION',
-  id
+  sectionId
 });

@@ -7,7 +7,7 @@ import AddCitation from './add_citation_component.jsx';
 
 class SectionComponent extends React.Component {
   render() {
-    const {id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, canDeleteSection, sectionIndex} = this.props;
+    const {id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, canDeleteSection} = this.props;
     return (
       <div className="row">
         <div className="small-9 columns">
@@ -22,7 +22,6 @@ class SectionComponent extends React.Component {
             canMoveSectionUp={canMoveSectionUp}
             canMoveSectionDown={canMoveSectionDown}
             canDeleteSection={canDeleteSection}
-            sectionIndex={sectionIndex}
             />
         </div>
       </div>
@@ -34,8 +33,7 @@ SectionComponent.propTypes = {
   name: React.PropTypes.string.isRequired,
   notes: React.PropTypes.string.isRequired,
   citations: React.PropTypes.array.isRequired,
-  id: React.PropTypes.number.isRequired,
-  sectionIndex: React.PropTypes.number.isRequired
+  id: React.PropTypes.number.isRequired
 };
 
 SectionComponent.defaultProps = {

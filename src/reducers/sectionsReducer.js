@@ -39,10 +39,13 @@ const updateSections = sections => {
 }
 
 const swapSectionsItem = (sections, oldIndex, newIndex) => {
+  let sourceSection = sections[oldIndex];
+  let targetSection = sections[newIndex];
   if (newIndex < sections.length && newIndex >= 0) {
-    [sections[oldIndex], sections[newIndex]] = [sections[newIndex], sections[oldIndex]];
+    [sourceSection.id, targetSection.id] = [newIndex, oldIndex];
+    [sections[oldIndex], sections[newIndex]] = [targetSection, sourceSection];
   }
-  return sections
+  return sections;
 }
 
 const sectionsReducer = (state = [defaultSectionFactory(0)], action) => {
@@ -55,14 +58,14 @@ const sectionsReducer = (state = [defaultSectionFactory(0)], action) => {
     case 'MOVE_SECTION_UP':
       return updateSections(swapSectionsItem(
         state.slice(),
-        action.sectionIndex,
-        action.sectionIndex - 1
+        action.sectionId,
+        action.sectionId - 1
       ));
     case 'MOVE_SECTION_DOWN':
       return updateSections(swapSectionsItem(
         state.slice(),
-        action.sectionIndex,
-        action.sectionIndex + 1
+        action.sectionId,
+        action.sectionId + 1
       ));
     case 'ADD_CITATION':
       return state.map(section =>

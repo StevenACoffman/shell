@@ -14,35 +14,38 @@ class SectionButtons extends React.Component {
   }
 
   render() {
-    const {canMoveSectionUp, canMoveSectionDown, canDeleteSection, sectionIndex} = this.props;
+    const {sectionId, canMoveSectionUp, canMoveSectionDown, canDeleteSection} = this.props;
     return (
       <div className="mtxl action-buttons">
         <button
+          id={`move_section_up_button_${sectionId}`}
           type="button"
           className={this.getButtonClassName(canMoveSectionUp)}
           disabled={!canMoveSectionUp}
           onClick={event => {
-            store.dispatch(moveSectionUp(sectionIndex))
+            store.dispatch(moveSectionUp(sectionId))
           }}
           >
           Move Section Up
         </button>
         <button
+          id={`move_section_down_button_${sectionId}`}          
           type="button"
           className={this.getButtonClassName(canMoveSectionDown)}
           disabled={!canMoveSectionDown}
           onClick={event => {
-            store.dispatch(moveSectionDown(sectionIndex))
+            store.dispatch(moveSectionDown(sectionId))
           }}
           >
           Move Section Down
         </button>
         <button
+          id={`delete_section_button_${sectionId}`}          
           type="button"
           className={this.getButtonClassName(canDeleteSection)}
           disabled={!canDeleteSection}
           onClick={event => {
-            store.dispatch(deleteSection(sectionIndex))
+            store.dispatch(deleteSection(sectionId))
           }}
           >
           Delete Section
@@ -51,6 +54,13 @@ class SectionButtons extends React.Component {
     );
   }
 }
+
+SectionButtons.propTypes = {
+  sectionId: React.PropTypes.number.isRequired,
+  canMoveSectionUp: React.PropTypes.bool.isRequired,
+  canMoveSectionDown: React.PropTypes.bool.isRequired,
+  canDeleteSection: React.PropTypes.bool.isRequired
+};
 
 export default SectionButtons;
 

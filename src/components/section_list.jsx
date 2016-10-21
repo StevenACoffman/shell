@@ -11,7 +11,7 @@ class SectionList extends React.Component {
         {sections && sections.map((section, index) =>
           <SectionComponent
             key={section.id}
-            sectionIndex={index}
+            sectionId={section.id}
             {...section}
           />
         )}
