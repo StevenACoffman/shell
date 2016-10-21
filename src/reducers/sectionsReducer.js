@@ -38,12 +38,12 @@ const updateSections = sections => {
   });
 }
 
-const swapSectionsItem = (sections, oldIndex, newIndex) => {
-  let sourceSection = sections[oldIndex];
-  let targetSection = sections[newIndex];
-  if (newIndex < sections.length && newIndex >= 0) {
-    [sourceSection.id, targetSection.id] = [newIndex, oldIndex];
-    [sections[oldIndex], sections[newIndex]] = [targetSection, sourceSection];
+const swapSectionsItem = (sections, sourceId, targetId) => {
+  if (targetId >= 0 && targetId < sections.length) {
+    let sourceSection = sections[sourceId];
+    let targetSection = sections[targetId];
+    [sourceSection.id, targetSection.id] = [targetId, sourceId];
+    [sections[sourceId], sections[targetId]] = [targetSection, sourceSection];
   }
   return sections;
 }
