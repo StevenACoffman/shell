@@ -16,3 +16,18 @@ export const addSection = (id) => ({
   type: 'ADD_SECTION',
   id
 });
+
+export const moveSectionUp = (sectionId) => ({
+  type: 'MOVE_SECTION_UP',
+  sectionId
+});
+
+export const moveSectionDown = (sectionId) => ({
+  type: 'MOVE_SECTION_DOWN',
+  sectionId
+});
+
+export const deleteSection = (id) => ({
+    type: 'DELETE_SECTION',
+    id
+  }); 
