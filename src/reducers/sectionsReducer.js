@@ -51,7 +51,7 @@ const sectionsReducer = (state = [defaultSectionFactory(0)], action) => {
     case 'ADD_SECTION':
       return updateSections([
         ...state,
-        defaultSectionFactory(action.id, state.length)
+        defaultSectionFactory(action.id)
       ]);
     case 'MOVE_SECTION_UP':
       return updateSections(swapSectionsItem(
@@ -65,10 +65,20 @@ const sectionsReducer = (state = [defaultSectionFactory(0)], action) => {
         action.sectionId,
         action.sectionId + 1
       ));
+    case 'DELETE_SECTION':
+      return state
+        .filter((section) => (action.id !== section.id))
+        .map(
+          (section) => Object.assign(
+            {},
+            section,
+            {
+              id: section.id > action.id ? section.id - 1 : section.id
+            }
+          )
+        );
     case 'ADD_CITATION':
-      return state.map(section =>
-        sectionReducer(section, action)
-      )
+      return state.map(section => sectionReducer(section, action))
     default:
       return state;
   }

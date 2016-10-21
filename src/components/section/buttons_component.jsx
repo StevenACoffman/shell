@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { moveSectionUp, moveSectionDown } from '../../actions';
+import DeleteSection from './delete_section.jsx';
 import store from '../../containers/store';
 
 
@@ -24,7 +25,7 @@ class SectionButtons extends React.Component {
           Move Section Up
         </button>
         <button
-          id={`move_section_down_button_${sectionId}`}          
+          id={`move_section_down_button_${sectionId}`}
           type="button"
           className={classNames({
             'button button-jstor': true,
@@ -37,6 +38,7 @@ class SectionButtons extends React.Component {
           >
           Move Section Down
         </button>
+        <DeleteSection sectionId={sectionId} deleteSectionId={`delete_section_${sectionId}`}/>
       </div>
     );
   }
@@ -49,5 +51,3 @@ SectionButtons.propTypes = {
 };
 
 export default SectionButtons;
-
-

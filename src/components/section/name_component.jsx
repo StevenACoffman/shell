@@ -21,8 +21,4 @@ SectionName.propTypes = {
   nameId: React.PropTypes.string.isRequired
 };
 
-SectionName.defaultProps = {
-  name: 'Default Name'
-};
-
 export default SectionName;

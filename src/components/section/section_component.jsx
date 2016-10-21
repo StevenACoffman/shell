@@ -11,9 +11,9 @@ class SectionComponent extends React.Component {
     return (
       <div className="row">
         <div className="small-9 columns">
-          <SectionName name={name} nameId={"name_" + id} />
-          <SectionNotes notes={notes} notesId={"notes_" + id}/>
-          <Citations citations={citations} citationsId={"citations_" + id} />
+          <SectionName name={name} nameId={`name_${id}`} />
+          <SectionNotes notes={notes} notesId={`notes_${id}`}/>
+          <Citations citations={citations} citationsId={`citations_${id}`} />
           <AddCitation sectionId={id} citations={citations} />
         </div>
         <div className="small-3 columns">
