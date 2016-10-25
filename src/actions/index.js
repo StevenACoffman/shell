@@ -12,9 +12,9 @@ export const addCitation = (sectionId, citationId, text='') => ({
   text
 });
 
-export const addSection = (id) => ({
+export const addSection = (sectionId) => ({
   type: 'ADD_SECTION',
-  id
+  sectionId
 });
 
 export const moveSectionUp = (sectionId) => ({
@@ -27,7 +27,22 @@ export const moveSectionDown = (sectionId) => ({
   sectionId
 });
 
-export const deleteSection = (id) => ({
-    type: 'DELETE_SECTION',
-    id
-  }); 
+export const modifySectionName = (sectionId, name) => {
+  console.log(`modifySectionName called with sectionId:${sectionId} and name: ${name}`);
+  return({
+  type: 'MODIFY_SECTION_NAME',
+  sectionId,
+  name
+})
+};
+
+export const modifySectionNotes = (sectionId, notes) => ({
+  type: 'MODIFY_SECTION_NOTES',
+  sectionId,
+  notes
+});
+
+export const deleteSection = (sectionId) => ({
+  type: 'DELETE_SECTION',
+  sectionId
+});

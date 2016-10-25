@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteSection } from '../../actions';
 import store from '../../containers/store';
 
-class DeleteCitation extends React.Component {
+class DeleteSection extends React.Component {
   render() {
     const {sectionId, deleteSectionId} = this.props;
     return (
@@ -13,9 +13,9 @@ class DeleteCitation extends React.Component {
   }
 }
 
-DeleteCitation.propTypes = {
+DeleteSection.propTypes = {
   sectionId: React.PropTypes.number.isRequired,
   deleteSectionId: React.PropTypes.string.isRequired
 };
 
-export default DeleteCitation;
+export default DeleteSection;

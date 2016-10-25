@@ -11,6 +11,8 @@ class AddSection extends React.Component {
         id="add-section"
         type="button"
         onClick={event => {
+          console.log(`AddSection button clicked with sections.length:${this.props.sections.length}`);
+          console.log(this.props.sections);
           store.dispatch(addSection(this.props.sections.length))
         }}
         >
