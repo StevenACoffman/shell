@@ -3,7 +3,15 @@
 
 import citationsReducer from './citationsReducer';
 
-const sectionReducer = (state = {}, action) => {
+const defaultSectionFactory = () => ({
+    name: '',
+    notes: '',
+    citations: [],
+    canMoveSectionUp: false,
+    canMoveSectionDown: false
+  });
+
+const sectionReducer = (state = defaultSectionFactory(), action) => {
   switch (action.type) {
     case 'ADD_CITATION':
       return Object.assign({}, state, {
@@ -22,17 +30,6 @@ const sectionReducer = (state = {}, action) => {
   }
 }
 
-const defaultSectionFactory = () =>{
-  const newSection = ({
-    name: '',
-    notes: '',
-    citations: [],
-    canMoveSectionUp: false,
-    canMoveSectionDown: false
-  })
-  //console.log(newSection);
-  return newSection};
-
 const updateSections = sections => {
   const sectionsLength = sections.length;
   return sections.map((section, index) => {
@@ -44,11 +41,7 @@ const updateSections = sections => {
 
 const swapSectionsItem = (sections, sourceId, targetId) => {
   if (targetId >= 0 && targetId < sections.length) {
-    console.log("Before Swap:");
-    console.log(sections);
     [sections[sourceId], sections[targetId]] = [sections[targetId], sections[sourceId]];
-    console.log("After Swap:");
-    console.log(sections);
   }
   return sections;
 }
@@ -56,18 +49,10 @@ const swapSectionsItem = (sections, sourceId, targetId) => {
 const sectionsReducer = (state = [defaultSectionFactory()], action) => {
   switch (action.type) {
     case 'ADD_SECTION':
-      console.log(`ADD_SECTION CALLED WITH SECTION_ID: ${action.sectionId}`);
-      console.log(state);
-      const suchNewState = [
+      return updateSections([
         ...state,
         defaultSectionFactory()
-      ];
-      console.log("SuchNewState:");
-      console.log(suchNewState);
-      const evenNewerState = updateSections(suchNewState);
-      console.log("EvenNewerState");
-      console.log(evenNewerState);
-      return evenNewerState;
+      ]);
     case 'MOVE_SECTION_UP':
       return updateSections(swapSectionsItem(
         state.slice(),
@@ -81,14 +66,8 @@ const sectionsReducer = (state = [defaultSectionFactory()], action) => {
         action.sectionId + 1
       ));
     case 'DELETE_SECTION':
-      console.log(state);
-      const newState = state
-        .filter((section, index) => (action.sectionId !== index))
-        .map(
-          (section) => Object.assign({},section)
-        );
-      console.log(newState);
-      return newState;
+      return state
+        .filter((section, index) => (action.sectionId !== index));
     case 'ADD_CITATION':
       return state
         .map((section, index) => action.sectionId === index ? sectionReducer(section, action) : section)

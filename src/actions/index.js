@@ -27,14 +27,11 @@ export const moveSectionDown = (sectionId) => ({
   sectionId
 });
 
-export const modifySectionName = (sectionId, name) => {
-  console.log(`modifySectionName called with sectionId:${sectionId} and name: ${name}`);
-  return({
+export const modifySectionName = (sectionId, name) => ({
   type: 'MODIFY_SECTION_NAME',
   sectionId,
   name
-})
-};
+});
 
 export const modifySectionNotes = (sectionId, notes) => ({
   type: 'MODIFY_SECTION_NOTES',
