@@ -8,6 +8,7 @@ import store from '../../containers/store';
 class SectionButtons extends React.Component {
   render() {
     const {sectionId, canMoveSectionUp, canMoveSectionDown} = this.props;
+
     return (
       <div className="mtxl action-buttons">
         <button
