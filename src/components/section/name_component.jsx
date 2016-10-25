@@ -12,7 +12,6 @@ class SectionName extends React.Component {
           type="text"
           id={nameId}
           value={name}
-          defaultValue={name}
           onChange={event => {
             store.dispatch(modifySectionName(sectionId, event.target.value));
           }}

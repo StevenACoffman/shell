@@ -35,10 +35,4 @@ SectionComponent.propTypes = {
   id: React.PropTypes.number.isRequired
 };
 
-SectionComponent.defaultProps = {
-  name: 'Default Name',
-  notes: 'Default Notes',
-  citations: ['Citation 1', 'Citation 2', 'Citation 3']
-};
-
 export default SectionComponent;
