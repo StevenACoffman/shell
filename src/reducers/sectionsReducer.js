@@ -30,14 +30,13 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
   }
 }
 
-const updateSections = sections => {
-  const sectionsLength = sections.length;
-  return sections.map((section, index) => {
-    section.canMoveSectionUp = sectionsLength > 1 && index !== 0;
-    section.canMoveSectionDown = sectionsLength > 1 && index !== sectionsLength - 1;
-    return section;
-  });
-}
+const updateSections = sections => sections
+  .map((section, index, theSections) => Object.assign({}, section,
+    {
+      canMoveSectionUp: theSections.length > 1 && index !== 0,
+      canMoveSectionDown: theSections.length > 1 && index !== theSections.length - 1
+    })
+  );
 
 const swapSectionsItem = (sections, sourceId, targetId) => {
   if (targetId >= 0 && targetId < sections.length) {
