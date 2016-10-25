@@ -66,8 +66,8 @@ const sectionsReducer = (state = [defaultSectionFactory()], action) => {
         action.sectionId + 1
       ));
     case 'DELETE_SECTION':
-      return state
-        .filter((section, index) => (action.sectionId !== index));
+      return updateSections(state
+        .filter((section, index) => (action.sectionId !== index)));
     case 'ADD_CITATION':
       return state
         .map((section, index) => action.sectionId === index ? sectionReducer(section, action) : section)
