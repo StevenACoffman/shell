@@ -13,7 +13,7 @@ class SectionComponent extends React.Component {
         <div className="small-9 columns">
           <SectionName sectionId={id} name={name} nameId={`name_${id}`} />
           <SectionNotes sectionId={id} notes={notes} notesId={`notes_${id}`}/>
-          <Citations citations={citations} citationsId={`citations_${id}`} />
+          <Citations sectionId={id} citations={citations} citationsId={`citations_${id}`} />
           <AddCitation sectionId={id} citations={citations} />
         </div>
         <div className="small-3 columns">
