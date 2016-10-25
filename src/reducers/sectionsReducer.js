@@ -68,17 +68,9 @@ const sectionsReducer = (state = [defaultSectionFactory()], action) => {
     case 'DELETE_SECTION':
       return updateSections(state
         .filter((section, index) => (action.sectionId !== index)));
-    case 'ADD_CITATION':
-      return state
-        .map((section, index) => action.sectionId === index ? sectionReducer(section, action) : section)
-    case 'MODIFY_SECTION_NAME':
-      return state
-        .map((section,index) => action.sectionId === index ? sectionReducer(section, action) : section)
-    case 'MODIFY_SECTION_NOTES':
-      return state
-        .map((section,index) => action.sectionId === index ? sectionReducer(section, action) : section)
     default:
-      return state;
+      return state
+        .map((section, index) => action.sectionId === index ? sectionReducer(section, action) : section);
   }
 };
 
