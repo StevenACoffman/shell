@@ -1,34 +1,7 @@
 // jshint ignore: start
 // above comment is because old jshint (2.8) does not understand default arguments until 2.91+
 
-import citationsReducer from './citationsReducer';
-
-const defaultSectionFactory = () => ({
-    name: '',
-    notes: '',
-    citations: [],
-    canMoveSectionUp: false,
-    canMoveSectionDown: false
-  });
-
-const sectionReducer = (state = defaultSectionFactory(), action) => {
-  switch (action.type) {
-    case 'ADD_CITATION':
-      return Object.assign({}, state, {
-        citations: citationsReducer(state.citations, action)
-      });
-    case 'MODIFY_SECTION_NAME':
-      return Object.assign({}, state, {
-        name: action.name
-      });
-    case 'MODIFY_SECTION_NOTES':
-      return Object.assign({}, state, {
-        notes: action.notes
-      });
-    default:
-      return state
-  }
-}
+import sectionReducer from './sectionReducer.js';
 
 const updateSections = sections => sections
   .map((section, index, theSections) => Object.assign({}, section,
@@ -45,12 +18,16 @@ const swapSectionsItem = (sections, sourceId, targetId) => {
   return sections;
 }
 
-const sectionsReducer = (state = [defaultSectionFactory()], action) => {
+const sectionsReducer = (state = [undefined], action) => {
   switch (action.type) {
     case 'ADD_SECTION':
       return updateSections([
         ...state,
-        defaultSectionFactory()
+        {
+          name: '',
+          notes: '',
+          citations: []
+        }
       ]);
     case 'MOVE_SECTION_UP':
       return updateSections(swapSectionsItem(
@@ -69,7 +46,12 @@ const sectionsReducer = (state = [defaultSectionFactory()], action) => {
         .filter((section, index) => (action.sectionId !== index)));
     default:
       return state
-        .map((section, index) => action.sectionId === index ? sectionReducer(section, action) : section);
+        .map((section, index) => {
+          if (action.sectionId === undefined || action.sectionId === index) {
+            return sectionReducer(section, action)
+          }
+          return section;
+        });
   }
 };
 
