@@ -11,7 +11,7 @@ class AddSection extends React.Component {
         id="add-section"
         type="button"
         onClick={event => {
-          store.dispatch(addSection(this.props.sections.length))
+          store.dispatch(addSection())
         }}
         >
         + Add Section

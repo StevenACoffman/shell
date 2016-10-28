@@ -11,34 +11,36 @@ class SectionButtons extends React.Component {
 
     return (
       <div className="mtxl action-buttons">
-        <button
-          id={`move_section_up_button_${sectionId}`}
-          type="button"
-          className={classNames({
-            'button button-jstor': true,
-            'secondary disabled': !canMoveSectionUp
-          })}
-          disabled={!canMoveSectionUp}
-          onClick={event => {
-            store.dispatch(moveSectionUp(sectionId))
-          }}
-          >
-          Move Section Up
-        </button>
-        <button
-          id={`move_section_down_button_${sectionId}`}
-          type="button"
-          className={classNames({
-            'button button-jstor': true,
-            'secondary disabled': !canMoveSectionDown
-          })}
-          disabled={!canMoveSectionDown}
-          onClick={event => {
-            store.dispatch(moveSectionDown(sectionId))
-          }}
-          >
-          Move Section Down
-        </button>
+        <div>
+          <button
+            id={`move_section_up_button_${sectionId}`}
+            type="button"
+            className={classNames('button button-jstor', {
+              'secondary disabled': !canMoveSectionUp
+            })}
+            disabled={!canMoveSectionUp}
+            onClick={event => {
+              store.dispatch(moveSectionUp(sectionId))
+            }}
+            >
+            Move Section Up
+          </button>
+        </div>
+        <div>
+          <button
+            id={`move_section_down_button_${sectionId}`}
+            type="button"
+            className={classNames('button button-jstor', {
+              'secondary disabled': !canMoveSectionDown
+            })}
+            disabled={!canMoveSectionDown}
+            onClick={event => {
+              store.dispatch(moveSectionDown(sectionId))
+            }}
+            >
+            Move Section Down
+          </button>
+        </div>
         <DeleteSection sectionId={sectionId} deleteSectionId={`delete_section_${sectionId}`}/>
       </div>
     );

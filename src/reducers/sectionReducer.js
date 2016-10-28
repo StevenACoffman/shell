@@ -14,17 +14,21 @@ const defaultSectionFactory = () => ({
 const sectionReducer = (state = defaultSectionFactory(), action) => {
   switch (action.type) {
     case 'ADD_CITATION':
-      return Object.assign({}, state, {
+      return {...state,
         citations: citationsReducer(state.citations, action)
-      });
+      };
+    case 'DELETE_CITATION':
+      return {...state,
+        citations: citationsReducer(state.citations, action)
+      };
     case 'MODIFY_SECTION_NAME':
-      return Object.assign({}, state, {
+      return {...state,
         name: action.name
-      });
+      };
     case 'MODIFY_SECTION_NOTES':
-      return Object.assign({}, state, {
+      return {...state,
         notes: action.notes
-      });
+      };
     default:
       return state
   }

@@ -14,7 +14,7 @@ class SectionComponent extends React.Component {
           <SectionName sectionId={id} name={name} nameId={`name_${id}`} />
           <SectionNotes sectionId={id} notes={notes} notesId={`notes_${id}`}/>
           <Citations sectionId={id} citations={citations} citationsId={`citations_${id}`} />
-          <AddCitation sectionId={id} citations={citations} />
+          <AddCitation sectionId={id} />
         </div>
         <div className="small-3 columns">
           <SectionButtons

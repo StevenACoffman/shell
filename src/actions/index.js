@@ -5,11 +5,16 @@ export const changeThesis = (text) => ({
   text
 });
 
-export const addCitation = (sectionId, citationId, text='') => ({
+export const addCitation = (sectionId, text='') => ({
   type: 'ADD_CITATION',
   sectionId,
-  citationId,
   text
+});
+
+export const deleteCitation = (sectionId, citationIndex) => ({
+  type: 'DELETE_CITATION',
+  sectionId,
+  citationIndex
 });
 
 export const addSection = (sectionId) => ({

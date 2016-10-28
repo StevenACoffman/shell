@@ -4,8 +4,7 @@
 import sectionReducer from './sectionReducer.js';
 
 const updateSections = sections => sections
-  .map((section, index, theSections) => Object.assign({}, section,
-    {
+  .map((section, index, theSections) => ({...section,
       canMoveSectionUp: theSections.length > 1 && index !== 0,
       canMoveSectionDown: theSections.length > 1 && index !== theSections.length - 1
     })
