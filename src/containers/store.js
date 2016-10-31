@@ -25,6 +25,20 @@ export const configureStore = (preloadedState) => createStore(rootReducer, prelo
     applyMiddleware(...middleware)
   ));
 
-const store = configureStore(undefined);
+const outlineInitialDataElement = document.getElementById("outline-initial-data");
+let initialState = undefined;
+if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
+  try{
+    initialState = JSON.parse(outlineInitialDataElement.textContent);
+    if (initialState === null){
+      initialState = undefined
+    }
+  }catch(e){
+      console.log(e); //error in the above string(in this case,yes)!
+  }
+}
+
+
+const store = configureStore(initialState);
 
 export default store;
