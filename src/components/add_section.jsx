@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import store from './../containers/store';
 import { addSection } from './../actions';
 
-class AddSection extends React.Component {
+class AddSection extends Component {
   render() {
+    const { dispatch} = this.props;
     return (
       <button
         className="button button-jstor"
         id="add-section"
         type="button"
         onClick={event => {
-          store.dispatch(addSection())
+         dispatch(addSection())
         }}
         >
         + Add Section
@@ -20,8 +20,10 @@ class AddSection extends React.Component {
   }
 }
 
-const mapStateToProps = (store) => ({ sections: store.sectionState });
+AddSection.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
 
-AddSection = connect(mapStateToProps)(AddSection);
+AddSection = connect()(AddSection);
 
 export default AddSection;
