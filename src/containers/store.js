@@ -1,8 +1,9 @@
 /*jshint esnext:true */
+/*globals console:false, process:false */
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger'
-import rootReducer from '../reducers/index'
+import createLogger from 'redux-logger';
+import rootReducer from '../reducers/index';
 
 
 const middleware = [thunkMiddleware];
@@ -22,12 +23,12 @@ export const configureStore = (preloadedState) => createStore(rootReducer, prelo
   ));
 
 const outlineInitialDataElement = document.getElementById("outline-initial-data");
-let initialState = undefined;
+let initialState;
 if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
   try{
     initialState = JSON.parse(outlineInitialDataElement.textContent);
     if (initialState === null){
-      initialState = undefined
+      initialState = undefined;
     }
   }catch(e){
       console.error(e);

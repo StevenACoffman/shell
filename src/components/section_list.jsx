@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import store from '../containers/store';
 import SectionComponent from './section/section_component.jsx';
 
 class SectionList extends React.Component {
@@ -26,10 +25,6 @@ SectionList.propTypes = {
     notes: React.PropTypes.string.isRequired,
     citations: React.PropTypes.array.isRequired
   }).isRequired).isRequired
-};
-
-SectionList.defaultProps = {
-  sections: store.getState().sectionState
 };
 
 const mapStateToProps = (store) => ({ sections: store.sectionState });

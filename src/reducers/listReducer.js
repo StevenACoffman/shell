@@ -52,5 +52,4 @@ const listReducer = (state = {
       };
   }
 };
-
 export default listReducer;

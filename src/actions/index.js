@@ -62,17 +62,19 @@ function receiveCitationFormat(doi, json) {
   return {type: 'RECEIVE_CITATION_FORMAT', doi, citationStyle: json.citation_style, text: json.citation};
 }
 
-export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
-  return (dispatch, getState) => {
-    if (shouldFetchCitationFormat(listItem, citationStyle)) {
-      return dispatch(fetchCitationFormat(listItem, citationStyle))
-    }
-  };
+function shouldFetchCitationFormat(listItem, citationStyle) {
+  if (!listItem || listItem.isFetching) {
+    return false;
+  } else if (listItem.doi) {
+    return typeof listItem[citationStyle] === 'undefined';
+  } else {
+    return false;
+  }
 }
 
 export function fetchCitationFormat(listItem, citationStyle = 'mla') {
   return dispatch => {
-    dispatch(requestCitationFormat(listItem, citationStyle))
+    dispatch(requestCitationFormat(listItem, citationStyle));
     return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
       method: 'GET',
       headers: {
@@ -85,15 +87,17 @@ export function fetchCitationFormat(listItem, citationStyle = 'mla') {
       }
       return response.json();
     }).then(json => dispatch(receiveCitationFormat(listItem.doi, json)));
-  }
+  };
 }
 
-function shouldFetchCitationFormat(listItem, citationStyle) {
-  if (!listItem || listItem.isFetching) {
-    return false;
-  } else if (listItem.doi) {
-    return typeof listItem[citationStyle] === 'undefined';
-  } else {
-    return false;
-  }
+export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
+  return (dispatch, getState) => {
+    if (shouldFetchCitationFormat(listItem, citationStyle)) {
+      return dispatch(fetchCitationFormat(listItem, citationStyle));
+    }
+  };
 }
+
+
+
+

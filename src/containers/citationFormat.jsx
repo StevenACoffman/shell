@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeCitationFormat, fetchCitationFormatIfNeeded } from '../actions';
-import CitationFormatPicker from '../components/CitationFormatPicker';
+import CitationFormatPicker from '../components/CitationFormatPicker.jsx';
 
 class CitationFormat extends Component {
   constructor(props) {
