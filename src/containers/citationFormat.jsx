@@ -19,7 +19,7 @@ class CitationFormat extends Component {
     const { citationStyle, listItems } = this.props;
     const listItemsFragment = listItems.map((listItem, index) => {
       return (
-        <li key={listItem.doi} >{`${listItem.doi} #${listItem[citationStyle]}`}</li>
+        <li key={listItem.doi} >{`${listItem.doi} <em>${citationStyle}:</em>${listItem[citationStyle]}`}</li>
       );
     });
     return (
@@ -28,7 +28,7 @@ class CitationFormat extends Component {
                 value={citationStyle}
                 onChange={this.handleChange}
                 options={[ 'mla', 'apa', 'chicago']} />
-         <ul className="list-jstor show-for-sr">
+         <ul className="list-jstor hide">
           {listItemsFragment}
         </ul>
       </div>
