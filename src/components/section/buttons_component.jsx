@@ -1,13 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import { moveSectionUp, moveSectionDown } from '../../actions';
-import DeleteSection from './delete_section.jsx';
-import store from '../../containers/store';
+import DeleteSection from './delete_section_component.jsx';
+import { connect } from 'react-redux';
 
 
 class SectionButtons extends React.Component {
   render() {
-    const {sectionId, canMoveSectionUp, canMoveSectionDown} = this.props;
+    const { sectionId, canMoveSectionUp, canMoveSectionDown, dispatch } = this.props;
 
     return (
       <div className="mtxl action-buttons">
@@ -20,7 +20,7 @@ class SectionButtons extends React.Component {
             })}
             disabled={!canMoveSectionUp}
             onClick={event => {
-              store.dispatch(moveSectionUp(sectionId))
+              dispatch(moveSectionUp(sectionId))
             }}
             >
             Move Section Up
@@ -35,7 +35,7 @@ class SectionButtons extends React.Component {
             })}
             disabled={!canMoveSectionDown}
             onClick={event => {
-              store.dispatch(moveSectionDown(sectionId))
+              dispatch(moveSectionDown(sectionId))
             }}
             >
             Move Section Down
@@ -50,7 +50,10 @@ class SectionButtons extends React.Component {
 SectionButtons.propTypes = {
   sectionId: React.PropTypes.number.isRequired,
   canMoveSectionUp: React.PropTypes.bool.isRequired,
-  canMoveSectionDown: React.PropTypes.bool.isRequired
+  canMoveSectionDown: React.PropTypes.bool.isRequired,
+  dispatch: React.PropTypes.func.isRequired
 };
+
+SectionButtons = connect()(SectionButtons);
 
 export default SectionButtons;

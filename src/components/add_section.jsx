@@ -4,7 +4,7 @@ import { addSection } from './../actions';
 
 class AddSection extends Component {
   render() {
-    const { dispatch} = this.props;
+    const { dispatch } = this.props;
     return (
       <button
         className="button button-jstor"

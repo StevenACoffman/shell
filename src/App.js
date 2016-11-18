@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import store from './containers/store'
-import OutlineComponent from './containers/outline_component.jsx'
+import OutlineComponent from './containers/outline_container.jsx'
 
 import './App.css';
 

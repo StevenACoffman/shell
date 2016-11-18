@@ -5,7 +5,7 @@ import store from '../containers/store';
 
 class Thesis extends React.Component {
   render() {
-    const {thesis_value} = this.props;
+    const { thesis_value } = this.props;
     return (
       <div id="thesis-component">
         <label htmlFor="thesis-body">Thesis Statement</label>
@@ -31,7 +31,7 @@ Thesis.defaultProps = {
   thesis_value: ''
 };
 
-const mapStateToProps = (store) => ({ thesis_value: store.thesisState.thesis_value });
+const mapStateToProps = (store) => ({ thesis_value: store.thesis.thesis_value });
 
 Thesis = connect(mapStateToProps)(Thesis);
 export default Thesis;

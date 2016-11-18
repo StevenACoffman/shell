@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { deleteCitation } from '../../actions';
-import store from '../../containers/store';
+import { connect } from 'react-redux';
 
 class Citations extends React.Component {
   render() {
-    const {citationsId, citations, sectionId} = this.props;
+    const { citationsId, citations, sectionId, dispatch } = this.props;
     const citationsFragment = citations.map((citation, index) => {
       return (
         <li
           key={`citation_${index}`}
-          id={`section_${sectionId}_citation_${citation.id}`}>
+          id={`section_${sectionId}_citation_${index}`}>
           <div className="clearfix">
-              <p className="left">{`${citation.text} #${index}`}</p>
+              <p className="left">{citation}</p>
               <button className="right btn-link" onClick={event => {
-                store.dispatch(deleteCitation(sectionId, index))
+                dispatch(deleteCitation(sectionId, index))
               }}>remove</button>
           </div>
         </li>
@@ -31,9 +31,12 @@ class Citations extends React.Component {
 }
 
 Citations.propTypes = {
-  citations: React.PropTypes.array.isRequired,
-  citationsId: React.PropTypes.string.isRequired,
-  sectionId: React.PropTypes.number.isRequired
+  citations: PropTypes.array.isRequired,
+  citationsId: PropTypes.string.isRequired,
+  sectionId: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
+
+Citations = connect()(Citations);
 
 export default Citations;

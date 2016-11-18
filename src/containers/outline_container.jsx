@@ -4,7 +4,7 @@ import AddSection from '../components/add_section.jsx';
 import SectionList from '../components/section_list.jsx';
 import CitationFormat from './citationFormat.jsx';
 
-export default class OutlineComponent extends React.Component {
+export default class OutlineContainer extends React.Component {
   render() {
     return (
       <div>

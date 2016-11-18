@@ -1,10 +1,10 @@
 import React from 'react';
 import { modifySectionNotes } from '../../actions';
-import store from '../../containers/store';
+import { connect } from 'react-redux';
 
 class SectionNotes extends React.Component {
   render() {
-    const {notesId, notes, sectionId} = this.props;
+    const { notesId, notes, sectionId, dispatch } = this.props;
     return (
       <div>
         <label htmlFor={notesId} >Section Notes</label>
@@ -14,7 +14,7 @@ class SectionNotes extends React.Component {
           rows="5"
           value={notes}
           onChange={event => {
-            store.dispatch(modifySectionNotes(sectionId, event.target.value));
+            dispatch(modifySectionNotes(sectionId, event.target.value));
           }}
         />
       </div>
@@ -25,11 +25,10 @@ class SectionNotes extends React.Component {
 SectionNotes.propTypes = {
   notes: React.PropTypes.string.isRequired,
   notesId: React.PropTypes.string.isRequired,
-  sectionId: React.PropTypes.number.isRequired
+  sectionId: React.PropTypes.number.isRequired,
+  dispatch: React.PropTypes.func.isRequired
 };
 
-SectionNotes.defaultProps = {
-  notes: 'Default Notes'
-};
+SectionNotes = connect()(SectionNotes);
 
 export default SectionNotes;

@@ -4,13 +4,14 @@ import SectionComponent from './section/section_component.jsx';
 
 class SectionList extends React.Component {
   render() {
-    const {sections} = this.props;
+    const { sections, listItems } = this.props;
     return (
       <div>
         {sections && sections.map((section, index)=>
           <SectionComponent
             id={index}
             key={index}
+            listItems={listItems}
             {...section}
           />
         )}
@@ -20,14 +21,18 @@ class SectionList extends React.Component {
 }
 
 SectionList.propTypes = {
+  listItems: PropTypes.array.isRequired,
   sections: PropTypes.arrayOf(PropTypes.shape({
-    name: React.PropTypes.string.isRequired,
-    notes: React.PropTypes.string.isRequired,
-    citations: React.PropTypes.array.isRequired
+    name: PropTypes.string.isRequired,
+    notes: PropTypes.string.isRequired,
+    citations: PropTypes.array.isRequired,
+    canMoveSectionUp: PropTypes.bool.isRequired,
+    canMoveSectionDown: PropTypes.bool.isRequired,
+    selectedListItems: PropTypes.array.isRequired
   }).isRequired).isRequired
 };
 
-const mapStateToProps = (store) => ({ sections: store.sectionState });
+const mapStateToProps = (store) => ({ sections: store.sections, listItems: store.list.listItems });
 
 SectionList = connect(mapStateToProps)(SectionList);
 

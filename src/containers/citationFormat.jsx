@@ -43,7 +43,7 @@ CitationFormat.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { citationStyle, listItems } = state.listState;
+  const { citationStyle, listItems } = state.list;
   return {
     citationStyle,
     listItems
