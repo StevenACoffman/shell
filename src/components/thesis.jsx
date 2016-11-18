@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeThesis } from '../actions';
-import store from '../containers/store';
 
 class Thesis extends React.Component {
   render() {
-    const { thesis_value } = this.props;
+    const { thesis_value, dispatch } = this.props;
     return (
       <div id="thesis-component">
         <label htmlFor="thesis-body">Thesis Statement</label>
@@ -16,7 +15,7 @@ class Thesis extends React.Component {
           placeholder="Placeholder..."
           value={thesis_value}
           onChange={event => {
-            store.dispatch(changeThesis(event.target.value));
+            dispatch(changeThesis(event.target.value));
           }}></textarea>
       </div>
     );
@@ -28,7 +27,8 @@ Thesis.propTypes = {
 };
 
 Thesis.defaultProps = {
-  thesis_value: ''
+  thesis_value: '',
+  dispatch: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store) => ({ thesis_value: store.thesis.thesis_value });
