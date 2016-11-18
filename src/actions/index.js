@@ -78,6 +78,18 @@ function receiveCitationFormat(doi, json) {
     return {type: "RECEIVE_CITATION_FORMAT", doi, citationStyle: json.citation_style, text: json.citation};
 }
 
+function requestListItems(listId) {
+    return {type: "REQUEST_LIST_ITEMS", listId};
+}
+
+function receiveListItems(items, dispatch) {
+  console.log("getting items");
+  console.log(items);
+  console.log(JSON.stringify(items));
+    items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem,'mla')));
+    return {type: "FETCH_LIST_ITEMS", items};
+}
+
 function shouldFetchCitationFormat(listItem, citationStyle) {
     if (!listItem || listItem.isFetching) {
         return false;
@@ -91,6 +103,7 @@ function shouldFetchCitationFormat(listItem, citationStyle) {
 export function fetchListItems(listId) {
     return dispatch => {
         const url = `/myjstor/mylists/list/${listId}/items/`;
+        dispatch(requestListItems(listId));
         return fetch(url, {
             method: "GET",
             credentials: "include",
@@ -100,19 +113,17 @@ export function fetchListItems(listId) {
             }
         }).then(response => {
             if (!response.ok) {
-                throw Error(response.statusText);
+                console.error(response.statusText);
             }
             return response.json();
-        }).then(data => dispatch({
-            type: "FETCH_LIST_ITEMS",
-            data: data.items || []
-        }));
+        }).then(data => dispatch(receiveListItems(data.items || [], dispatch)));
     };
 }
 
 export function fetchCitationFormat(listItem, citationStyle = "mla") {
     return dispatch => {
         dispatch(requestCitationFormat(listItem, citationStyle));
+        console.log(`Fetching /citation/${citationStyle}/${listItem.doi}`);
         return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
             method: "GET",
             headers: {
@@ -121,7 +132,7 @@ export function fetchCitationFormat(listItem, citationStyle = "mla") {
             }
         }).then(response => {
             if (!response.ok) {
-                throw Error(response.statusText);
+                console.error(response.statusText);
             }
             return response.json();
         }).then(json => dispatch(receiveCitationFormat(listItem.doi, json)));
@@ -135,7 +146,3 @@ export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
         }
     };
 }
-
-
-
-

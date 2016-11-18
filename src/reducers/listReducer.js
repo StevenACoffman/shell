@@ -42,7 +42,7 @@ const listReducer = (state = {
             citationStyle: action.citationStyle
         };
     case "FETCH_LIST_ITEMS":
-        return {...state, listItems: action.data};
+        return {...state, listItems: action.items};
     default:
         return {
             ...state,

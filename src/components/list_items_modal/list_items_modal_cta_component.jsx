@@ -7,21 +7,19 @@ class CitationsModalCtaComponent extends Component {
     super(props);
     this.hideModal = this.hideModal.bind(this);
   }
-  hideModal(sectionId, selectedListItems, dispatch) {
+  hideModal() {
+    const { sectionId, selectedListItems, dispatch } = this.props;
     dispatch(addCitations(sectionId, selectedListItems));
     //$(`#sectionModal_${sectionId} input[type=checkbox]`).attr('checked', false);
     //$(`#sectionModal_${sectionId}`).foundation('reveal', 'close');
     dispatch(clearSelectedListItems(sectionId));
   }
   render() {
-    const { sectionId, selectedListItems, dispatch } = this.props;
     return (
       <div>
         <button
           className="button button-jstor"
-          onClick={event => {
-            this.hideModal(sectionId, selectedListItems, dispatch);
-          }}
+          onClick={this.hideModal}
           >
           Add to Section
         </button>

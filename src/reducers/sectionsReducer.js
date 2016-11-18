@@ -3,7 +3,6 @@
 
 import sectionReducer from "./sectionReducer.js";
 
-
 const updateSections = sections => sections
   .map((section, index, theSections) => ({
       ...section,

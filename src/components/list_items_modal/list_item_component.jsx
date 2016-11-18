@@ -43,7 +43,7 @@ ListItemComponent.propTypes = {
   listItem: PropTypes.object.isRequired,
   citationIndex: PropTypes.number.isRequired,
   sectionId: PropTypes.number.isRequired,
-  dispatch: React.PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 ListItemComponent = connect()(ListItemComponent);

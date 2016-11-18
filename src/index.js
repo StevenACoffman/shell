@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import store from './containers/store';
+import { fetchListItems } from "./actions/index.js";
 
 /*if (process.env.NODE_ENV !== 'production') {
     var axe = require('react-axe');
@@ -11,3 +13,5 @@ ReactDOM.render(
     <App />,
   document.getElementById('root')
 );
+
+store.dispatch(fetchListItems('70822'));

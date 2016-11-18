@@ -21,5 +21,4 @@ DeleteSection.propTypes = {
 
 DeleteSection = connect()(DeleteSection);
 
-
 export default DeleteSection;
