@@ -1,6 +1,12 @@
 /*jshint esnext:true */
 import fetch from "isomorphic-fetch";
 
+export const changeSectionCitationModal = (sectionId, isOpen) => ({
+    type: "CHANGE_CITATION_MODAL",
+    sectionId,
+    isOpen
+});
+
 export const changeThesis = (text) => ({
     type: "CHANGE_THESIS",
     text

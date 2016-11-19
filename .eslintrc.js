@@ -18,6 +18,7 @@ module.exports = {
         "jsx-quotes": ["error", "prefer-double"],
         "react/jsx-no-undef": "error",
         "react/self-closing-comp": "error",
-        "react/jsx-wrap-multilines": "error"
+        "react/jsx-wrap-multilines": "error",
+        "no-class-assign": "off"
     }
 };
