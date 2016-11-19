@@ -8,12 +8,16 @@ module.exports = {
         ],
         "quotes": [
             "error",
-            "single"
+            "double"
         ],
         "semi": [
             "error",
             "always"
         ],
-        "react/jsx-indent": ["error", 4]
+        "react/jsx-indent": ["error", 4],
+        "jsx-quotes": ["error", "prefer-double"],
+        "react/jsx-no-undef": "error",
+        "react/self-closing-comp": "error",
+        "react/jsx-wrap-multilines": "error"
     }
 };
