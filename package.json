@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "./node_modules/.bin/eslint --fix src; exit 0",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

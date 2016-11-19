@@ -1,15 +1,15 @@
 /*jshint esnext:true */
 /*globals console:false, process:false */
-import { createStore, applyMiddleware, compose } from "redux";
-import thunkMiddleware from "redux-thunk";
-import createLogger from "redux-logger";
-import rootReducer from "../reducers/index";
-import { updateSections } from "../reducers/sectionsReducer";
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import rootReducer from '../reducers/index';
+import { updateSections } from '../reducers/sectionsReducer';
 
 
 const middleware = [thunkMiddleware];
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
     const loggerMiddleware = createLogger();
     middleware.push(loggerMiddleware);
 }
@@ -23,7 +23,7 @@ export const configureStore = (preloadedState) => createStore(rootReducer, prelo
     applyMiddleware(...middleware)
 ));
 
-const outlineInitialDataElement = document.getElementById("outline-initial-data");
+const outlineInitialDataElement = document.getElementById('outline-initial-data');
 let initialState;
 if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
     try {

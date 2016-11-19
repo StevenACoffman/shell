@@ -3,13 +3,13 @@
 
 const listItemReducer = (state, action) => {
     switch (action.type) {
-    case "RECEIVE_CITATION_FORMAT":
+    case 'RECEIVE_CITATION_FORMAT':
         return {
             ...state,
             isFetching: false,
             [action.citationStyle]: action.text
         };
-    case "REQUEST_CITATION_FORMAT":
+    case 'REQUEST_CITATION_FORMAT':
         return {
             ...state,
             isFetching: true
@@ -21,27 +21,27 @@ const listItemReducer = (state, action) => {
 
 const defaultMyList = [
     {
-        doi: "10.1899/0887-3593(2004)023<0271:WTCOGA>2.0.CO;2",
+        doi: '10.1899/0887-3593(2004)023<0271:WTCOGA>2.0.CO;2',
         isFetching: false,
         didInvalidate: false
     }, {
-        doi: "10.1525/jps.2001.30.3.19",
+        doi: '10.1525/jps.2001.30.3.19',
         isFetching: false,
         didInvalidate: false
     }
 ];
 
 const listReducer = (state = {
-    citationStyle: "",
+    citationStyle: '',
     listItems: defaultMyList
 }, action) => {
     switch (action.type) {
-    case "CHANGE_CITATION_FORMAT":
+    case 'CHANGE_CITATION_FORMAT':
         return {
             ...state,
             citationStyle: action.citationStyle
         };
-    case "FETCH_LIST_ITEMS":
+    case 'FETCH_LIST_ITEMS':
         return {...state, listItems: action.items};
     default:
         return {

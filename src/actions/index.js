@@ -1,100 +1,100 @@
 /*jshint esnext:true */
-import fetch from "isomorphic-fetch";
+import fetch from 'isomorphic-fetch';
 
 export const changeThesis = (text) => ({
-    type: "CHANGE_THESIS",
+    type: 'CHANGE_THESIS',
     text
 });
 
-export const addListItem = (sectionId, listItem="") => ({
-    type: "ADD_LIST_ITEM",
+export const addListItem = (sectionId, listItem='') => ({
+    type: 'ADD_LIST_ITEM',
     sectionId,
     listItem
 });
 
 export const removeListItem = (sectionId, listItemIndex) => ({
-    type: "REMOVE_LIST_ITEM",
+    type: 'REMOVE_LIST_ITEM',
     sectionId,
     listItemIndex
 });
 
 export const addCitations = (sectionId, citations = []) => ({
-    type: "ADD_CITATIONS",
+    type: 'ADD_CITATIONS',
     sectionId,
     citations
 });
 
 export const clearSelectedListItems = (sectionId) => ({
-    type: "CLEAR_SELECTED_LIST_ITEMS",
+    type: 'CLEAR_SELECTED_LIST_ITEMS',
     sectionId
 });
 
 export const deleteCitation = (sectionId, citationIndex) => ({
-    type: "DELETE_CITATION",
+    type: 'DELETE_CITATION',
     sectionId,
     citationIndex
 });
 
 export const addSection = () => ({
-    type: "ADD_SECTION",
+    type: 'ADD_SECTION',
 });
 
 export const moveSectionUp = (sectionId) => ({
-    type: "MOVE_SECTION_UP",
+    type: 'MOVE_SECTION_UP',
     sectionId
 });
 
 export const moveSectionDown = (sectionId) => ({
-    type: "MOVE_SECTION_DOWN",
+    type: 'MOVE_SECTION_DOWN',
     sectionId
 });
 
 export const modifySectionName = (sectionId, name) => ({
-    type: "MODIFY_SECTION_NAME",
+    type: 'MODIFY_SECTION_NAME',
     sectionId,
     name
 });
 
 export const modifySectionNotes = (sectionId, notes) => ({
-    type: "MODIFY_SECTION_NOTES",
+    type: 'MODIFY_SECTION_NOTES',
     sectionId,
     notes
 });
 
 export const deleteSection = (sectionId) => ({
-    type: "DELETE_SECTION",
+    type: 'DELETE_SECTION',
     sectionId
 });
 
 export function changeCitationFormat(citationStyle) {
-    return {type: "CHANGE_CITATION_FORMAT", citationStyle};
+    return {type: 'CHANGE_CITATION_FORMAT', citationStyle};
 }
 
 function requestCitationFormat(doi, citationStyle) {
-    return {type: "REQUEST_CITATION_FORMAT", doi, citationStyle};
+    return {type: 'REQUEST_CITATION_FORMAT', doi, citationStyle};
 }
 
 function receiveCitationFormat(doi, json) {
-    return {type: "RECEIVE_CITATION_FORMAT", doi, citationStyle: json.citation_style, text: json.citation};
+    return {type: 'RECEIVE_CITATION_FORMAT', doi, citationStyle: json.citation_style, text: json.citation};
 }
 
 function requestListItems(listId) {
-    return {type: "REQUEST_LIST_ITEMS", listId};
+    return {type: 'REQUEST_LIST_ITEMS', listId};
 }
 
 function receiveListItems(items, dispatch) {
-  console.log("getting items");
-  console.log(items);
-  console.log(JSON.stringify(items));
+    console.log('getting items');
+    console.log(items);
+    console.log(JSON.stringify(items));
     items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem,'mla')));
-    return {type: "FETCH_LIST_ITEMS", items};
+    return {type: 'FETCH_LIST_ITEMS', items};
 }
 
 function shouldFetchCitationFormat(listItem, citationStyle) {
     if (!listItem || listItem.isFetching) {
         return false;
     } else if (listItem.doi) {
-        return typeof listItem[citationStyle] === "undefined";
+        return typeof listItem[citationStyle] === 'undefined';
     } else {
         return false;
     }
@@ -105,11 +105,11 @@ export function fetchListItems(listId) {
         const url = `/myjstor/mylists/list/${listId}/items/`;
         dispatch(requestListItems(listId));
         return fetch(url, {
-            method: "GET",
-            credentials: "include",
+            method: 'GET',
+            credentials: 'include',
             headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         }).then(response => {
             if (!response.ok) {
@@ -120,15 +120,15 @@ export function fetchListItems(listId) {
     };
 }
 
-export function fetchCitationFormat(listItem, citationStyle = "mla") {
+export function fetchCitationFormat(listItem, citationStyle = 'mla') {
     return dispatch => {
         dispatch(requestCitationFormat(listItem, citationStyle));
         console.log(`Fetching /citation/${citationStyle}/${listItem.doi}`);
         return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
-            method: "GET",
+            method: 'GET',
             headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         }).then(response => {
             if (!response.ok) {
