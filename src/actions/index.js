@@ -1,8 +1,8 @@
 /*jshint esnext:true */
 import fetch from "isomorphic-fetch";
 
-export const changeSectionCitationModal = (sectionId, isOpen) => ({
-    type: "CHANGE_CITATION_MODAL",
+export const toggleCitationModal = (sectionId, isOpen) => ({
+    type: "TOGGLE_CITATION_MODAL",
     sectionId,
     isOpen
 });
