@@ -89,9 +89,6 @@ function requestListItems(listId) {
 }
 
 function receiveListItems(items, dispatch) {
-    console.log("getting items");
-    console.log(items);
-    console.log(JSON.stringify(items));
     items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem,"mla")));
     return {type: "FETCH_LIST_ITEMS", items};
 }
@@ -129,7 +126,6 @@ export function fetchListItems(listId) {
 export function fetchCitationFormat(listItem, citationStyle = "mla") {
     return dispatch => {
         dispatch(requestCitationFormat(listItem, citationStyle));
-        console.log(`Fetching /citation/${citationStyle}/${listItem.doi}`);
         return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
             method: "GET",
             headers: {
