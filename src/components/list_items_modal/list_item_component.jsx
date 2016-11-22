@@ -8,10 +8,14 @@ class ListItemComponent extends Component {
         let contributors = "";
         let citationLine = "";
         let title = "";
-        if (listItem.author && listItem.title && listItem.citation_line) {
+        if(listItem.formattedCitation === undefined) {
+            title = "Loading Formatted Citation";
+        } else {
+            title = listItem.formattedCitation;
+        }
+        if (listItem.author && listItem.citation_line) {
             contributors = listItem.author.join(", ");
             citationLine = listItem.citation_line;
-            title = listItem.title[0];
         }
         return (
             <li>

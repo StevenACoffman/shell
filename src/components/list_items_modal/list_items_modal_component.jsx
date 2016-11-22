@@ -2,16 +2,33 @@ import React, { Component, PropTypes } from "react";
 import ListItemComponent from "./list_item_component.jsx";
 import ListItemsModalCtaComponent from "./list_items_modal_cta_component.jsx";
 import CloseModalComponent from "./close_modal_component.jsx";
+import classNames from "classnames";
+
 
 
 class ListItemsModalComponent extends Component {
+
+
     render() {
-        const { sectionId, listItems, selectedListItems } = this.props;
+        const { sectionId, listItems, selectedListItems, modalIsOpen} = this.props;
+
+        const modalOpenStyle={display: "block", opacity: 1, visibility: "visible", top: 568};
+        const modalClosedStyle= {display: "none", opacity: 1, visibility: "hidden", top: 568};
+        let modalStyle = modalIsOpen ? modalOpenStyle : modalClosedStyle;
+        let tabIndex = modalIsOpen ? "0" : "";
+
         return (
             <div className="row">
                 <div className="small-12">
                     <section className="pl-section">
-                        <div id={`sectionModal_${sectionId}`} className="reveal-modal" data-reveal>
+                        <div id={`sectionModal_${sectionId}`}
+                            className={classNames("reveal-modal", {
+                                "open": modalIsOpen
+                            })}
+                            aria-hidden={!modalIsOpen}
+                            style={modalStyle}
+                            tabIndex={tabIndex}
+                            data-reveal>
                             <header>
                                 <h2>Add Citations From List</h2>
                             </header>
@@ -48,7 +65,12 @@ class ListItemsModalComponent extends Component {
 ListItemsModalComponent.propTypes = {
     sectionId: PropTypes.number.isRequired,
     listItems: PropTypes.array.isRequired,
-    selectedListItems: PropTypes.array.isRequired
+    selectedListItems: PropTypes.array.isRequired,
+    modalIsOpen: PropTypes.bool
+};
+
+ListItemsModalComponent.defaultProps = {
+    modalIsOpen: false
 };
 
 export default ListItemsModalComponent;

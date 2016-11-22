@@ -17,7 +17,6 @@ class CloseModalComponent extends Component {
     render() {
         return (
             <a
-                href=""
                 className="close-reveal-modal"
                 aria-label="Close Overlay"
                 onClick={this.hideModal}

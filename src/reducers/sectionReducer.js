@@ -20,7 +20,8 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
         };
     case "CLEAR_SELECTED_LIST_ITEMS":
         return {...state,
-            selectedListItems: citationsReducer(state.selectedListItems, action)
+            selectedListItems: citationsReducer(state.selectedListItems, action),
+            modalIsOpen: false
         };
     case "DELETE_CITATION":
         return {...state,
@@ -44,7 +45,7 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
         };
     case "TOGGLE_CITATION_MODAL":
         return {...state,
-            modal: action.isOpen
+            modalIsOpen: action.isOpen
         };
     default:
         return state;

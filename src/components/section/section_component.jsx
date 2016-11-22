@@ -7,7 +7,7 @@ import AddCitations from "./add_citations_component.jsx";
 
 class SectionComponent extends React.Component {
     render() {
-        const { id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, listItems, selectedListItems } = this.props;
+        const { id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, listItems, modalIsOpen, selectedListItems } = this.props;
         return (
             <div className="row">
                 <div className="small-9 columns">
@@ -20,6 +20,7 @@ class SectionComponent extends React.Component {
                         sectionId={id}
                         selectedListItems={selectedListItems}
                         listItems={listItems}
+                        modalIsOpen={modalIsOpen}
                         />
                 </div>
                 <div className="small-3 columns">
@@ -42,7 +43,12 @@ SectionComponent.propTypes = {
     canMoveSectionDown: React.PropTypes.bool.isRequired,
     selectedListItems: React.PropTypes.array.isRequired,
     id: React.PropTypes.number.isRequired,
-    listItems: React.PropTypes.array.isRequired
+    listItems: React.PropTypes.array.isRequired,
+    modalIsOpen: React.PropTypes.bool
+};
+
+SectionComponent.defaultProps = {
+    modalIsOpen: false
 };
 
 export default SectionComponent;

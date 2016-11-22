@@ -7,7 +7,8 @@ const listItemReducer = (state, action) => {
         return {
             ...state,
             isFetching: false,
-            [action.citationStyle]: action.text
+            [action.citationStyle]: action.text,
+            formattedCitation: action.text
         };
     case "REQUEST_CITATION_FORMAT":
         return {
