@@ -9,12 +9,12 @@ class SectionList extends React.Component {
             <div>
                 {sections && sections.map((section, index)=>
                     <SectionComponent
-            id={index}
-            key={index}
-            listItems={listItems}
-            {...section}
-          />
-        )}
+                        id={index}
+                        key={index}
+                        listItems={listItems}
+                        {...section}
+                    />
+                )}
             </div>
         );
     }

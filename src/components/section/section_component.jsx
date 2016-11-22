@@ -17,17 +17,17 @@ class SectionComponent extends React.Component {
                         <Citations sectionId={id} citations={citations} citationsId={`citations_${id}`} />
                     </div>
                     <AddCitations
-            sectionId={id}
-            selectedListItems={selectedListItems}
-            listItems={listItems}
-            />
+                        sectionId={id}
+                        selectedListItems={selectedListItems}
+                        listItems={listItems}
+                        />
                 </div>
                 <div className="small-3 columns">
                     <SectionButtons
-            sectionId={id}
-            canMoveSectionUp={canMoveSectionUp}
-            canMoveSectionDown={canMoveSectionDown}
-            />
+                        sectionId={id}
+                        canMoveSectionUp={canMoveSectionUp}
+                        canMoveSectionDown={canMoveSectionDown}
+                        />
                 </div>
             </div>
         );

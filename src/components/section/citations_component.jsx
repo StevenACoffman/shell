@@ -8,8 +8,8 @@ class Citations extends React.Component {
         const citationsFragment = citations.map((citation, index) => {
             return (
                 <li
-          key={`citation_${index}`}
-          id={`section_${sectionId}_citation_${index}`}>
+                  key={`citation_${index}`}
+                  id={`section_${sectionId}_citation_${index}`}>
                     <div className="clearfix">
                         <p className="left">{citation}</p>
                         <button className="right btn-link" onClick={event => {

@@ -18,17 +18,17 @@ class CitationsModalCtaComponent extends Component {
         return (
             <div>
                 <button
-          className="button button-jstor"
-          onClick={this.hideModal}
-          >
-          Add to Section
-        </button>
+                    className="button button-jstor"
+                    onClick={this.hideModal}
+                >
+                    Add to Section
+                </button>
                 <button
-          className="btn-link"
-          onClick={this.hideModal}
-          >
-          Cancel
-        </button>
+                  className="btn-link"
+                  onClick={this.hideModal}
+                  >
+                  Cancel
+                </button>
             </div>
         );
     }

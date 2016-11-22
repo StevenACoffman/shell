@@ -13,7 +13,7 @@ export default class CitationFormatPicker extends Component {
                         <option value={option} key={option}>
                             {option.toUpperCase()}
                         </option>)
-          }
+                    }
                 </select>
             </span>
         );

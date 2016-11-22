@@ -25,9 +25,9 @@ class CitationFormat extends Component {
         return (
             <div>
                 <CitationFormatPicker id="citation-format-picker"
-                value={citationStyle}
-                onChange={this.handleChange}
-                options={[ "mla", "apa", "chicago"]} />
+                    value={citationStyle}
+                    onChange={this.handleChange}
+                    options={[ "mla", "apa", "chicago"]} />
                 <ul className="list-jstor hide">
                     {listItemsFragment}
                 </ul>

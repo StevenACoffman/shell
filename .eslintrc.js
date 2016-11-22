@@ -11,5 +11,6 @@ module.exports = {
         "react/self-closing-comp": "error",
         "react/jsx-wrap-multilines": "error",
         "no-class-assign": "off"
-    }
+    },
+    "options": {"fix":true}
 };

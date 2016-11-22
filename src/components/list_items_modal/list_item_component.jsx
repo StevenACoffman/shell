@@ -18,17 +18,17 @@ class ListItemComponent extends Component {
                 <div className="checkboxWrap mll">
                     <label htmlFor={`section_${sectionId}_item_${citationIndex}`}>
                         <input
-              className="mylists-single-option"
-              id={`section_${sectionId}_item_${citationIndex}`}
-              type="checkbox"
-              value={title}
-              onChange={event => {
-                  if (event.target.checked) {
-                      dispatch(addListItem(sectionId, event.target.value));
-                  } else {
-                      dispatch(removeListItem(sectionId, citationIndex));
-                  }
-              }} />
+                          className="mylists-single-option"
+                          id={`section_${sectionId}_item_${citationIndex}`}
+                          type="checkbox"
+                          value={title}
+                          onChange={event => {
+                              if (event.target.checked) {
+                                  dispatch(addListItem(sectionId, event.target.value));
+                              } else {
+                                  dispatch(removeListItem(sectionId, citationIndex));
+                              }
+                          }} />
                         <span className="pls title lookslikeh2">{title}</span>
                         <div className="contrib">{contributors}</div>
                         <div className="src">{citationLine}</div>

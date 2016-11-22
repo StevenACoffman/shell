@@ -9,14 +9,14 @@ class Thesis extends React.Component {
             <div id="thesis-component">
                 <label htmlFor="thesis-body">Thesis Statement</label>
                 <textarea
-          type="text"
-          rows="5"
-          id="thesis-body"
-          placeholder="Placeholder..."
-          value={thesis_value}
-          onChange={event => {
-              dispatch(changeThesis(event.target.value));
-          }} />
+                  type="text"
+                  rows="5"
+                  id="thesis-body"
+                  placeholder="Placeholder..."
+                  value={thesis_value}
+                  onChange={event => {
+                      dispatch(changeThesis(event.target.value));
+                  }} />
             </div>
         );
     }

@@ -27,7 +27,7 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
             citations: citationsReducer(state.citations, action)
         };
     case "ADD_LIST_ITEM":
-        return {...state, 
+        return {...state,
             selectedListItems: citationsReducer(state.selectedListItems, action)
         };
     case "REMOVE_LIST_ITEM":
@@ -42,7 +42,10 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
         return {...state,
             notes: action.notes
         };
-    
+    case "TOGGLE_CITATION_MODAL":
+        return {...state,
+            modal: action.isOpen
+        };
     default:
         return state;
     }

@@ -20,16 +20,16 @@ class ListItemsModalComponent extends Component {
                                     <h2>Select Citations To Add</h2>
                                     <hr />
                                     <input className="mylists-single-option" type="checkbox"/>Title
-                  <hr />
+                                    <hr />
                                     <ul>
                                         {listItems.map((listItem, index) => {
                                             return (
                                                 <ListItemComponent
-                          citationIndex={index}
-                          sectionId={sectionId}
-                          listItem={listItem}
-                          key={`section_${sectionId}_list_item_${index}`}
-                          />
+                                                  citationIndex={index}
+                                                  sectionId={sectionId}
+                                                  listItem={listItem}
+                                                  key={`section_${sectionId}_list_item_${index}`}
+                                                  />
                                             );
                                         })}
                                     </ul>

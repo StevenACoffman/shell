@@ -9,14 +9,14 @@ class SectionNotes extends React.Component {
             <div>
                 <label htmlFor={notesId} >Section Notes</label>
                 <textarea
-          name="notes"
-          id={notesId}
-          rows="5"
-          value={notes}
-          onChange={event => {
-              dispatch(modifySectionNotes(sectionId, event.target.value));
-          }}
-        />
+                  name="notes"
+                  id={notesId}
+                  rows="5"
+                  value={notes}
+                  onChange={event => {
+                      dispatch(modifySectionNotes(sectionId, event.target.value));
+                  }}
+                />
             </div>
         );
     }

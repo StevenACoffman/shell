@@ -9,13 +9,13 @@ class SectionName extends React.Component {
             <div>
                 <label htmlFor={nameId} >Section Name</label>
                 <input
-          type="text"
-          id={nameId}
-          value={name}
-          onChange={event => {
-              dispatch(modifySectionName(sectionId, event.target.value));
-          }}
-        />
+                  type="text"
+                  id={nameId}
+                  value={name}
+                  onChange={event => {
+                      dispatch(modifySectionName(sectionId, event.target.value));
+                  }}
+                />
             </div>
         );
     }
