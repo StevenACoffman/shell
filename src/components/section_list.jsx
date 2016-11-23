@@ -1,8 +1,8 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import SectionComponent from "./section/section_component.jsx";
 
-class SectionList extends React.Component {
+class SectionList extends Component {
     render() {
         const { sections, listItems } = this.props;
         return (

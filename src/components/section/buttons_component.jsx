@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import classNames from "classnames";
 import { moveSectionUp, moveSectionDown } from "../../actions";
 import DeleteSection from "./delete_section_component.jsx";
 import { connect } from "react-redux";
 
 
-class SectionButtons extends React.Component {
+class SectionButtons extends Component {
     render() {
         const { sectionId, canMoveSectionUp, canMoveSectionDown, dispatch } = this.props;
 
@@ -48,10 +48,10 @@ class SectionButtons extends React.Component {
 }
 
 SectionButtons.propTypes = {
-    sectionId: React.PropTypes.number.isRequired,
-    canMoveSectionUp: React.PropTypes.bool.isRequired,
-    canMoveSectionDown: React.PropTypes.bool.isRequired,
-    dispatch: React.PropTypes.func.isRequired
+    sectionId: PropTypes.number.isRequired,
+    canMoveSectionUp: PropTypes.bool.isRequired,
+    canMoveSectionDown: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 SectionButtons = connect()(SectionButtons);

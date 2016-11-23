@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { changeThesis } from "../actions";
 
-class Thesis extends React.Component {
+class Thesis extends Component {
     render() {
         const { thesis_value, dispatch } = this.props;
         return (
@@ -23,15 +23,10 @@ class Thesis extends React.Component {
 }
 
 Thesis.propTypes = {
-    thesis_value: React.PropTypes.string
+    thesis_value:PropTypes.string
 };
 
-Thesis.defaultProps = {
-    thesis_value: "",
-    dispatch: React.PropTypes.func.isRequired
-};
-
-const mapStateToProps = (store) => ({ thesis_value: store.thesis.thesis_value });
+const mapStateToProps = (store) => ({ thesis_value: store.thesis.thesis_value || "" });
 
 Thesis = connect(mapStateToProps)(Thesis);
 export default Thesis;

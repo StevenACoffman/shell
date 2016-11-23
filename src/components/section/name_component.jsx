@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import { modifySectionName } from "../../actions";
 import { connect } from "react-redux";
 
-class SectionName extends React.Component {
+class SectionName extends Component {
     render() {
         const { nameId, name, sectionId, dispatch }  = this.props;
         return (
@@ -22,10 +22,10 @@ class SectionName extends React.Component {
 }
 
 SectionName.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    nameId: React.PropTypes.string.isRequired,
-    sectionId: React.PropTypes.number.isRequired,
-    dispatch: React.PropTypes.func.isRequired
+    name: PropTypes.string.isRequired,
+    nameId: PropTypes.string.isRequired,
+    sectionId: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 SectionName = connect()(SectionName);

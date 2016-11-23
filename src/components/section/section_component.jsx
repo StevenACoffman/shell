@@ -1,11 +1,11 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import SectionName from "./name_component.jsx";
 import SectionNotes from "./notes_component.jsx";
 import Citations from "./citations_component.jsx";
 import SectionButtons from "./buttons_component.jsx";
 import AddCitations from "./add_citations_component.jsx";
 
-class SectionComponent extends React.Component {
+class SectionComponent extends Component {
     render() {
         const { id, name, notes, canMoveSectionUp, canMoveSectionDown } = this.props;
         return (

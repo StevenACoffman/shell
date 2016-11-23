@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import Thesis from "../components/thesis.jsx";
 import AddSection from "../components/add_section.jsx";
 import SectionList from "../components/section_list.jsx";
 import CitationFormat from "./citationFormat.jsx";
 
-export default class OutlineContainer extends React.Component {
+export default class OutlineContainer extends Component {
     render() {
         return (
             <div>

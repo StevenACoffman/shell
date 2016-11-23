@@ -1,8 +1,8 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import { deleteCitation } from "../../actions";
 import { connect } from "react-redux";
 
-class Citations extends React.Component {
+class Citations extends Component {
     render() {
         const { citations, sectionId, listItems, dispatch } = this.props;
         const citationsId = `citations_${sectionId}`;

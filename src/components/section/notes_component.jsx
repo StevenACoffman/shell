@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import { modifySectionNotes } from "../../actions";
 import { connect } from "react-redux";
 
-class SectionNotes extends React.Component {
+class SectionNotes extends Component {
     render() {
         const { notesId, notes, sectionId, dispatch } = this.props;
         return (
@@ -23,10 +23,10 @@ class SectionNotes extends React.Component {
 }
 
 SectionNotes.propTypes = {
-    notes: React.PropTypes.string.isRequired,
-    notesId: React.PropTypes.string.isRequired,
-    sectionId: React.PropTypes.number.isRequired,
-    dispatch: React.PropTypes.func.isRequired
+    notes: PropTypes.string.isRequired,
+    notesId: PropTypes.string.isRequired,
+    sectionId: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 SectionNotes = connect()(SectionNotes);
