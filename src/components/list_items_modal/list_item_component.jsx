@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from "react";
-import { addListItem, removeListItem } from "../../actions";
+import { selectListItem, unselectListItem } from "../../actions";
 import { connect } from "react-redux";
 
 class ListItemComponent extends Component {
     render() {
         const { listItemIndex, sectionId, listItem, dispatch, selectedListItems} = this.props;
+        const selected = selectedListItems.includes(listItemIndex);
         let contributors = "";
         let citationLine = "";
         let title = "";
@@ -27,11 +28,12 @@ class ListItemComponent extends Component {
                           id={`section_${sectionId}_item_${listItemIndex}`}
                           type="checkbox"
                           value={title}
+                          checked={selected}
                           onChange={event => {
-                              if (event.target.checked) {
-                                  dispatch(addListItem(sectionId, listItem.formattedCitation, listItemIndex));
+                              if (selected) {
+                                  dispatch(unselectListItem(sectionId, listItemIndex));
                               } else {
-                                  dispatch(removeListItem(sectionId, listItemIndex));
+                                  dispatch(selectListItem(sectionId, listItemIndex));
                               }
                           }} />
                         <span className="pls title lookslikeh2">{title}</span>
@@ -47,10 +49,14 @@ class ListItemComponent extends Component {
 ListItemComponent.propTypes = {
     listItem: PropTypes.object.isRequired,
     listItemIndex: PropTypes.number.isRequired,
+    selectedListItems: PropTypes.arrayOf(PropTypes.number).isRequired,
     sectionId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
-
-ListItemComponent = connect()(ListItemComponent);
+const mapStateToProps = (store, ownProps) => ({
+    selectedListItems: store.sections[ownProps.sectionId].selectedListItems || [],
+    listItems: store.list.listItems || []
+});
+ListItemComponent = connect(mapStateToProps)(ListItemComponent);
 
 export default ListItemComponent;

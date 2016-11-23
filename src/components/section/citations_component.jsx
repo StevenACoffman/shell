@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 class Citations extends React.Component {
     render() {
-        const { citationsId, citations, sectionId, listItems, dispatch } = this.props;
+        const { citations, sectionId, listItems, dispatch } = this.props;
+        const citationsId = `citations_${sectionId}`;
         const citationsFragment = citations.map((citation, index) => {
             return (
                 <li
@@ -31,15 +32,16 @@ class Citations extends React.Component {
 }
 
 Citations.propTypes = {
-    citations: PropTypes.array.isRequired,
-    citationsId: PropTypes.string.isRequired,
-    listItems: PropTypes.string.isRequired,
+    citations: PropTypes.arrayOf(PropTypes.number).isRequired,
+    listItems: PropTypes.array.isRequired,
     sectionId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 const mapStateToProps = (store, ownProps) => ({
-    listItems: store.list.listItems
+    listItems: store.list.listItems,
+    citations: store.sections[ownProps.sectionId].citations || []
 });
+
 Citations = connect(mapStateToProps)(Citations);
 
 export default Citations;

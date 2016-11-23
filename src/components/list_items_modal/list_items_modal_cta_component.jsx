@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { addCitations, clearSelectedListItems } from "../../actions";
+import { addCitations, clearSelectedListItems, toggleCitationModal } from "../../actions";
 import { connect } from "react-redux";
 
 class CitationsModalCtaComponent extends Component {
@@ -10,8 +10,7 @@ class CitationsModalCtaComponent extends Component {
     hideModal() {
         const { sectionId, selectedListItems, dispatch } = this.props;
         dispatch(addCitations(sectionId, selectedListItems));
-    //$(`#sectionModal_${sectionId} input[type=checkbox]`).attr('checked', false);
-    //$(`#sectionModal_${sectionId}`).foundation('reveal', 'close');
+        dispatch(toggleCitationModal(sectionId, false));
         dispatch(clearSelectedListItems(sectionId));
     }
     render() {

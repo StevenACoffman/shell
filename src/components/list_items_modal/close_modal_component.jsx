@@ -10,8 +10,6 @@ class CloseModalComponent extends Component {
     hideModal() {
         const { sectionId, dispatch } = this.props;
         dispatch(toggleCitationModal(sectionId, false));
-    //$(`#sectionModal_${sectionId} input[type=checkbox]`).attr("checked", false);
-    //$(`#sectionModal_${sectionId}`).foundation("reveal", "close");
         dispatch(clearSelectedListItems(sectionId));
     }
     render() {

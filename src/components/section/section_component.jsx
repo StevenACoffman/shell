@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import SectionName from "./name_component.jsx";
 import SectionNotes from "./notes_component.jsx";
 import Citations from "./citations_component.jsx";
@@ -7,21 +7,16 @@ import AddCitations from "./add_citations_component.jsx";
 
 class SectionComponent extends React.Component {
     render() {
-        const { id, name, notes, citations, canMoveSectionUp, canMoveSectionDown, listItems, modalIsOpen, selectedListItems } = this.props;
+        const { id, name, notes, canMoveSectionUp, canMoveSectionDown } = this.props;
         return (
             <div className="row">
                 <div className="small-9 columns">
                     <SectionName sectionId={id} name={name} nameId={`name_${id}`} />
                     <SectionNotes sectionId={id} notes={notes} notesId={`notes_${id}`} />
                     <div>
-                        <Citations sectionId={id} citations={citations} citationsId={`citations_${id}`} />
+                        <Citations sectionId={id} />
                     </div>
-                    <AddCitations
-                        sectionId={id}
-                        selectedListItems={selectedListItems}
-                        listItems={listItems}
-                        modalIsOpen={modalIsOpen}
-                        />
+                    <AddCitations sectionId={id} />
                 </div>
                 <div className="small-3 columns">
                     <SectionButtons
@@ -36,19 +31,11 @@ class SectionComponent extends React.Component {
 }
 
 SectionComponent.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    notes: React.PropTypes.string.isRequired,
-    citations: React.PropTypes.array.isRequired,
-    canMoveSectionUp: React.PropTypes.bool.isRequired,
-    canMoveSectionDown: React.PropTypes.bool.isRequired,
-    selectedListItems: React.PropTypes.array.isRequired,
-    id: React.PropTypes.number.isRequired,
-    listItems: React.PropTypes.array.isRequired,
-    modalIsOpen: React.PropTypes.bool
-};
-
-SectionComponent.defaultProps = {
-    modalIsOpen: false
+    name: PropTypes.string.isRequired,
+    notes: PropTypes.string.isRequired,
+    canMoveSectionUp: PropTypes.bool.isRequired,
+    canMoveSectionDown: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired
 };
 
 export default SectionComponent;

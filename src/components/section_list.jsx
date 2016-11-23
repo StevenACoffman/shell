@@ -25,10 +25,9 @@ SectionList.propTypes = {
     sections: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         notes: PropTypes.string.isRequired,
-        citations: PropTypes.array.isRequired,
+        citations: PropTypes.arrayOf(PropTypes.number).isRequired,
         canMoveSectionUp: PropTypes.bool.isRequired,
-        canMoveSectionDown: PropTypes.bool.isRequired,
-        selectedListItems: PropTypes.array.isRequired
+        canMoveSectionDown: PropTypes.bool.isRequired
     }).isRequired).isRequired
 };
 

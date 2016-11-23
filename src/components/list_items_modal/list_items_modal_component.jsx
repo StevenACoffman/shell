@@ -2,11 +2,9 @@ import React, { Component, PropTypes } from "react";
 import ListItemComponent from "./list_item_component.jsx";
 import ListItemsModalCtaComponent from "./list_items_modal_cta_component.jsx";
 import CloseModalComponent from "./close_modal_component.jsx";
-import classNames from "classnames";
 import {connect} from "react-redux";
-import {toggleCitationModal} from "../../actions";
+import {toggleCitationModal, selectAllListItems, clearSelectedListItems} from "../../actions";
 import Modal from "react-modal";
-
 
 class ListItemsModalComponent extends Component {
     constructor(props) {
@@ -23,7 +21,8 @@ class ListItemsModalComponent extends Component {
         dispatch(toggleCitationModal(sectionId, false));
     }
     render() {
-        const {sectionId, selectedListItems, listItems, modalIsOpen} = this.props;
+        const {sectionId, selectedListItems, listItems, modalIsOpen, dispatch} = this.props;
+        const allListItemIndexes = Array.from(Array(listItems.length).keys());
         const customStyle = {
             content: {
                 border: "solid 5px #546d89",
@@ -69,41 +68,49 @@ class ListItemsModalComponent extends Component {
             document.getElementsByTagName("head")[0].appendChild(styleElement);
         }
         return (
-                <Modal isOpen={modalIsOpen} onRequestClose={this.closeModal} style={customStyle}>
-                    <header style={headerStyle}>
-                        <h2 style={{
-                            color: "#fff",
-                            margin: 0,
-                            fontSize: "16px"
-                        }}>Add Citations From List</h2>
-                    </header>
-                    <div className="reveal-body" style={{
-                        "background": "white",
-                        margin: "0",
-                        padding: "10px",
-                        overflowY: "auto",
-                        minHeight: "0px"
-                    }}>
-                        <div>
-                            <h2 style={{
-                                fontSize: "16px"
-                            }}>Select Citations To Add</h2>
-                            <hr/>
-                            <input className="mylists-single-option" type="checkbox"/>Title
-                            <hr/>
-                            <ul>
-                                {listItems.map((listItem, index) => {
-                                    return (<ListItemComponent listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);
-                                })}
-                            </ul>
-                            <ListItemsModalCtaComponent sectionId={sectionId} selectedListItems={selectedListItems}/>
-                        </div>
-
-                    </div>
+            <Modal isOpen={modalIsOpen} onRequestClose={this.closeModal} style={customStyle}>
+                <header style={headerStyle}>
+                    <h2 style={{
+                        color: "#fff",
+                        margin: 0,
+                        fontSize: "16px"
+                    }}>Add Citations From List</h2>
+                </header>
+                <div className="reveal-body" style={{
+                    "background": "white",
+                    margin: "0",
+                    padding: "10px",
+                    overflowY: "auto",
+                    minHeight: "0px"
+                }}>
                     <div>
-                        <CloseModalComponent sectionId={sectionId}/>
+                        <h2 style={{
+                            fontSize: "16px"
+                        }}>Select Citations To Add</h2>
+                        <hr/>
+                        <input className="mylists-single-option" type="checkbox"
+                            onChange={event => {
+                                if (event.target.checked) {
+                                    dispatch(selectAllListItems(sectionId, allListItemIndexes));
+                                } else {
+                                    dispatch(clearSelectedListItems(sectionId));
+                                }
+                            }}
+                            />Title
+                            <hr/>
+                        <ul>
+                            {listItems.map((listItem, index) => {
+                                return (<ListItemComponent listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);
+                            })}
+                        </ul>
+                        <ListItemsModalCtaComponent sectionId={sectionId} selectedListItems={selectedListItems}/>
                     </div>
-                </Modal>
+
+                </div>
+                <div>
+                    <CloseModalComponent sectionId={sectionId}/>
+                </div>
+            </Modal>
 
         );
     }
@@ -114,13 +121,13 @@ ListItemsModalComponent.propTypes = {
     listItems: PropTypes.array.isRequired,
     selectedListItems: PropTypes.array.isRequired,
     modalIsOpen: PropTypes.bool.isRequired,
-    dispatch: React.PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store, ownProps) => ({
     modalIsOpen: store.sections[ownProps.sectionId].modalIsOpen || false,
-    selectedListItems: store.sections[ownProps.sectionId].selectedListItems,
-    listItems: store.list.listItems
+    selectedListItems: store.sections[ownProps.sectionId].selectedListItems || [],
+    listItems: store.list.listItems || []
 });
 
 ListItemsModalComponent = connect(mapStateToProps)(ListItemsModalComponent);

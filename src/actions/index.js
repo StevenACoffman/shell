@@ -19,22 +19,15 @@ export const unselectListItem = (sectionId, listItemIndex) => ({
     listItemIndex
 });
 
+export const selectAllListItems = (sectionId, listItems) => ({
+    type: "SELECT_ALL_LIST_ITEM",
+    sectionId,
+    listItems
+});
+
 export const changeThesis = (text) => ({
     type: "CHANGE_THESIS",
     text
-});
-
-export const addListItem = (sectionId, listItem, listItemIndex=0) => ({
-    type: "ADD_LIST_ITEM",
-    sectionId,
-    listItem,
-    listItemIndex
-});
-
-export const removeListItem = (sectionId, listItemIndex) => ({
-    type: "REMOVE_LIST_ITEM",
-    sectionId,
-    listItemIndex
 });
 
 export const addCitations = (sectionId, citations = []) => ({
