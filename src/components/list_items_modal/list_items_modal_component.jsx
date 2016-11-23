@@ -12,7 +12,7 @@ class ListItemsModalComponent extends Component {
     render() {
         const { sectionId, listItems, selectedListItems, modalIsOpen} = this.props;
 
-        const modalOpenStyle={display: "block", opacity: 1, visibility: "visible", top: 568};
+        const modalOpenStyle={display: "block", opacity: 1, visibility: "visible", top: -881, position: "fixed"};
         const modalClosedStyle= {display: "none", opacity: 1, visibility: "hidden", top: 568};
         let modalStyle = modalIsOpen ? modalOpenStyle : modalClosedStyle;
         let tabIndex = modalIsOpen ? "0" : "";
@@ -46,6 +46,7 @@ class ListItemsModalComponent extends Component {
                                                   sectionId={sectionId}
                                                   listItem={listItem}
                                                   key={`section_${sectionId}_list_item_${index}`}
+                                                  selectedListItems={selectedListItems}
                                                   />
                                             );
                                         })}

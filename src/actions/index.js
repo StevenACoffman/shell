@@ -12,10 +12,11 @@ export const changeThesis = (text) => ({
     text
 });
 
-export const addListItem = (sectionId, listItem="") => ({
+export const addListItem = (sectionId, listItem, listItemIndex=0) => ({
     type: "ADD_LIST_ITEM",
     sectionId,
-    listItem
+    listItem,
+    listItemIndex
 });
 
 export const removeListItem = (sectionId, listItemIndex) => ({

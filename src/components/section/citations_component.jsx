@@ -11,7 +11,7 @@ class Citations extends React.Component {
                   key={`citation_${index}`}
                   id={`section_${sectionId}_citation_${index}`}>
                     <div className="clearfix">
-                        <p className="left">{citation}</p>
+                        <p className="left" dangerouslySetInnerHTML={{__html: citation}} />
                         <button className="right btn-link" onClick={event => {
                             dispatch(deleteCitation(sectionId, index));
                         }}>remove</button>

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class ListItemComponent extends Component {
     render() {
-        const { citationIndex, sectionId, listItem, dispatch } = this.props;
+        const { citationIndex, sectionId, listItem, dispatch, selectedListItems} = this.props;
         let contributors = "";
         let citationLine = "";
         let title = "";
@@ -17,6 +17,7 @@ class ListItemComponent extends Component {
             contributors = listItem.author.join(", ");
             citationLine = listItem.citation_line;
         }
+        
         return (
             <li>
                 <div className="checkboxWrap mll">
@@ -28,7 +29,7 @@ class ListItemComponent extends Component {
                           value={title}
                           onChange={event => {
                               if (event.target.checked) {
-                                  dispatch(addListItem(sectionId, event.target.value));
+                                  dispatch(addListItem(sectionId, listItem.formattedCitation, citationIndex));
                               } else {
                                   dispatch(removeListItem(sectionId, citationIndex));
                               }
