@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 
 class Citations extends React.Component {
     render() {
-        const { citationsId, citations, sectionId, dispatch } = this.props;
+        const { citationsId, citations, sectionId, listItems, dispatch } = this.props;
         const citationsFragment = citations.map((citation, index) => {
             return (
                 <li
                   key={`citation_${index}`}
                   id={`section_${sectionId}_citation_${index}`}>
                     <div className="clearfix">
-                        <p className="left" dangerouslySetInnerHTML={{__html: citation}} />
+                        <p className="left" dangerouslySetInnerHTML={{__html: listItems[citation].formattedCitation}} />
                         <button className="right btn-link" onClick={event => {
                             dispatch(deleteCitation(sectionId, index));
                         }}>remove</button>
@@ -33,10 +33,13 @@ class Citations extends React.Component {
 Citations.propTypes = {
     citations: PropTypes.array.isRequired,
     citationsId: PropTypes.string.isRequired,
+    listItems: PropTypes.string.isRequired,
     sectionId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
-
-Citations = connect()(Citations);
+const mapStateToProps = (store, ownProps) => ({
+    listItems: store.list.listItems
+});
+Citations = connect(mapStateToProps)(Citations);
 
 export default Citations;

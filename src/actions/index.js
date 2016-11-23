@@ -7,6 +7,18 @@ export const toggleCitationModal = (sectionId, isOpen) => ({
     isOpen
 });
 
+export const selectListItem = (sectionId, listItemIndex) => ({
+    type: "SELECT_LIST_ITEM",
+    sectionId,
+    listItemIndex
+});
+
+export const unselectListItem = (sectionId, listItemIndex) => ({
+    type: "UNSELECT_LIST_ITEM",
+    sectionId,
+    listItemIndex
+});
+
 export const changeThesis = (text) => ({
     type: "CHANGE_THESIS",
     text

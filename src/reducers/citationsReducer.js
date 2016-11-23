@@ -10,7 +10,7 @@ const citationsReducer = (state = [], action) => {
     case "DELETE_CITATION":
         return state.filter((citation, index) => (index !== action.citationIndex));
     case "ADD_LIST_ITEM":
-        return [...state, action.listItem];
+        return [...state, action.listItemIndex];
     case "REMOVE_LIST_ITEM":
         return state.filter((listItem, index) => (index !== action.listItemIndex));
     default:
