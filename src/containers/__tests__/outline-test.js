@@ -1,11 +1,12 @@
 import React from "react";
-import OutlineComponent from "../outline_container.jsx";
+import OutlineContainer from "../OutlineContainer.jsx";
 import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
 const mockStore = configureStore([]);
-const store = mockStore({
+
+export const initializeState = () => ({
     thesis: {thesis_value:""},
     sections: [{
         id:0,
@@ -22,10 +23,12 @@ const store = mockStore({
     }
 });
 
+const store = mockStore(initializeState());
+
 it("renders correctly", () => {
     const tree = renderer.create(
         <Provider store={store}>
-            <OutlineComponent/>
+            <OutlineContainer/>
         </Provider>
   ).toJSON();
     expect(tree).toMatchSnapshot();

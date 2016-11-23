@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from "react";
-import ListItemComponent from "./list_item_component.jsx";
-import ListItemsModalCtaComponent from "./list_items_modal_cta_component.jsx";
-import CloseModalComponent from "./close_modal_component.jsx";
+import CitationsModalListItem from "./CitationsModalListItem.jsx";
+import CitationsModalCta from "./CitationsModalCta.jsx";
+import CloseCitationsModal from "./CloseCitationsModal.jsx";
 import {connect} from "react-redux";
 import {toggleCitationModal, selectAllListItems, clearSelectedListItems} from "../../actions";
 import Modal from "react-modal";
 
-class ListItemsModalComponent extends Component {
+class CitationsModal extends Component {
     constructor(props) {
         super(props);
         this.openModal = this.openModal.bind(this);
@@ -100,15 +100,15 @@ class ListItemsModalComponent extends Component {
                             <hr/>
                         <ul>
                             {listItems.map((listItem, index) => {
-                                return (<ListItemComponent listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);
+                                return (<CitationsModalListItem listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);
                             })}
                         </ul>
-                        <ListItemsModalCtaComponent sectionId={sectionId} selectedListItems={selectedListItems}/>
+                        <CitationsModalCta sectionId={sectionId} selectedListItems={selectedListItems}/>
                     </div>
 
                 </div>
                 <div>
-                    <CloseModalComponent sectionId={sectionId}/>
+                    <CloseCitationsModal sectionId={sectionId}/>
                 </div>
             </Modal>
 
@@ -116,7 +116,7 @@ class ListItemsModalComponent extends Component {
     }
 }
 
-ListItemsModalComponent.propTypes = {
+CitationsModal.propTypes = {
     sectionId: PropTypes.number.isRequired,
     listItems: PropTypes.array.isRequired,
     selectedListItems: PropTypes.array.isRequired,
@@ -130,5 +130,5 @@ const mapStateToProps = (store, ownProps) => ({
     listItems: store.list.listItems || []
 });
 
-ListItemsModalComponent = connect(mapStateToProps)(ListItemsModalComponent);
-export default ListItemsModalComponent;
+CitationsModal = connect(mapStateToProps)(CitationsModal);
+export default CitationsModal;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { clearSelectedListItems, toggleCitationModal } from "../../actions";
 import { connect } from "react-redux";
 
-class CloseModalComponent extends Component {
+class CloseCitationsModal extends Component {
     constructor(props) {
         super(props);
         this.hideModal = this.hideModal.bind(this);
@@ -51,11 +51,11 @@ class CloseModalComponent extends Component {
     }
 }
 
-CloseModalComponent.propTypes = {
+CloseCitationsModal.propTypes = {
     sectionId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 
-CloseModalComponent = connect()(CloseModalComponent);
+CloseCitationsModal = connect()(CloseCitationsModal);
 
-export default CloseModalComponent;
+export default CloseCitationsModal;

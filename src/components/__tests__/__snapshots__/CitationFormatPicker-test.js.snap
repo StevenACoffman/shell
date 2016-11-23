@@ -1,0 +1,12 @@
+exports[`test renders correctly 1`] = `
+<span>
+  <label
+    htmlFor="citation-format-picker">
+    Citation Format:
+  </label>
+  <select
+    id="citation-format-picker"
+    onChange={[Function]}
+    value="" />
+</span>
+`;

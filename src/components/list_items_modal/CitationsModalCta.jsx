@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { addCitations, clearSelectedListItems, toggleCitationModal } from "../../actions";
 import { connect } from "react-redux";
 
-class CitationsModalCtaComponent extends Component {
+class CitationsModalCta extends Component {
     constructor(props) {
         super(props);
         this.hideModal = this.hideModal.bind(this);
@@ -33,12 +33,12 @@ class CitationsModalCtaComponent extends Component {
     }
 }
 
-CitationsModalCtaComponent.propTypes = {
+CitationsModalCta.propTypes = {
     sectionId: PropTypes.number.isRequired,
     selectedListItems: PropTypes.array.isRequired,
     dispatch: React.PropTypes.func.isRequired
 };
 
-CitationsModalCtaComponent = connect()(CitationsModalCtaComponent);
+CitationsModalCta = connect()(CitationsModalCta);
 
-export default CitationsModalCtaComponent;
+export default CitationsModalCta;

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import ListItemsModalComponent from "./../list_items_modal/list_items_modal_component.jsx";
+import CitationsModal from "./../list_items_modal/CitationsModal.jsx";
 import {connect} from "react-redux";
 import {toggleCitationModal} from "../../actions";
 
@@ -16,7 +16,7 @@ class AddCitations extends Component {
                     onClick={() => dispatch(toggleCitationModal(sectionId, true))}>
                     + Add Citation From List
                 </button>
-                <ListItemsModalComponent {...this.props} />
+                <CitationsModal {...this.props} />
 
             </div>
         );

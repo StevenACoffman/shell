@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import SectionComponent from "./section/section_component.jsx";
+import SectionComponent from "./section/SectionComponent.jsx";
 
 class SectionList extends Component {
     render() {

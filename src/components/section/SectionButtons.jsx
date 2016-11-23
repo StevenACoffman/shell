@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import classNames from "classnames";
 import { moveSectionUp, moveSectionDown } from "../../actions";
-import DeleteSection from "./delete_section_component.jsx";
+import DeleteSection from "./DeleteSection.jsx";
 import { connect } from "react-redux";
 
 

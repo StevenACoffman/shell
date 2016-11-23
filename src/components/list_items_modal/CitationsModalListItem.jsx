@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { selectListItem, unselectListItem } from "../../actions";
 import { connect } from "react-redux";
 
-class ListItemComponent extends Component {
+class CitationModalListItem extends Component {
     render() {
         const { listItemIndex, sectionId, listItem, dispatch, selectedListItems} = this.props;
         const selected = selectedListItems.includes(listItemIndex);
@@ -46,7 +46,7 @@ class ListItemComponent extends Component {
     }
 }
 
-ListItemComponent.propTypes = {
+CitationModalListItem.propTypes = {
     listItem: PropTypes.object.isRequired,
     listItemIndex: PropTypes.number.isRequired,
     selectedListItems: PropTypes.arrayOf(PropTypes.number).isRequired,
@@ -57,6 +57,6 @@ const mapStateToProps = (store, ownProps) => ({
     selectedListItems: store.sections[ownProps.sectionId].selectedListItems || [],
     listItems: store.list.listItems || []
 });
-ListItemComponent = connect(mapStateToProps)(ListItemComponent);
+CitationModalListItem = connect(mapStateToProps)(CitationModalListItem);
 
-export default ListItemComponent;
+export default CitationModalListItem;

@@ -143,3 +143,13 @@ exports[`test renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`test renders correctly 2`] = `
+<button
+  className="button button-jstor"
+  id="add-section"
+  onClick={[Function]}
+  type="button">
+  + Add Section
+</button>
+`;
