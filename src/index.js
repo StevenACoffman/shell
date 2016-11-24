@@ -1,13 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+import store from "./containers/store";
+import { fetchListItems } from "./actions/index.js";
 
-if (process.env.NODE_ENV !== 'production') {
+/*if (process.env.NODE_ENV !== 'production') {
     var axe = require('react-axe');
     axe(React, ReactDOM, 1000);
-}
+}*/
 ReactDOM.render(
     <App />,
-  document.getElementById('root')
+  document.getElementById("root")
 );
+
+store.dispatch(fetchListItems("70822"));

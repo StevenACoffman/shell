@@ -1,16 +1,17 @@
 /*jshint esnext:true */
 /*globals console:false, process:false */
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
-import rootReducer from '../reducers/index';
+import { createStore, applyMiddleware, compose } from "redux";
+import thunkMiddleware from "redux-thunk";
+import createLogger from "redux-logger";
+import rootReducer from "../reducers/index";
+import { updateSections } from "../reducers/sectionsReducer";
 
 
 const middleware = [thunkMiddleware];
 
-if (process.env.NODE_ENV === `development`) {
-  const loggerMiddleware = createLogger();
-  middleware.push(loggerMiddleware);
+if (process.env.NODE_ENV === "development") {
+    const loggerMiddleware = createLogger();
+    middleware.push(loggerMiddleware);
 }
 
 /* eslint-disable no-underscore-dangle */
@@ -20,19 +21,21 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const configureStore = (preloadedState) => createStore(rootReducer, preloadedState, composeEnhancers(
     applyMiddleware(...middleware)
-  ));
+));
 
 const outlineInitialDataElement = document.getElementById("outline-initial-data");
 let initialState;
 if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
-  try{
-    initialState = JSON.parse(outlineInitialDataElement.textContent);
-    if (initialState === null){
-      initialState = undefined;
+    try {
+        let initialData = JSON.parse(outlineInitialDataElement.textContent);
+        if (initialData === null) {
+            initialState = undefined;
+        } else {
+            initialState = { ...initialData, sections: updateSections(initialData.sections) };
+        }
+    } catch (e) {
+        console.error(e);
     }
-  }catch(e){
-      console.error(e);
-  }
 }
 
 const store = configureStore(initialState);
