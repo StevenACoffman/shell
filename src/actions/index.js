@@ -78,6 +78,19 @@ export const deleteSection = (sectionId) => ({
     sectionId
 });
 
+export function requestChangedCitationFormat(nextCitationStyle) {
+    return (dispatch, getState) => {
+        const { list } = getState();
+        const { listItems } = list;
+        listItems.forEach(listItem => {
+            if (shouldFetchCitationFormat(listItem, nextCitationStyle)) {
+                actuallyFetchCitationFormat(listItem, nextCitationStyle, dispatch);
+            }
+        });
+        dispatch(changeCitationFormat(nextCitationStyle));
+    };
+}
+
 export function changeCitationFormat(citationStyle) {
     return {type: "CHANGE_CITATION_FORMAT", citationStyle};
 }
@@ -100,10 +113,10 @@ function receiveListItems(items, dispatch) {
 }
 
 function shouldFetchCitationFormat(listItem, citationStyle) {
-    if (!listItem || listItem.isFetching) {
+    if (!listItem) {
         return false;
     } else if (listItem.doi) {
-        return typeof listItem[citationStyle] === "undefined";
+        return [undefined, "Loading Formatted Citation"].includes(listItem[citationStyle]);
     } else {
         return false;
     }
@@ -129,21 +142,25 @@ export function fetchListItems(listId) {
     };
 }
 
-export function fetchCitationFormat(listItem, citationStyle = "mla") {
+function actuallyFetchCitationFormat(listItem, citationStyle, dispatch) {
+    dispatch(requestCitationFormat(listItem, citationStyle));
+    return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (!response.ok) {
+            console.error(response.statusText);
+        }
+        return response.json();
+    }).then(json => dispatch(receiveCitationFormat(listItem.doi, json)));
+}
+
+export function fetchCitationFormat(listItem, citationStyle) {
     return dispatch => {
-        dispatch(requestCitationFormat(listItem, citationStyle));
-        return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
-            method: "GET",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            if (!response.ok) {
-                console.error(response.statusText);
-            }
-            return response.json();
-        }).then(json => dispatch(receiveCitationFormat(listItem.doi, json)));
+        actuallyFetchCitationFormat(listItem, citationStyle, dispatch);
     };
 }
 

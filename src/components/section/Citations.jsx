@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class Citations extends Component {
     render() {
-        const { citations, sectionId, listItems, dispatch } = this.props;
+        const { citations, sectionId, listItems, citationStyle, dispatch } = this.props;
         const citationsId = `citations_${sectionId}`;
         const citationsFragment = citations.map((citation, index) => {
             return (
@@ -12,7 +12,7 @@ class Citations extends Component {
                   key={`citation_${index}`}
                   id={`section_${sectionId}_citation_${index}`}>
                     <div className="clearfix">
-                        <p className="left" dangerouslySetInnerHTML={{__html: listItems[citation].formattedCitation}} />
+                        <p className="left" dangerouslySetInnerHTML={{__html: listItems[citation][citationStyle]}} />
                         <button className="right btn-link" onClick={event => {
                             dispatch(deleteCitation(sectionId, index));
                         }}>remove</button>
@@ -37,8 +37,10 @@ Citations.propTypes = {
     sectionId: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
 };
+
 const mapStateToProps = (store, ownProps) => ({
     listItems: store.list.listItems,
+    citationStyle: store.list.citationStyle || "mla",
     citations: store.sections[ownProps.sectionId].citations || []
 });
 

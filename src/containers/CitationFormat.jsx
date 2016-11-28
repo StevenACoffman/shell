@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import { changeCitationFormat, fetchCitationFormatIfNeeded } from "../actions";
+import { requestChangedCitationFormat} from "../actions";
 import CitationFormatPicker from "../components/CitationFormatPicker.jsx";
 
 class CitationFormat extends Component {
@@ -10,9 +10,8 @@ class CitationFormat extends Component {
     }
 
     handleChange(nextCitationStyle) {
-        const { dispatch, listItems} = this.props;
-        dispatch(changeCitationFormat(nextCitationStyle));
-        listItems.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem,nextCitationStyle)));
+        const { dispatch} = this.props;
+        dispatch(requestChangedCitationFormat(nextCitationStyle));
     }
 
     render() {

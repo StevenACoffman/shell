@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 
 it("renders correctly", () => {
     const tree = renderer.create(
-            <CitationFormatPicker id="citation-format-picker"
+        <CitationFormatPicker id="citation-format-picker"
                 value={""}
                 onChange={() => false}
                 options={[]}/>

@@ -9,14 +9,10 @@ class CitationModalListItem extends Component {
         let contributors = "";
         let citationLine = "";
         let title = "";
-        if(listItem.formattedCitation === undefined) {
-            title = "Loading Formatted Citation";
-        } else {
-            title = listItem.formattedCitation;
-        }
-        if (listItem.author && listItem.citation_line) {
+        if (listItem.author && listItem.title && listItem.citation_line) {
             contributors = listItem.author.join(", ");
             citationLine = listItem.citation_line;
+            title = listItem.title[0];
         }
 
         return (
@@ -36,9 +32,9 @@ class CitationModalListItem extends Component {
                                   dispatch(selectListItem(sectionId, listItemIndex));
                               }
                           }} />
-                        <span className="pls title lookslikeh2">{title}</span>
-                        <div className="contrib">{contributors}</div>
-                        <div className="src">{citationLine}</div>
+                        <span className="pls title lookslikeh2" dangerouslySetInnerHTML={{__html: title}} />
+                        <div className="contrib" dangerouslySetInnerHTML={{__html: contributors}} />
+                        <div className="src" dangerouslySetInnerHTML={{__html: citationLine}} />
                     </label>
                 </div>
             </li>

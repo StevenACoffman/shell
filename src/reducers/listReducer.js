@@ -33,7 +33,7 @@ const defaultMyList = [
 ];
 
 const listReducer = (state = {
-    citationStyle: "",
+    citationStyle: "mla",
     listItems: defaultMyList
 }, action) => {
     switch (action.type) {
@@ -42,8 +42,14 @@ const listReducer = (state = {
             ...state,
             citationStyle: action.citationStyle
         };
-    case "FETCH_LIST_ITEMS":
-        return {...state, listItems: action.items};
+    case "FETCH_LIST_ITEMS": {
+        const loadingCitationFormatMessages = {
+            "mla": "Loading Formatted Citation",
+            "apa": "Loading Formatted Citation",
+            "chicago": "Loading Formatted Citation"};
+        let newItems = action.items.map(listItem => ({...listItem, ...loadingCitationFormatMessages}));
+        return {...state, listItems: newItems};
+    }
     default:
         return {
             ...state,
