@@ -20,7 +20,7 @@ export const unselectListItem = (sectionId, listItemIndex) => ({
 });
 
 export const selectAllListItems = (sectionId, listItems) => ({
-    type: "SELECT_ALL_LIST_ITEM",
+    type: "SELECT_ALL_LIST_ITEMS",
     sectionId,
     listItems
 });

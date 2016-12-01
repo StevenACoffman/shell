@@ -14,38 +14,11 @@ class CloseCitationsModal extends Component {
     }
     render() {
         return (
-            <a
-                className="close-reveal-modal"
+            <a className="close-reveal-modal outline-modal-close-link"
                 aria-label="Close Overlay"
                 onClick={this.hideModal}
-                style={{boxSizing:"border-box",
-                    color:"#ffffff",
-                    cursor:"pointer",
-                    display:"block",
-                    fontFamily:"arial, helvetica, clean, sans-serif",
-                    fontSize:"32.5px",
-                    fontStyle:"normal",
-                    fontWeight:"bold",
-                    height:"32px",
-                    lineHeight:"32.5px",
-                    position:"absolute",
-                    right:"8.9375px",
-                    textDecoration:"none",
-                    textSizeAdjust:"100%",
-                    top:"4.875px",
-                    visibility:"visible",
-                    width:"18.9844px"}}
                 >
-                × <span className="visuallyhidden" style={{position: "absolute",
-                    overflow: "hidden",
-                    overflowX: "hidden",
-                    overflowY: "hidden",
-                    clip: "rect(0 0 0 0)",
-                    height: "1px",
-                    width: "1px",
-                    margin: "-1px",
-                    padding: "0",
-                    border: "0"}}>Close Overlay</span>
+                × <span className="visuallyhidden">Close Overlay</span>
             </a>
         );
     }

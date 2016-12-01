@@ -6,7 +6,7 @@ const sectionPotentialCitationReducer = (state = [], action) => {
         return [...state, action.listItemIndex];
     case "UNSELECT_LIST_ITEM":
         return state.filter((listItemIndex) => (listItemIndex !== action.listItemIndex));
-    case "SELECT_ALL_LIST_ITEM":
+    case "SELECT_ALL_LIST_ITEMS":
         return action.listItems;
     default:
         return state;
