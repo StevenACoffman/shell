@@ -7,12 +7,18 @@ class Citations extends Component {
         const { citations, sectionId, listItems, citationStyle, dispatch } = this.props;
         const citationsId = `citations_${sectionId}`;
         const citationsFragment = citations.map((citation, index) => {
+            let listItemFormattedCitation = "";
+            if(typeof citation === "number") {
+                listItemFormattedCitation = listItems[citation][citationStyle];
+            } else {
+                listItemFormattedCitation = listItems[index][citationStyle];
+            }
             return (
                 <li
                   key={`citation_${index}`}
                   id={`section_${sectionId}_citation_${index}`}>
                     <div className="clearfix">
-                        <p className="left" dangerouslySetInnerHTML={{__html: listItems[citation][citationStyle]}} />
+                        <p className="left" dangerouslySetInnerHTML={{__html: listItemFormattedCitation}} />
                         <button className="right btn-link" onClick={event => {
                             dispatch(deleteCitation(sectionId, index));
                         }}>remove</button>

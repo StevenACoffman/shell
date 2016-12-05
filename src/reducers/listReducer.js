@@ -42,6 +42,9 @@ const listReducer = (state = {
             ...state,
             citationStyle: action.citationStyle
         };
+    case "REQUEST_LIST_ITEMS": {
+        return {...state, listId: action.listId};
+    }
     case "FETCH_LIST_ITEMS": {
         const loadingCitationFormatMessages = {
             "mla": "Loading Formatted Citation",

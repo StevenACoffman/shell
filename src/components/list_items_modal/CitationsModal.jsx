@@ -45,7 +45,7 @@ class CitationsModal extends Component {
                                 }
                             }}
                             />Title
-                            <hr/>
+                        <hr/>
                         <ul>
                             {listItems.map((listItem, index) => {
                                 return (<CitationsModalListItem listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);

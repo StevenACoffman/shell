@@ -29,6 +29,13 @@ exports[`test renders correctly 1`] = `
       <ul
         className="list-jstor hide" />
     </div>
+    <button
+      className="button button-jstor"
+      id="save-outline"
+      onClick={[Function]}
+      type="button">
+      Save Outline
+    </button>
   </div>
   <div
     className="row">

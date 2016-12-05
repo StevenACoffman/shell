@@ -112,7 +112,7 @@ function receiveListItems(items, dispatch) {
     return {type: "FETCH_LIST_ITEMS", items};
 }
 
-function shouldFetchCitationFormat(listItem, citationStyle) {
+export function shouldFetchCitationFormat(listItem, citationStyle) {
     if (!listItem) {
         return false;
     } else if (listItem.doi) {
@@ -171,3 +171,50 @@ export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
         }
     };
 }
+
+export const getCookie = (cookieName, allCookies) => {
+    let parts = `; ${allCookies}`.match(`;\\s*${cookieName}=([^;]+)`);
+    return parts ? parts[1] : "";
+};
+
+export const saveOutline = () => {
+    return (dispatch, getState) => {
+        dispatch({ type: "SAVE_OUTLINE_REQUESTED" });
+        const outlineState = getState();
+
+        const sections = outlineState.sections.map(section => {
+            const { name, notes, citations } = section;
+            return { name, citations, notes };
+        });
+        const outlineData = JSON.stringify({
+            outline_body: {
+                thesis: outlineState.thesis.thesis_value,
+                sections: sections
+            },
+            list_id: outlineState.list.listId
+        });
+        const url = "/myjstor/outline/save/";
+        const allCookies = document.cookie;
+        console.log(`About to save to /myjstor/outline/save/ with cookie ${getCookie("csrftoken", allCookies)}`);
+        console.log(outlineData);
+        return fetch(url, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCookie("csrftoken", allCookies)
+            },
+            body: outlineData
+        }).then(response => {
+            if (!response.ok) {
+                console.log("Whoops. We could not save");
+                throw Error(response.statusText);
+            }
+            return response.json();
+        }).then(json => {
+            console.log("Response from save");
+            console.log(json);
+        });
+    };
+};

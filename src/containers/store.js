@@ -31,7 +31,11 @@ if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
         if (initialData === null) {
             initialState = undefined;
         } else {
-            initialState = { ...initialData, sections: updateSections(initialData.sections) };
+            initialState = { 
+                ...initialData,
+                sections: updateSections(initialData.sections),
+                thesis: {thesis_value: initialData.thesis}
+            };
         }
     } catch (e) {
         console.error(e);
