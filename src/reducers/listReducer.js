@@ -20,17 +20,7 @@ const listItemReducer = (state, action) => {
     }
 };
 
-const defaultMyList = [
-    {
-        doi: "10.1899/0887-3593(2004)023<0271:WTCOGA>2.0.CO;2",
-        isFetching: false,
-        didInvalidate: false
-    }, {
-        doi: "10.1525/jps.2001.30.3.19",
-        isFetching: false,
-        didInvalidate: false
-    }
-];
+const defaultMyList = [];
 
 const listReducer = (state = {
     citationStyle: "mla",

@@ -8,10 +8,14 @@ class Citations extends Component {
         const citationsId = `citations_${sectionId}`;
         const citationsFragment = citations.map((citation, index) => {
             let listItemFormattedCitation = "";
+            let selectedlistItem;
             if(typeof citation === "number") {
-                listItemFormattedCitation = listItems[citation][citationStyle];
+                selectedlistItem = listItems[citation];
             } else {
-                listItemFormattedCitation = listItems[index][citationStyle];
+                selectedlistItem = listItems[index];
+            }
+            if(selectedlistItem !== undefined){
+                listItemFormattedCitation = selectedlistItem[citationStyle];
             }
             return (
                 <li

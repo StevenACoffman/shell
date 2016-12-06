@@ -1,4 +1,4 @@
-/*jshint esnext:true */
+/*eslint no-console: "off"*/
 import fetch from "isomorphic-fetch";
 
 export const toggleCitationModal = (sectionId, isOpen) => ({
@@ -138,7 +138,9 @@ export function fetchListItems(listId) {
                 console.error(response.statusText);
             }
             return response.json();
-        }).then(data => dispatch(receiveListItems(data.items || [], dispatch)));
+        }, error => console.error(error))
+        .then(data => dispatch(receiveListItems(data.items || [], dispatch)),
+            error => console.error(error));
     };
 }
 
@@ -155,7 +157,8 @@ function actuallyFetchCitationFormat(listItem, citationStyle, dispatch) {
             console.error(response.statusText);
         }
         return response.json();
-    }).then(json => dispatch(receiveCitationFormat(listItem.doi, json)));
+    }, error => console.error(error))
+    .then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
 }
 
 export function fetchCitationFormat(listItem, citationStyle) {
@@ -195,8 +198,6 @@ export const saveOutline = () => {
         });
         const url = "/myjstor/outline/save/";
         const allCookies = document.cookie;
-        console.log(`About to save to /myjstor/outline/save/ with cookie ${getCookie("csrftoken", allCookies)}`);
-        console.log(outlineData);
         return fetch(url, {
             method: "POST",
             credentials: "include",
@@ -208,13 +209,9 @@ export const saveOutline = () => {
             body: outlineData
         }).then(response => {
             if (!response.ok) {
-                console.log("Whoops. We could not save");
-                throw Error(response.statusText);
+                console.error(response.statusText);
             }
             return response.json();
-        }).then(json => {
-            console.log("Response from save");
-            console.log(json);
-        });
+        }, error => console.error(error));
     };
 };
