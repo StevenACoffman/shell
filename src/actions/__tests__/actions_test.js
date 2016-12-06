@@ -5,15 +5,6 @@ import * as actions from "..";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-const mockResponse = (status, statusText, response) => {
-    return new window.Response(response, {
-        status: status,
-        statusText: statusText,
-        headers: {
-            "Content-type": "application/json"
-        }
-    });
-};
 
 describe("Get Cookie", () => {
 

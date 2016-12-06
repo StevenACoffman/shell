@@ -1,4 +1,4 @@
-const mine = [
+export const mine = [
     {
         title: [
             "Unpacking the Monad: Leibniz's Theory of Causality"

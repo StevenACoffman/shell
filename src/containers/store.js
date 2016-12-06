@@ -1,5 +1,4 @@
-/*jshint esnext:true */
-/*globals console:false, process:false */
+/*eslint no-console: "off"*/
 import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import createLogger from "redux-logger";
@@ -31,7 +30,7 @@ if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
         if (initialData === null) {
             initialState = undefined;
         } else {
-            initialState = { 
+            initialState = {
                 ...initialData,
                 sections: updateSections(initialData.sections),
                 thesis: {thesis_value: initialData.thesis}
