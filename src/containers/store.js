@@ -5,7 +5,6 @@ import createLogger from "redux-logger";
 import rootReducer from "../reducers/index";
 import { updateSections } from "../reducers/sectionsReducer";
 
-
 const middleware = [thunkMiddleware];
 
 if (process.env.NODE_ENV === "development") {
@@ -30,7 +29,7 @@ if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
         if (initialData === null) {
             initialState = undefined;
         } else {
-            initialState = {
+            initialState = { 
                 ...initialData,
                 sections: updateSections(initialData.sections),
                 thesis: {thesis_value: initialData.thesis}

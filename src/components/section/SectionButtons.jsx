@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
 import classNames from "classnames";
 import { moveSectionUp, moveSectionDown } from "../../actions";
 import DeleteSection from "./DeleteSection.jsx";
-import { connect } from "react-redux";
 
 
 class SectionButtons extends Component {

@@ -1,15 +1,17 @@
 /*jshint esnext:true */
 
 import { combineReducers } from "redux";
-import thesisReducer from "./thesisReducer";
-import sectionsReducer from "./sectionsReducer";
 import listReducer from "./listReducer";
+import thesisReducer from "./thesisReducer";
+import outlineReducer from "./outlineReducer";
+import sectionsReducer from "./sectionsReducer";
 
 // Combine Reducers
 const reducers = combineReducers({
+    list: listReducer,
     thesis: thesisReducer,
     sections: sectionsReducer,
-    list: listReducer
+    outlineState: outlineReducer
 });
 
 export default reducers;

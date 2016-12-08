@@ -20,7 +20,8 @@ export const initializeState = () => ({
     list: {
         citationStyle: "",
         listItems: []
-    }
+    },
+    outlineState: { isPristine: true }
 });
 
 const store = mockStore(initializeState());

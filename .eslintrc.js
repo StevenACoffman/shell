@@ -1,5 +1,22 @@
 module.exports = {
     "extends": ["eslint:recommended","react-app"],
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "mocha": true
+  },
     "rules": {
         "indent": ["warn", 4],
         "linebreak-style": ["error","unix"],
