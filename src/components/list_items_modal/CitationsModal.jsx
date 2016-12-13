@@ -28,7 +28,9 @@ class CitationsModal extends Component {
             <Modal isOpen={modalIsOpen} onRequestClose={this.closeModal}
                 portalClassName="reveal open"
                 className="outline-modal-content"
-                overlayClassName="outline-modal-overlay">
+                overlayClassName="outline-modal-overlay"
+                contentLabel="Select Citations To Add to Section"
+                >
                 <header className="outline-modal-header">
                     <h2 className="outline-modal-header-h2">Add Citations From List</h2>
                 </header>
