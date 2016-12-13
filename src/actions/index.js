@@ -2,33 +2,82 @@
 import fetch from "isomorphic-fetch";
 import * as actionTypes from "./actionTypes";
 
-export const toggleCitationModal = (sectionId, isOpen) => ({type: actionTypes.TOGGLE_CITATION_MODAL, sectionId, isOpen});
+export const toggleCitationModal = (sectionId, isOpen) => ({
+    type: actionTypes.TOGGLE_CITATION_MODAL,
+    sectionId,
+    isOpen
+});
 
-export const selectListItem = (sectionId, listItemIndex) => ({type: actionTypes.SELECT_LIST_ITEM, sectionId, listItemIndex});
+export const selectListItem = (sectionId, listItemIndex) => ({
+    type: actionTypes.SELECT_LIST_ITEM,
+    sectionId,
+    listItemIndex
+});
 
-export const unselectListItem = (sectionId, listItemIndex) => ({type: actionTypes.UNSELECT_LIST_ITEM, sectionId, listItemIndex});
+export const unselectListItem = (sectionId, listItemIndex) => ({
+    type: actionTypes.UNSELECT_LIST_ITEM,
+    sectionId,
+    listItemIndex
+});
 
-export const selectAllListItems = (sectionId, listItems) => ({type: actionTypes.SELECT_ALL_LIST_ITEMS, sectionId, listItems});
+export const selectAllListItems = (sectionId, listItems) => ({
+    type: actionTypes.SELECT_ALL_LIST_ITEMS,
+    sectionId,
+    listItems
+});
 
-export const changeThesis = (text) => ({type: actionTypes.CHANGE_THESIS, text});
+export const changeThesis = (text) => ({
+    type: actionTypes.CHANGE_THESIS,
+    text
+});
 
-export const addCitations = (sectionId, citations = []) => ({type: actionTypes.ADD_CITATIONS, sectionId, citations});
+export const addCitations = (sectionId, citations = []) => ({
+    type: actionTypes.ADD_CITATIONS,
+    sectionId,
+    citations
+});
 
-export const clearSelectedListItems = (sectionId) => ({type: actionTypes.CLEAR_SELECTED_LIST_ITEMS, sectionId});
+export const clearSelectedListItems = (sectionId) => ({
+    type: actionTypes.CLEAR_SELECTED_LIST_ITEMS,
+    sectionId
+});
 
-export const deleteCitation = (sectionId, citationIndex) => ({type: actionTypes.DELETE_CITATION, sectionId, citationIndex});
+export const deleteCitation = (sectionId, citationIndex) => ({
+    type: actionTypes.DELETE_CITATION,
+    sectionId,
+    citationIndex
+});
 
-export const addSection = () => ({type: actionTypes.ADD_SECTION});
+export const addSection = () => ({
+    type: actionTypes.ADD_SECTION,
+});
 
-export const moveSectionUp = (sectionId) => ({type: actionTypes.MOVE_SECTION_UP, sectionId});
+export const moveSectionUp = (sectionId) => ({
+    type: actionTypes.MOVE_SECTION_UP,
+    sectionId
+});
 
-export const moveSectionDown = (sectionId) => ({type: actionTypes.MOVE_SECTION_DOWN, sectionId});
+export const moveSectionDown = (sectionId) => ({
+    type: actionTypes.MOVE_SECTION_DOWN,
+    sectionId
+});
 
-export const modifySectionName = (sectionId, name) => ({type: actionTypes.MODIFY_SECTION_NAME, sectionId, name});
+export const modifySectionName = (sectionId, name) => ({
+    type: actionTypes.MODIFY_SECTION_NAME,
+    sectionId,
+    name
+});
 
-export const modifySectionNotes = (sectionId, notes) => ({type: actionTypes.MODIFY_SECTION_NOTES, sectionId, notes});
+export const modifySectionNotes = (sectionId, notes) => ({
+    type: actionTypes.MODIFY_SECTION_NOTES,
+    sectionId,
+    notes
+});
 
-export const deleteSection = (sectionId) => ({type: actionTypes.DELETE_SECTION, sectionId});
+export const deleteSection = (sectionId) => ({
+    type: actionTypes.DELETE_SECTION,
+    sectionId
+});
 
 export function requestChangedCitationFormat(nextCitationStyle) {
     return (dispatch, getState) => {
@@ -90,7 +139,9 @@ export function fetchListItems(listId) {
                 console.error(response.statusText);
             }
             return response.json();
-        }, error => console.error(error)).then(data => dispatch(receiveListItems(data.items || [], dispatch)), error => console.error(error));
+        }, error => console.error(error))
+            .then(data => dispatch(receiveListItems(data.items || [], dispatch)),
+            error => console.error(error));
     };
 }
 
@@ -107,7 +158,8 @@ function actuallyFetchCitationFormat(listItem, citationStyle, dispatch) {
             console.error(response.statusText);
         }
         return response.json();
-    }, error => console.error(error)).then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
+    }, error => console.error(error))
+        .then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
 }
 
 export function fetchCitationFormat(listItem, citationStyle) {
@@ -126,9 +178,7 @@ export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
 
 export const getCookie = (cookieName, allCookies) => {
     let parts = `; ${allCookies}`.match(`;\\s*${cookieName}=([^;]+)`);
-    return parts
-    ? parts[1]
-    : "";
+    return parts ? parts[1] : "";
 };
 
 export const saveOutline = () => {
