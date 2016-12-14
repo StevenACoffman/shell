@@ -8,17 +8,16 @@ class SaveOutline extends Component {
         const { dispatch, outlineStateIsPristine } = this.props;
         return (
             <button
-        className="button button-jstor"
-        id="save-outline"
-        type="button"
-        disabled={outlineStateIsPristine}
-        className={classNames("button button-jstor", {
-            "secondary disabled": outlineStateIsPristine
-        })}
-        onClick={event => {
-            dispatch(saveOutline());
-        }}
-        >
+                id="save-outline"
+                type="button"
+                disabled={outlineStateIsPristine}
+                className={classNames("button button-jstor", {
+                    "secondary disabled": outlineStateIsPristine
+                })}
+                onClick={event => {
+                    dispatch(saveOutline());
+                }}
+            >
           Save Outline
             </button>
     );
@@ -26,6 +25,7 @@ class SaveOutline extends Component {
 }
 
 SaveOutline.propTypes = {
+    outlineStateIsPristine: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 

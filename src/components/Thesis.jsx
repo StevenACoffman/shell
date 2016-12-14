@@ -23,7 +23,8 @@ class Thesis extends Component {
 }
 
 Thesis.propTypes = {
-    thesis_value:PropTypes.string
+    thesis_value:PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store) => ({ thesis_value: store.thesis.thesis_value || "" });

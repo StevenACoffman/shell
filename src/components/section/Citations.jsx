@@ -1,3 +1,5 @@
+/*eslint react/no-danger: "off"*/
+
 import React, { Component, PropTypes } from "react";
 import { deleteCitation } from "../../actions";
 import { connect } from "react-redux";
@@ -45,6 +47,7 @@ Citations.propTypes = {
     citations: PropTypes.arrayOf(PropTypes.number).isRequired,
     listItems: PropTypes.array.isRequired,
     sectionId: PropTypes.number.isRequired,
+    citationStyle: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 

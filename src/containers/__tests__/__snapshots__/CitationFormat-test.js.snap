@@ -37,6 +37,13 @@ exports[`test renders correctly 1`] = `
       type="button">
       Save Outline
     </button>
+    <button
+      className="button button-jstor"
+      id="download-outline"
+      onClick={[Function]}
+      type="button">
+      Download
+    </button>
   </div>
   <div
     className="row">

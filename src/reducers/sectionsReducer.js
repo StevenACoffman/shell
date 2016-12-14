@@ -1,7 +1,7 @@
 // jshint ignore: start
 // above comment is because old jshint (2.8) does not understand default arguments until 2.91+
 
-import sectionReducer from "./sectionReducer.js";
+import sectionReducer from "./sectionReducer";
 
 const updateSections = sections => sections
   .map((section, index, theSections) => ({
@@ -9,8 +9,7 @@ const updateSections = sections => sections
       canMoveSectionUp: theSections.length > 1 && index !== 0,
       canMoveSectionDown: theSections.length > 1 && index !== theSections.length - 1,
       selectedListItems: []
-  })
-  );
+  }));
 
 const swapSectionsItem = (sections, sourceId, targetId) => {
     if (targetId >= 0 && targetId < sections.length) {

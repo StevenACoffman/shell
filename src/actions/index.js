@@ -181,6 +181,11 @@ export const getCookie = (cookieName, allCookies) => {
     return parts ? parts[1] : "";
 };
 
+export const downloadOutline = (outlineId) => ({
+    type: actionTypes.DOWNLOAD_OUTLINE,
+    outlineId
+});
+
 export const saveOutline = () => {
     return (dispatch, getState) => {
         const outlineState = getState();

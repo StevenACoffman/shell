@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import store from "./containers/store";
-import { fetchListItems } from "./actions/index.js";
+import { fetchListItems } from "./actions/index";
 
 /*if (process.env.NODE_ENV !== 'production') {
     var axe = require('react-axe');
