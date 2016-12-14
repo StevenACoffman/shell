@@ -190,11 +190,12 @@ export const saveOutline = () => {
             return {name, citations, notes};
         });
         const filteredListItems = outlineState.list.listItems
-    .map((listItem) => ({
-        doi: listItem.doi,
-        author: listItem.author,
-        title: listItem.title,
-        citation_line: listItem.citation_line}));
+            .map((listItem) => ({
+                doi: listItem.doi,
+                author: listItem.author,
+                title: listItem.title,
+                citation_line: listItem.citation_line
+            }));
         const cleanList = {
             listItems: filteredListItems,
             citationStyle: outlineState.list.citationStyle,
