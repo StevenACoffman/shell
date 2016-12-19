@@ -181,48 +181,71 @@ export const getCookie = (cookieName, allCookies) => {
     return parts ? parts[1] : "";
 };
 
-export const downloadOutline = (outlineId) => ({
-    type: actionTypes.DOWNLOAD_OUTLINE,
-    outlineId
-});
+export const downloadOutline = (outlineId) => {
+    const link = document.createElement("a");
+    link.href = `/myjstor/outline/${outlineId}/download`;
+    //check for HTML5 download attribute support
+    if (link.download !== undefined) {
+        //Set HTML5 download attribute. This will prevent file from opening if supported.
+        link.download = "outline.txt";
+    }
+    document.body.appendChild(link); 
 
-export const saveOutline = () => {
-    return (dispatch, getState) => {
-        const outlineState = getState();
+    //Dispatching (not redux) click event.
+    if (document.createEvent) {
+        const e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        link.dispatchEvent(e);
+        document.body.removeChild(link);
+        return true;
+    }
 
-        const sections = outlineState.sections.map(section => {
-            const {name, notes, citations} = section;
-            return {name, citations, notes};
-        });
-        const filteredListItems = outlineState.list.listItems
+    return {type: actionTypes.DOWNLOAD_OUTLINE, outlineId};
+};
+
+export const actualSaveOutline = (outlineState) => {
+    const sections = outlineState.sections.map(section => {
+        const {name, notes, citations} = section;
+        return {name, citations, notes};
+    });
+    const filteredListItems = outlineState.list.listItems
             .map((listItem) => ({
                 doi: listItem.doi,
                 author: listItem.author,
                 title: listItem.title,
                 citation_line: listItem.citation_line
             }));
-        const cleanList = {
-            listItems: filteredListItems,
-            citationStyle: outlineState.list.citationStyle,
-            listId: outlineState.list.listId
-        };
-        const outlineData = JSON.stringify({
-            outline_body: {
-                thesis: outlineState.thesis.thesis_value,
-                sections: sections,
-                list: cleanList
-            },
-            list_id: outlineState.list.listId
-        });
-        const url = "/myjstor/outline/save/";
-        const allCookies = document.cookie;
+    const cleanList = {
+        listItems: filteredListItems,
+        citationStyle: outlineState.list.citationStyle,
+        listId: outlineState.list.listId
+    };
+    const outlineData = JSON.stringify({
+        outline_body: {
+            thesis: outlineState.thesis.thesis_value,
+            sections: sections,
+            list: cleanList
+        },
+        list_id: outlineState.list.listId
+    });
+    const url = "/myjstor/outline/save/";
+    const crsfToken = getCookie("csrftoken", document.cookie);
+    const outlineId = outlineState.list.listId;
+    return {url, crsfToken, outlineData, outlineId};
+};
+
+export const saveOutline = () => {
+    return (dispatch, getState) => {
+        const outlineState = getState();
+        const {url, crsfToken, outlineData} = actualSaveOutline(outlineState);
+       
         return fetch(url, {
             method: "POST",
             credentials: "include",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "X-CSRFToken": getCookie("csrftoken", allCookies)
+                "X-CSRFToken": crsfToken
             },
             body: outlineData
         }).then(response => {
@@ -237,3 +260,30 @@ export const saveOutline = () => {
         });
     };
 };
+
+export const saveAndThenDownload = () => (
+    (dispatch, getState) => {
+        const outlineState = getState();
+        const {url, crsfToken, outlineData, outlineId} = actualSaveOutline(outlineState);
+       
+        return fetch(url, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "X-CSRFToken": crsfToken
+            },
+            body: outlineData
+        }).then(response => {
+            if (!response.ok) {
+                console.error(response.statusText);
+            }
+            return response.json();
+        }, error => console.error(error)).then(response => {
+            if (response.success) {
+                dispatch({type: actionTypes.OUTLINE_SAVED});
+                dispatch(downloadOutline(outlineId));
+            }
+        }); 
+    });
