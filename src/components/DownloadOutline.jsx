@@ -12,7 +12,7 @@ class DownloadOutline extends Component {
             className="button button-jstor"
             onClick={event => {
                 const link = document.createElement("a");
-                link.href = `/myjstor/outline/${outlineId}/dowload`;
+                link.href = `/myjstor/outline/${outlineId}/download`;
                 //check for HTML5 download attribute support
                 if (link.download !== undefined) {
                 //Set HTML5 download attribute. This will prevent file from opening if supported.
