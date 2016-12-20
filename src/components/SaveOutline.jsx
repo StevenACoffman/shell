@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import { saveOutline } from "../actions";
+import { fetchSaveOutline } from "../actions";
 
 class SaveOutline extends Component {
     render() {
@@ -15,7 +15,7 @@ class SaveOutline extends Component {
                     "secondary disabled": outlineStateIsPristine
                 })}
                 onClick={event => {
-                    dispatch(saveOutline());
+                    dispatch(fetchSaveOutline());
                 }}
             >
           Save Outline

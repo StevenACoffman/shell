@@ -79,31 +79,6 @@ export const deleteSection = (sectionId) => ({
     sectionId
 });
 
-export function requestChangedCitationFormat(nextCitationStyle) {
-    return (dispatch, getState) => {
-        const {list} = getState();
-        const {listItems} = list;
-        listItems.forEach(listItem => {
-            if (shouldFetchCitationFormat(listItem, nextCitationStyle)) {
-                fetchCitationFormat(listItem, nextCitationStyle, dispatch);
-            }
-        });
-        dispatch(changeCitationFormat(nextCitationStyle));
-    };
-}
-
-export function changeCitationFormat(citationStyle) {
-    return {type: actionTypes.CHANGE_CITATION_FORMAT, citationStyle};
-}
-
-function requestCitationFormat(doi, citationStyle) {
-    return {type: actionTypes.REQUEST_CITATION_FORMAT, doi, citationStyle};
-}
-
-function receiveCitationFormat(doi, json) {
-    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, text: json.citation};
-}
-
 function requestListItems(listId) {
     return {type: actionTypes.REQUEST_LIST_ITEMS, listId};
 }
@@ -111,16 +86,6 @@ function requestListItems(listId) {
 function receiveListItems(items, dispatch) {
     items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem, "mla")));
     return {type: actionTypes.FETCH_LIST_ITEMS, items};
-}
-
-export function shouldFetchCitationFormat(listItem, citationStyle) {
-    if (!listItem) {
-        return false;
-    } else if (listItem.doi) {
-        return [undefined, "Loading Formatted Citation"].includes(listItem[citationStyle]);
-    } else {
-        return false;
-    }
 }
 
 export function fetchListItems(listId) {
@@ -144,8 +109,19 @@ export function fetchListItems(listId) {
             error => console.error(error));
     };
 }
+export function changeCitationFormat(citationStyle) {
+    return {type: actionTypes.CHANGE_CITATION_FORMAT, citationStyle};
+}
 
-function fetchCitationFormat(listItem, citationStyle, dispatch) {
+function requestCitationFormat(doi, citationStyle) {
+    return {type: actionTypes.REQUEST_CITATION_FORMAT, doi, citationStyle};
+}
+
+function receiveCitationFormat(doi, json) {
+    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, text: json.citation};
+}
+
+const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
     dispatch(requestCitationFormat(listItem, citationStyle));
     return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
         method: "GET",
@@ -160,12 +136,34 @@ function fetchCitationFormat(listItem, citationStyle, dispatch) {
         return response.json();
     }, error => console.error(error))
         .then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
+};
+
+export function requestChangedCitationFormat(nextCitationStyle) {
+    return (dispatch, getState) => {
+        const {list} = getState();
+        const {listItems} = list;
+        listItems.forEach(listItem => {
+            if (shouldFetchCitationFormat(listItem, nextCitationStyle)) {
+                dispatch(fetchCitationFormat(listItem, nextCitationStyle));
+            }
+        });
+        dispatch(changeCitationFormat(nextCitationStyle));
+    };
+}
+export function shouldFetchCitationFormat(listItem, citationStyle) {
+    if (!listItem) {
+        return false;
+    } else if (listItem.doi) {
+        return [undefined, "Loading Formatted Citation"].includes(listItem[citationStyle]);
+    } else {
+        return false;
+    }
 }
 
 export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
     return (dispatch, getState) => {
         if (shouldFetchCitationFormat(listItem, citationStyle)) {
-            return dispatch(fetchCitationFormat(listItem, citationStyle, dispatch));
+            return dispatch(fetchCitationFormat(listItem, citationStyle));
         }
     };
 }
@@ -227,9 +225,12 @@ export const prepareToSaveOutline = (outlineState) => {
     const outlineId = outlineState.list.listId;
     return {url, crsfToken, outlineData, outlineId};
 };
+export const  requestSave = () => ({type: actionTypes.SAVE_REQUESTED});
+export const  requestSaveAndThenDownload = () => ({type: actionTypes.SAVE_AND_THEN_DOWNLOAD});
 
-export const fetchSaveOutline = () => {
-    return (dispatch, getState) => {
+export const fetchSaveOutline = () => (
+    (dispatch, getState) => {
+        dispatch(requestSave());
         const outlineState = getState();
         const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
 
@@ -246,18 +247,18 @@ export const fetchSaveOutline = () => {
             if (!response.ok) {
                 console.error(response.statusText);
             }
-            const responseBody = response.json();
-            if (responseBody.success) {
+            return response.json();
+        }, error => console.error(error)).then(response => {
+            if (response.success) {
                 dispatch({type: actionTypes.OUTLINE_SAVED});
                 return true;
             }
-            return false;
-        }, error => console.error(error));
-    };
-};
+        }); 
+    });
 
 export const fetchSaveAndThenDownload = () => (
     (dispatch, getState) => {
+        dispatch(requestSaveAndThenDownload());
         const outlineState = getState();
         const {url, crsfToken, outlineData, outlineId} = prepareToSaveOutline(outlineState);
        
@@ -282,3 +283,6 @@ export const fetchSaveAndThenDownload = () => (
             }
         }); 
     });
+
+
+
