@@ -84,8 +84,13 @@ function requestListItems(listId) {
 }
 
 function receiveListItems(items, dispatch) {
-    items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem, "mla")));
-    return {type: actionTypes.FETCH_LIST_ITEMS, items};
+    return (dispatch, getState) => {
+        const {list} = getState();
+        const {citationStyle} = list;
+
+        items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem, citationStyle || "mla")));
+        return {type: actionTypes.FETCH_LIST_ITEMS, items};
+    };
 }
 
 export function fetchListItems(listId) {
@@ -105,7 +110,7 @@ export function fetchListItems(listId) {
             }
             return response.json();
         }, error => console.error(error))
-            .then(data => dispatch(receiveListItems(data.items || [], dispatch)),
+            .then(data => dispatch(receiveListItems(data.items || [])),
             error => console.error(error));
     };
 }
