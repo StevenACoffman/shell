@@ -1,7 +1,9 @@
 
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
+
 import * as actions from "..";
+import * as actionTypes from "../actionTypes";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -21,10 +23,10 @@ describe("Get Cookie", () => {
 
 describe("Save Outline", () => {
     pit("should trigger a saveOutline action", () => {
-        const mockState = { sections: [], thesis: {}, list: {} };
+        const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const dispatch = jest.fn();
         const getState = jest.fn().mockReturnValue(mockState);
-        const fn = actions.saveOutline();
+        const fn = actions.fetchSaveOutline();
 
         expect(fn).toBeInstanceOf(Function);
 
@@ -34,13 +36,13 @@ describe("Save Outline", () => {
     });
 
     pit("should trigger a post request using 'fetch'", () => {
-        const mockState = { sections: [], thesis: {}, list: {} };
+        const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const store = mockStore(mockState);
+        const expectedActions = [{ type: actionTypes.OUTLINE_SAVED }];
 
-        store.dispatch(actions.saveOutline())
-            .then(() => {
-                const expectedActions = store.getActions();
-                expect(expectedActions.length).toBe(1);
+        store.dispatch(actions.fetchSaveOutline())
+            .then((result) => {
+                expect(store.getActions()).toEqual(expectedActions);
             })
             .catch((reason) => {throw new Error(`SaveOutline failed in test because ${reason}`);});
     });

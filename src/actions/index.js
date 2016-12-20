@@ -197,7 +197,7 @@ export const downloadOutline = (outlineId) => {
     return {type: actionTypes.DOWNLOAD_OUTLINE, outlineId};
 };
 
-export const actualSaveOutline = (outlineState) => {
+export const prepareToSaveOutline = (outlineState) => {
     const sections = outlineState.sections.map(section => {
         const {name, notes, citations} = section;
         return {name, citations, notes};
@@ -228,11 +228,11 @@ export const actualSaveOutline = (outlineState) => {
     return {url, crsfToken, outlineData, outlineId};
 };
 
-export const saveOutline = () => {
+export const fetchSaveOutline = () => {
     return (dispatch, getState) => {
         const outlineState = getState();
-        const {url, crsfToken, outlineData} = actualSaveOutline(outlineState);
-       
+        const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
+
         return fetch(url, {
             method: "POST",
             credentials: "include",
@@ -246,19 +246,20 @@ export const saveOutline = () => {
             if (!response.ok) {
                 console.error(response.statusText);
             }
-            return response.json();
-        }, error => console.error(error)).then(response => {
-            if (response.success) {
+            const responseBody = response.json();
+            if (responseBody.success) {
                 dispatch({type: actionTypes.OUTLINE_SAVED});
+                return true;
             }
-        });
+            return false;
+        }, error => console.error(error));
     };
 };
 
-export const saveAndThenDownload = () => (
+export const fetchSaveAndThenDownload = () => (
     (dispatch, getState) => {
         const outlineState = getState();
-        const {url, crsfToken, outlineData, outlineId} = actualSaveOutline(outlineState);
+        const {url, crsfToken, outlineData, outlineId} = prepareToSaveOutline(outlineState);
        
         return fetch(url, {
             method: "POST",
