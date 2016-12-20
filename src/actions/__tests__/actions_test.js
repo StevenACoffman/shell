@@ -37,7 +37,7 @@ describe("Save Outline", () => {
     pit("should trigger a post request using 'fetch'", () => {
         const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const store = mockStore(mockState);
-        const expectedActions = [{type: actionTypes.SAVE_REQUESTED}, {type: actionTypes.OUTLINE_SAVED}];
+        const expectedActions = [{type: actionTypes.REQUEST_SAVE}, {type: actionTypes.OUTLINE_SAVED}];
 
         store.dispatch(actions.fetchSaveOutline())
             .then((result) => {

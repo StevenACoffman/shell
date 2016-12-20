@@ -223,8 +223,8 @@ export const prepareToSaveOutline = (outlineState) => {
     const outlineId = outlineState.list.listId;
     return {url, crsfToken, outlineData, outlineId};
 };
-export const  requestSave = () => ({type: actionTypes.SAVE_REQUESTED});
-export const  requestSaveAndThenDownload = () => ({type: actionTypes.SAVE_AND_THEN_DOWNLOAD});
+export const  requestSave = () => ({type: actionTypes.REQUEST_SAVE});
+export const  requestSaveAndThenDownload = () => ({type: actionTypes.REQUEST_SAVE_AND_THEN_DOWNLOAD});
 
 export const fetchSaveOutline = () => (
     (dispatch, getState) => {
