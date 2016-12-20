@@ -21,14 +21,8 @@ class DownloadOutline extends Component {
 }
 
 DownloadOutline.propTypes = {
-    outlineId: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
-    return {
-        outlineId: state.list.listId
-    };
-};
 
-export default connect(mapStateToProps)(DownloadOutline);
+export default connect()(DownloadOutline);

@@ -85,7 +85,7 @@ export function requestChangedCitationFormat(nextCitationStyle) {
         const {listItems} = list;
         listItems.forEach(listItem => {
             if (shouldFetchCitationFormat(listItem, nextCitationStyle)) {
-                actuallyFetchCitationFormat(listItem, nextCitationStyle, dispatch);
+                fetchCitationFormat(listItem, nextCitationStyle, dispatch);
             }
         });
         dispatch(changeCitationFormat(nextCitationStyle));
@@ -145,7 +145,7 @@ export function fetchListItems(listId) {
     };
 }
 
-function actuallyFetchCitationFormat(listItem, citationStyle, dispatch) {
+function fetchCitationFormat(listItem, citationStyle, dispatch) {
     dispatch(requestCitationFormat(listItem, citationStyle));
     return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
         method: "GET",
@@ -162,16 +162,10 @@ function actuallyFetchCitationFormat(listItem, citationStyle, dispatch) {
         .then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
 }
 
-export function fetchCitationFormat(listItem, citationStyle) {
-    return dispatch => {
-        actuallyFetchCitationFormat(listItem, citationStyle, dispatch);
-    };
-}
-
 export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
     return (dispatch, getState) => {
         if (shouldFetchCitationFormat(listItem, citationStyle)) {
-            return dispatch(fetchCitationFormat(listItem, citationStyle));
+            return dispatch(fetchCitationFormat(listItem, citationStyle, dispatch));
         }
     };
 }
