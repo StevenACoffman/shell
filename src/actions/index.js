@@ -150,10 +150,9 @@ export function requestChangedCitationFormat(nextCitationStyle) {
         dispatch(changeCitationFormat(nextCitationStyle));
     };
 }
+
 export function shouldFetchCitationFormat(listItem, citationStyle) {
-    if (!listItem) {
-        return false;
-    } else if (listItem.doi) {
+    if (listItem && listItem.doi) {
         return [undefined, "Loading Formatted Citation"].includes(listItem[citationStyle]);
     } else {
         return false;
@@ -185,11 +184,10 @@ export const downloadOutline = (outlineId) => {
 
     //Dispatching (not redux) click event.
     if (document.createEvent) {
-        const e = document.createEvent("MouseEvents");
-        e.initEvent("click", true, true);
-        link.dispatchEvent(e);
+        const syntheticEvent = document.createEvent("MouseEvents");
+        syntheticEvent.initEvent("click", true, true);
+        link.dispatchEvent(syntheticEvent);
         document.body.removeChild(link);
-        return true;
     }
 
     return {type: actionTypes.DOWNLOAD_OUTLINE, outlineId};
@@ -283,6 +281,3 @@ export const fetchSaveAndThenDownload = () => (
             }
         }); 
     });
-
-
-
