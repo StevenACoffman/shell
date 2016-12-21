@@ -32,8 +32,7 @@ if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
             initialState = { 
                 ...initialData,
                 sections: updateSections(initialData.sections),
-                thesis: {thesis_value: initialData.thesis},
-                list: initialData.list
+                thesis: {thesis_value: initialData.thesis}
             };
         }
     } catch (e) {
