@@ -1,6 +1,4 @@
-// jshint ignore: start
-// above comment is because old jshint (2.8) does not understand default arguments until 2.91+
-
+import * as actionTypes from "../actions/actionTypes";
 import sectionReducer from "./sectionReducer";
 
 const updateSections = sections => sections
@@ -20,7 +18,7 @@ const swapSectionsItem = (sections, sourceId, targetId) => {
 
 const sectionsReducer = (state = [undefined], action) => {
     switch (action.type) {
-    case "ADD_SECTION":
+    case actionTypes.ADD_SECTION:
         return updateSections([
             ...state,
             {
@@ -29,19 +27,19 @@ const sectionsReducer = (state = [undefined], action) => {
                 citations: []
             }
         ]);
-    case "MOVE_SECTION_UP":
+    case actionTypes.MOVE_SECTION_UP:
         return updateSections(swapSectionsItem(
         state.slice(),
         action.sectionId,
         action.sectionId - 1
       ));
-    case "MOVE_SECTION_DOWN":
+    case actionTypes.MOVE_SECTION_DOWN:
         return updateSections(swapSectionsItem(
         state.slice(),
         action.sectionId,
         action.sectionId + 1
       ));
-    case "DELETE_SECTION":
+    case actionTypes.DELETE_SECTION:
         return updateSections(state
         .filter((section, index) => (action.sectionId !== index)));
     default:

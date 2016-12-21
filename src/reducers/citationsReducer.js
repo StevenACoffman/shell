@@ -1,13 +1,11 @@
-// jshint ignore: start
-// above comment is because old jshint (2.8) does not understand default arguments until 2.91
-
+import * as actionTypes from "../actions/actionTypes";
 const citationsReducer = (state = [], action) => {
     switch (action.type) {
-    case "ADD_CITATIONS":
+    case actionTypes.ADD_CITATIONS:
         return [...state, ...action.citations];
-    case "CLEAR_SELECTED_LIST_ITEMS":
+    case actionTypes.CLEAR_SELECTED_LIST_ITEMS:
         return [];
-    case "DELETE_CITATION":
+    case actionTypes.DELETE_CITATION:
         return state.filter((citation, index) => (index !== action.citationIndex));
     default:
         return state;

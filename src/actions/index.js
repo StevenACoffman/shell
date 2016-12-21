@@ -83,21 +83,25 @@ function requestListItems(listId) {
     return {type: actionTypes.REQUEST_LIST_ITEMS, listId};
 }
 
-function receiveListItems(items, dispatch) {
+function receiveListItems(items) {
+    console.log("BUGZ3");
+    console.log(items);
     return (dispatch, getState) => {
+        console.log("BUGZ4");
+
         const {list} = getState();
         const {citationStyle} = list;
 
         items.map(listItem => dispatch(fetchCitationFormatIfNeeded(listItem, citationStyle || "mla")));
-        return {type: actionTypes.FETCH_LIST_ITEMS, items};
+        dispatch({type: actionTypes.RECEIVE_LIST_ITEMS, items});
     };
 }
 
 export function fetchListItems(listId) {
     return dispatch => {
         const url = `/myjstor/mylists/list/${listId}/items/`;
-        dispatch(requestListItems(listId));
-        return fetch(url, {
+        
+        fetch(url, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -105,13 +109,20 @@ export function fetchListItems(listId) {
                 "Content-Type": "application/json"
             }
         }).then(response => {
+            console.log("BUGZ!");
+            console.log(response);
             if (!response.ok) {
                 console.error(response.statusText);
             }
             return response.json();
         }, error => console.error(error))
-            .then(data => dispatch(receiveListItems(data.items || [])),
+            .then(data => {
+                console.log("BUGZ2");
+                console.log(data);
+                dispatch(receiveListItems(data.items || []));
+            },
             error => console.error(error));
+        dispatch(requestListItems(listId));    
     };
 }
 export function changeCitationFormat(citationStyle) {
@@ -127,8 +138,7 @@ function receiveCitationFormat(doi, json) {
 }
 
 const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
-    dispatch(requestCitationFormat(listItem, citationStyle));
-    return fetch(`/citation/${citationStyle}/${listItem.doi}`, {
+    fetch(`/citation/${citationStyle}/${listItem.doi}`, {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -141,6 +151,7 @@ const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
         return response.json();
     }, error => console.error(error))
         .then(json => dispatch(receiveCitationFormat(listItem.doi, json)), error => console.error(error));
+    dispatch(requestCitationFormat(listItem, citationStyle));
 };
 
 export function requestChangedCitationFormat(nextCitationStyle) {
@@ -167,7 +178,7 @@ export function shouldFetchCitationFormat(listItem, citationStyle) {
 export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
     return (dispatch, getState) => {
         if (shouldFetchCitationFormat(listItem, citationStyle)) {
-            return dispatch(fetchCitationFormat(listItem, citationStyle));
+            dispatch(fetchCitationFormat(listItem, citationStyle));
         }
     };
 }
@@ -233,11 +244,10 @@ export const  requestSaveAndThenDownload = () => ({type: actionTypes.REQUEST_SAV
 
 export const fetchSaveOutline = () => (
     (dispatch, getState) => {
-        dispatch(requestSave());
         const outlineState = getState();
         const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
 
-        return fetch(url, {
+        fetch(url, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -256,16 +266,16 @@ export const fetchSaveOutline = () => (
                 dispatch({type: actionTypes.OUTLINE_SAVED});
                 return true;
             }
-        }); 
+        });
+        dispatch(requestSave());    
     });
 
 export const fetchSaveAndThenDownload = () => (
     (dispatch, getState) => {
-        dispatch(requestSaveAndThenDownload());
         const outlineState = getState();
         const {url, crsfToken, outlineData, outlineId} = prepareToSaveOutline(outlineState);
        
-        return fetch(url, {
+        fetch(url, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -285,4 +295,5 @@ export const fetchSaveAndThenDownload = () => (
                 dispatch(downloadOutline(outlineId));
             }
         }); 
+        dispatch(requestSaveAndThenDownload());
     });
