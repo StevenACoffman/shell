@@ -84,11 +84,7 @@ function requestListItems(listId) {
 }
 
 function receiveListItems(items) {
-    console.log("BUGZ3");
-    console.log(items);
     return (dispatch, getState) => {
-        console.log("BUGZ4");
-
         const {list} = getState();
         const {citationStyle} = list;
 
@@ -109,16 +105,12 @@ export function fetchListItems(listId) {
                 "Content-Type": "application/json"
             }
         }).then(response => {
-            console.log("BUGZ!");
-            console.log(response);
             if (!response.ok) {
                 console.error(response.statusText);
             }
             return response.json();
         }, error => console.error(error))
             .then(data => {
-                console.log("BUGZ2");
-                console.log(data);
                 dispatch(receiveListItems(data.items || []));
             },
             error => console.error(error));

@@ -34,12 +34,11 @@ const listReducer = (state = {
         return {...state, listId: action.listId};
     }
     case actionTypes.RECEIVE_LIST_ITEMS: {
-        console.log("BUGZ5");
         const loadingCitationFormatMessages = {
             "mla": "Loading Formatted Citation",
             "apa": "Loading Formatted Citation",
             "chicago": "Loading Formatted Citation"};
-        let newItems = action.items.map(listItem => ({...listItem, ...loadingCitationFormatMessages}));
+        let newItems = action.items.map(listItem => ({...loadingCitationFormatMessages, ...listItem, }));
         return {...state, listItems: newItems};
     }
     default:
