@@ -8,6 +8,12 @@ export const toggleCitationModal = (sectionId, isOpen) => ({
     isOpen
 });
 
+export const toggleDeleteSectionModal = (sectionId, isOpen) => ({
+    type: actionTypes.TOGGLE_DELETE_SECTION_MODAL,
+    sectionId,
+    isOpen
+});
+
 export const selectListItem = (sectionId, listItemIndex) => ({
     type: actionTypes.SELECT_LIST_ITEM,
     sectionId,
@@ -117,6 +123,7 @@ export function fetchListItems(listId) {
         dispatch(requestListItems(listId));    
     };
 }
+
 export function changeCitationFormat(citationStyle) {
     return {type: actionTypes.CHANGE_CITATION_FORMAT, citationStyle};
 }
@@ -126,7 +133,7 @@ function requestCitationFormat(doi, citationStyle) {
 }
 
 function receiveCitationFormat(doi, json) {
-    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, text: json.citation};
+    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, text: json.citation, formattedCitation: json.citation};
 }
 
 const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
@@ -211,7 +218,8 @@ export const prepareToSaveOutline = (outlineState) => {
                 doi: listItem.doi,
                 author: listItem.author,
                 title: listItem.title,
-                citation_line: listItem.citation_line
+                citation_line: listItem.citation_line,
+                formattedCitation: listItem.formattedCitation
             }));
     const cleanList = {
         listItems: filteredListItems,
@@ -238,8 +246,8 @@ export const fetchSaveOutline = () => (
     (dispatch, getState) => {
         const outlineState = getState();
         const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
-
-        fetch(url, {
+        dispatch(requestSave()); 
+        return fetch(url, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -259,7 +267,7 @@ export const fetchSaveOutline = () => (
                 return true;
             }
         });
-        dispatch(requestSave());    
+   
     });
 
 export const fetchSaveAndThenDownload = () => (

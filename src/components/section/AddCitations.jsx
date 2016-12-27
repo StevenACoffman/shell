@@ -17,7 +17,6 @@ class AddCitations extends Component {
                     + Add Citation From List
                 </button>
                 <CitationsModal {...this.props} />
-
             </div>
         );
     }

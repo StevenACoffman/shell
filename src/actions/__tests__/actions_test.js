@@ -7,7 +7,7 @@ import * as actionTypes from "../actionTypes";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("Get Cookie", () => {
+describe("getCookie", () => {
 
     const cookies = "foo=bar; baz=qux;";
     it("should return the correct cookie value when cookie is present", () => {
@@ -20,7 +20,7 @@ describe("Get Cookie", () => {
     });
 });
 
-describe("Save Outline", () => {
+describe("fetchSaveOutline", () => {
     pit("should trigger a saveOutline action", () => {
         const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const dispatch = jest.fn();
@@ -66,5 +66,13 @@ describe("shouldFetchCitationFormat", () => {
     it("returns true when citation style is already set on list item", () => {
         const listItem = { doi: "10.20/304050", isFetching: false, citationStyle: "mla" };
         expect(actions.shouldFetchCitationFormat(listItem, "apa")).toBe(true);
+    });
+});
+
+describe("deleteSection", () => {
+    it("returns the expected action type and sectionId when called", () => {
+        const receivedValue = actions.deleteSection(1);
+        expect(receivedValue.sectionId).toBe(1);
+        expect(receivedValue.type).toBe("DELETE_SECTION");
     });
 });

@@ -137,12 +137,15 @@ exports[`test renders correctly 1`] = `
                   Move Section Down
                 </button>
               </div>
-              <button
-                className="button button-jstor"
-                id="delete_section_0"
-                onClick={[Function]}>
-                Delete Section
-              </button>
+              <div>
+                <button
+                  className="button button-jstor"
+                  id="delete_section_0"
+                  onClick={[Function]}>
+                  Delete Section
+                </button>
+                <noscript />
+              </div>
             </div>
           </div>
         </div>

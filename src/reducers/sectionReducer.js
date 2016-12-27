@@ -34,6 +34,10 @@ const sectionReducer = (state = defaultSectionFactory(), action) => {
         return {...state,
             modalIsOpen: action.isOpen
         };
+    case "TOGGLE_DELETE_SECTION_MODAL":        
+        return {...state,
+            deleteSectionModalIsOpen: action.isOpen
+        };
     default:
         return {...state,
             selectedListItems: sectionPotentialCitationReducer(state.selectedListItems, action)
