@@ -133,7 +133,7 @@ function requestCitationFormat(doi, citationStyle) {
 }
 
 function receiveCitationFormat(doi, json) {
-    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, text: json.citation, formattedCitation: json.citation};
+    return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, formattedCitation: json.citation};
 }
 
 const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
