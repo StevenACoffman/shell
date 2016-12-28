@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 import * as actions from "..";
 import * as actionTypes from "../actionTypes";
-
+import mockFetch from "isomorphic-fetch";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
@@ -21,7 +21,7 @@ describe("getCookie", () => {
 });
 
 describe("fetchSaveOutline", () => {
-    pit("should trigger a saveOutline action", () => {
+    it("should trigger a saveOutline action", () => {
         const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const dispatch = jest.fn();
         const getState = jest.fn().mockReturnValue(mockState);
@@ -34,15 +34,16 @@ describe("fetchSaveOutline", () => {
         expect(getState).toHaveBeenCalled();
     });
 
-    pit("should trigger a post request using 'fetch'", () => {
+    it("should trigger a post request using 'fetch'", () => {
         const mockState = { sections: [], thesis: {}, list: {listItems: []} };
         const store = mockStore(mockState);
-        const expectedActions = [{type: actionTypes.REQUEST_SAVE}, {type: actionTypes.OUTLINE_SAVED}];
+        const expectedActions = [{type: actionTypes.REQUEST_SAVE}, {"eventType": "save_outline", "type": "REQUEST_CAPTAINS_LOG"}, {type: actionTypes.OUTLINE_SAVED}];
 
         store.dispatch(actions.fetchSaveOutline())
-            .then((result) => {
-                expect(store.getActions()).toEqual(expectedActions);
-            })
+        .then((result) => {
+            expect(store.getActions()).toEqual(expectedActions);
+            expect(mockFetch).toBeCalled();
+        })
             .catch((reason) => {throw new Error(`SaveOutline failed in test because ${reason}`);});
     });
 });

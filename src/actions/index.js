@@ -136,6 +136,53 @@ function receiveCitationFormat(doi, json) {
     return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, formattedCitation: json.citation};
 }
 
+export const getCookie = (cookieName, allCookies) => {
+    let parts = `; ${allCookies}`.match(`;\\s*${cookieName}=([^;]+)`);
+    return parts ? parts[1] : "";
+};
+export const  requestCaptainsLog = (eventType) => ({type: actionTypes.REQUEST_CAPTAINS_LOG, eventType});
+//eventType = "save_outline" for example
+export const fetchCaptainsLog = (eventType) => (
+    (dispatch, getState) => {
+        const outlineState = getState();
+        const url = "/capns_log/";
+        const crsfToken = getCookie("csrftoken", document.cookie);
+        const outlineId = outlineState.list.listId;
+        const userId = outlineState.userId;
+        const captainsLogMessage = {
+            uuid: getCookie("UUID", document.cookie),
+            engagement_kpi_v1: true,
+            myjstor_userid: userId,
+            mylists_list_id: outlineId,
+            event_type: eventType
+        };
+        const params = {message: JSON.stringify(captainsLogMessage)};
+        const searchParams = Object.keys(params).map((key) => {
+            return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+        }).join("&");
+
+        dispatch(requestCaptainsLog(eventType)); 
+        return fetch(url, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: searchParams
+        }).then(response => {
+            if (!response.ok) {
+                console.error(response.statusText);
+            }
+            return response.json();
+        }, error => console.error(error)).then(response => {
+            if (response.success) {
+                return true;
+            }
+        });
+   
+    });
+
 const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
     fetch(`/citation/${citationStyle}/${listItem.doi}`, {
         method: "GET",
@@ -181,11 +228,6 @@ export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
         }
     };
 }
-
-export const getCookie = (cookieName, allCookies) => {
-    let parts = `; ${allCookies}`.match(`;\\s*${cookieName}=([^;]+)`);
-    return parts ? parts[1] : "";
-};
 
 export const downloadOutline = (outlineId) => {
     const link = document.createElement("a");
@@ -247,6 +289,7 @@ export const fetchSaveOutline = () => (
         const outlineState = getState();
         const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
         dispatch(requestSave()); 
+        dispatch(fetchCaptainsLog("save_outline"));
         return fetch(url, {
             method: "POST",
             credentials: "include",

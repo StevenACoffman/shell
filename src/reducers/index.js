@@ -11,7 +11,8 @@ const reducers = combineReducers({
     list: listReducer,
     thesis: thesisReducer,
     sections: sectionsReducer,
-    outlineState: outlineReducer
+    outlineState: outlineReducer,
+    userId: (state="", action) => state
 });
 
 export default reducers;

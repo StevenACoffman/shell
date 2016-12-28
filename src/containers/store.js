@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import createLogger from "redux-logger";
 import rootReducer from "../reducers/index";
+import { getUserId, getOutLineInitialData } from "../initializers/index";
 import { updateSections } from "../reducers/sectionsReducer";
 
 const middleware = [thunkMiddleware];
@@ -21,25 +22,18 @@ export const configureStore = (preloadedState) => createStore(rootReducer, prelo
     applyMiddleware(...middleware)
 ));
 
-const outlineInitialDataElement = document.getElementById("outline-initial-data");
 let initialState;
-if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
-    try {
-        let initialData = JSON.parse(outlineInitialDataElement.textContent);
-        if (initialData === null) {
-            initialState = undefined;
-        } else {
-            initialState = { 
-                ...initialData,
-                sections: updateSections(initialData.sections),
-                thesis: {thesis_value: initialData.thesis}
-            };
-        }
-    } catch (e) {
-        console.error(e);
-    }
+const initialData = getOutLineInitialData();
+const userId = getUserId();
+if (initialData !== null) {
+    initialState = { 
+        ...initialData,
+        sections: updateSections(initialData.sections),
+        thesis: {thesis_value: initialData.thesis},
+        userId
+    };
 }
-
+    
 const store = configureStore(initialState);
 
 export default store;
