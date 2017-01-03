@@ -1,5 +1,5 @@
 /*eslint no-console: "off"*/
-
+// @flow
 export const getUserId = () => {
     const outlineUserDataElement = document.getElementById("outline-user-data");
     let userId;

@@ -1,5 +1,5 @@
 /*eslint react/no-danger: "off"*/
-
+// @flow
 import React, { Component, PropTypes } from "react";
 import { deleteCitation } from "../../actions";
 import { connect } from "react-redux";

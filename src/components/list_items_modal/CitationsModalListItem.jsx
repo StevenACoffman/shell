@@ -1,5 +1,5 @@
 /*eslint react/no-danger: "off"*/
-
+// @flow
 import React, { Component, PropTypes } from "react";
 import { selectListItem, unselectListItem } from "../../actions";
 import { connect } from "react-redux";

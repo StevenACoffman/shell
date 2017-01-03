@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 
 export default class CitationFormatPicker extends Component {

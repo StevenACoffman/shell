@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import SectionName from "./SectionName.jsx";
 import SectionNotes from "./SectionNotes.jsx";

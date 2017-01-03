@@ -1,3 +1,4 @@
+// @flow
 import * as actionTypes from "../actions/actionTypes";
 const thesisReducer = (state = {thesis_value:""}, action) => {
     switch (action.type) {

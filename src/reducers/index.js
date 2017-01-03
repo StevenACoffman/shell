@@ -1,4 +1,4 @@
-/*jshint esnext:true */
+// @flow
 
 import { combineReducers } from "redux";
 import listReducer from "./listReducer";

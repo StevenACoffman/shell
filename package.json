@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.6.0",
+    "flow-bin": "^0.37.4",
     "jest": "^18.0.0",
     "react-addons-test-utils": "^15.4.1",
     "react-axe": "^2.1.0",
@@ -29,7 +30,8 @@
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js --fix --ext js --ext jsx src; exit 0",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   },
   "proxy": "http://localhost:4000/",
   "eslintConfig": ".eslintrc.js"

@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import CitationsModalListItem from "./CitationsModalListItem.jsx";
 import CitationsModalCta from "./CitationsModalCta.jsx";

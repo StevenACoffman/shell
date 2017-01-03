@@ -1,3 +1,5 @@
+// @flow
+
 export const ADD_SECTION = "ADD_SECTION";
 export const DELETE_SECTION = "DELETE_SECTION";
 export const MOVE_SECTION_UP = "MOVE_SECTION_UP";
