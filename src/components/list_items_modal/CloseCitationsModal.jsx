@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import { clearSelectedListItems, toggleCitationModal } from "../../actions";
 import { connect } from "react-redux";

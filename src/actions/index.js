@@ -1,54 +1,59 @@
 /*eslint no-console: "off"*/
+// @flow
+
 import fetch from "isomorphic-fetch";
 import * as actionTypes from "./actionTypes";
 
-export const toggleCitationModal = (sectionId, isOpen) => ({
+type Action = Object;
+type Dispatch = (action: Action) => void;
+
+export const toggleCitationModal = (sectionId: number, isOpen:boolean) => ({
     type: actionTypes.TOGGLE_CITATION_MODAL,
     sectionId,
     isOpen
 });
 
-export const toggleDeleteSectionModal = (sectionId, isOpen) => ({
+export const toggleDeleteSectionModal = (sectionId: number, isOpen:boolean) => ({
     type: actionTypes.TOGGLE_DELETE_SECTION_MODAL,
     sectionId,
     isOpen
 });
 
-export const selectListItem = (sectionId, listItemIndex) => ({
+export const selectListItem = (sectionId: number, listItemIndex: number) => ({
     type: actionTypes.SELECT_LIST_ITEM,
     sectionId,
     listItemIndex
 });
 
-export const unselectListItem = (sectionId, listItemIndex) => ({
+export const unselectListItem = (sectionId: number, listItemIndex: number) => ({
     type: actionTypes.UNSELECT_LIST_ITEM,
     sectionId,
     listItemIndex
 });
 
-export const selectAllListItems = (sectionId, listItems) => ({
+export const selectAllListItems = (sectionId: number, listItems: Array<mixed>) => ({
     type: actionTypes.SELECT_ALL_LIST_ITEMS,
     sectionId,
     listItems
 });
 
-export const changeThesis = (text) => ({
+export const changeThesis = (text: string) => ({
     type: actionTypes.CHANGE_THESIS,
     text
 });
 
-export const addCitations = (sectionId, citations = []) => ({
+export const addCitations = (sectionId: number, citations: Array<mixed> = []) => ({
     type: actionTypes.ADD_CITATIONS,
     sectionId,
     citations
 });
 
-export const clearSelectedListItems = (sectionId) => ({
+export const clearSelectedListItems = (sectionId: number) => ({
     type: actionTypes.CLEAR_SELECTED_LIST_ITEMS,
     sectionId
 });
 
-export const deleteCitation = (sectionId, citationIndex) => ({
+export const deleteCitation = (sectionId: number, citationIndex: number) => ({
     type: actionTypes.DELETE_CITATION,
     sectionId,
     citationIndex
@@ -58,39 +63,39 @@ export const addSection = () => ({
     type: actionTypes.ADD_SECTION,
 });
 
-export const moveSectionUp = (sectionId) => ({
+export const moveSectionUp = (sectionId: number) => ({
     type: actionTypes.MOVE_SECTION_UP,
     sectionId
 });
 
-export const moveSectionDown = (sectionId) => ({
+export const moveSectionDown = (sectionId: number) => ({
     type: actionTypes.MOVE_SECTION_DOWN,
     sectionId
 });
 
-export const modifySectionName = (sectionId, name) => ({
+export const modifySectionName = (sectionId: number, name: string) => ({
     type: actionTypes.MODIFY_SECTION_NAME,
     sectionId,
     name
 });
 
-export const modifySectionNotes = (sectionId, notes) => ({
+export const modifySectionNotes = (sectionId: number, notes: Array<mixed>) => ({
     type: actionTypes.MODIFY_SECTION_NOTES,
     sectionId,
     notes
 });
 
-export const deleteSection = (sectionId) => ({
+export const deleteSection = (sectionId: number) => ({
     type: actionTypes.DELETE_SECTION,
     sectionId
 });
 
-function requestListItems(listId) {
+function requestListItems(listId: string) {
     return {type: actionTypes.REQUEST_LIST_ITEMS, listId};
 }
 
 function receiveListItems(items) {
-    return (dispatch, getState) => {
+    return (dispatch: Dispatch, getState: Function) => {
         const {list} = getState();
         const {citationStyle} = list;
 
@@ -99,8 +104,8 @@ function receiveListItems(items) {
     };
 }
 
-export function fetchListItems(listId) {
-    return dispatch => {
+export function fetchListItems(listId: string) {
+    return (dispatch: Dispatch) => {
         const url = `/myjstor/mylists/list/${listId}/items/`;
         
         fetch(url, {
@@ -124,7 +129,7 @@ export function fetchListItems(listId) {
     };
 }
 
-export function changeCitationFormat(citationStyle) {
+export function changeCitationFormat(citationStyle: string) {
     return {type: actionTypes.CHANGE_CITATION_FORMAT, citationStyle};
 }
 
@@ -136,14 +141,15 @@ function receiveCitationFormat(doi, json) {
     return {type: actionTypes.RECEIVE_CITATION_FORMAT, doi, citationStyle: json.citation_style, formattedCitation: json.citation};
 }
 
-export const getCookie = (cookieName, allCookies) => {
+export const getCookie = (cookieName: string, allCookies :string) => {
     let parts = `; ${allCookies}`.match(`;\\s*${cookieName}=([^;]+)`);
     return parts ? parts[1] : "";
 };
-export const  requestCaptainsLog = (eventType) => ({type: actionTypes.REQUEST_CAPTAINS_LOG, eventType});
+export const  requestCaptainsLog = (eventType: string) => ({type: actionTypes.REQUEST_CAPTAINS_LOG, eventType});
+
 //eventType = "save_outline" for example
-export const fetchCaptainsLog = (eventType) => (
-    (dispatch, getState) => {
+export const fetchCaptainsLog = (eventType: string) => (
+    (dispatch: Dispatch, getState: Function) => {
         const outlineState = getState();
         const url = "/capns_log/";
         const crsfToken = getCookie("csrftoken", document.cookie);
@@ -183,7 +189,7 @@ export const fetchCaptainsLog = (eventType) => (
    
     });
 
-const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
+const fetchCitationFormat = (listItem: Object, citationStyle: string) => (dispatch: Dispatch) => {
     fetch(`/citation/${citationStyle}/${listItem.doi}`, {
         method: "GET",
         headers: {
@@ -200,8 +206,8 @@ const fetchCitationFormat = (listItem, citationStyle) => (dispatch) => {
     dispatch(requestCitationFormat(listItem, citationStyle));
 };
 
-export function requestChangedCitationFormat(nextCitationStyle) {
-    return (dispatch, getState) => {
+export function requestChangedCitationFormat(nextCitationStyle:string) {
+    return (dispatch: Dispatch, getState: Function) => {
         const {list} = getState();
         const {listItems} = list;
         listItems.forEach(listItem => {
@@ -213,7 +219,7 @@ export function requestChangedCitationFormat(nextCitationStyle) {
     };
 }
 
-export function shouldFetchCitationFormat(listItem, citationStyle) {
+export function shouldFetchCitationFormat(listItem:Object, citationStyle: string) {
     if (listItem && listItem.doi) {
         return [undefined, "Loading Formatted Citation"].includes(listItem[citationStyle]);
     } else {
@@ -221,15 +227,15 @@ export function shouldFetchCitationFormat(listItem, citationStyle) {
     }
 }
 
-export function fetchCitationFormatIfNeeded(listItem, citationStyle) {
-    return (dispatch, getState) => {
+export function fetchCitationFormatIfNeeded(listItem:Object, citationStyle: string) {
+    return (dispatch: Dispatch, getState: Function) => {
         if (shouldFetchCitationFormat(listItem, citationStyle)) {
             dispatch(fetchCitationFormat(listItem, citationStyle));
         }
     };
 }
 
-export const downloadOutline = (outlineId) => {
+export const downloadOutline = (outlineId: number) => {
     const link = document.createElement("a");
     link.href = `/myjstor/outline/${outlineId}/download`;
     //check for HTML5 download attribute support
@@ -250,7 +256,7 @@ export const downloadOutline = (outlineId) => {
     return {type: actionTypes.DOWNLOAD_OUTLINE, outlineId};
 };
 
-export const prepareToSaveOutline = (outlineState) => {
+export const prepareToSaveOutline = (outlineState: Object) => {
     const sections = outlineState.sections.map(section => {
         const {name, notes, citations} = section;
         return {name, citations, notes};
@@ -285,7 +291,7 @@ export const  requestSave = () => ({type: actionTypes.REQUEST_SAVE});
 export const  requestSaveAndThenDownload = () => ({type: actionTypes.REQUEST_SAVE_AND_THEN_DOWNLOAD});
 
 export const fetchSaveOutline = () => (
-    (dispatch, getState) => {
+    (dispatch: Dispatch, getState: Function) => {
         const outlineState = getState();
         const {url, crsfToken, outlineData} = prepareToSaveOutline(outlineState);
         dispatch(requestSave()); 
@@ -314,7 +320,7 @@ export const fetchSaveOutline = () => (
     });
 
 export const fetchSaveAndThenDownload = () => (
-    (dispatch, getState) => {
+    (dispatch: Dispatch, getState: Function) => {
         const outlineState = getState();
         const {url, crsfToken, outlineData, outlineId} = prepareToSaveOutline(outlineState);
        

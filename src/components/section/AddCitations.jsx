@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import CitationsModal from "./../list_items_modal/CitationsModal.jsx";
 import {connect} from "react-redux";

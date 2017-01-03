@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 
 class CloseDeleteSectionModal extends Component { 

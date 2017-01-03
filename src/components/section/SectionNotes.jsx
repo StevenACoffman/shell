@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import { modifySectionNotes } from "../../actions";
 import { connect } from "react-redux";

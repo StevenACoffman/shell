@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from "react";
 import Thesis from "../components/Thesis.jsx";
 import AddSection from "../components/AddSection.jsx";

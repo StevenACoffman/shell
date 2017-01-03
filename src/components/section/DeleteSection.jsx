@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from "react";
 import DeleteSectionModal from "./../delete_section_modal/DeleteSectionModal.jsx";
 import { toggleDeleteSectionModal } from "../../actions";

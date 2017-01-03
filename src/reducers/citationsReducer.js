@@ -1,3 +1,4 @@
+// @flow
 import * as actionTypes from "../actions/actionTypes";
 const citationsReducer = (state = [], action) => {
     switch (action.type) {
