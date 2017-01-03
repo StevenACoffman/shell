@@ -1,12 +1,13 @@
+import * as actionTypes from "../actions/actionTypes";
 const sectionPotentialCitationReducer = (state = [], action) => {
     switch (action.type) {
-    case "CLEAR_SELECTED_LIST_ITEMS":
+    case actionTypes.CLEAR_SELECTED_LIST_ITEMS:
         return [];
-    case "SELECT_LIST_ITEM":
+    case actionTypes.SELECT_LIST_ITEM:
         return [...state, action.listItemIndex];
-    case "UNSELECT_LIST_ITEM":
+    case actionTypes.UNSELECT_LIST_ITEM:
         return state.filter((listItemIndex) => (listItemIndex !== action.listItemIndex));
-    case "SELECT_ALL_LIST_ITEMS":
+    case actionTypes.SELECT_ALL_LIST_ITEMS:
         return action.listItems;
     default:
         return state;
