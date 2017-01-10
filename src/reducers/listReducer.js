@@ -1,12 +1,17 @@
 import * as actionTypes from "../actions/actionTypes";
 const listItemReducer = (state, action) => {
     switch (action.type) {
+    case actionTypes.CHANGE_CITATION_FORMAT:
+        return {
+            ...state,
+            formattedCitation: state[action.citationStyle]
+        };
     case actionTypes.RECEIVE_CITATION_FORMAT:
         return {
             ...state,
             isFetching: false,
-            [action.citationStyle]: action.text,
-            formattedCitation: action.text
+            [action.citationStyle]: action.formattedCitation,
+            formattedCitation: action.formattedCitation
         };
     case actionTypes.REQUEST_CITATION_FORMAT:
         return {
@@ -28,6 +33,9 @@ const listReducer = (state = {
     case actionTypes.CHANGE_CITATION_FORMAT:
         return {
             ...state,
+            listItems: state.listItems.map((listItem, index) => {
+                    return listItemReducer(listItem, action);
+            }),
             citationStyle: action.citationStyle
         };
     case actionTypes.REQUEST_LIST_ITEMS: {

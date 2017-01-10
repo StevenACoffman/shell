@@ -13,7 +13,7 @@ class DeleteSectionModalCta extends Component {
                    Confirm Delete
                 </button>
                 <button
-									id={`section_${sectionId}_cancel_delete_button`}
+                  id={`section_${sectionId}_cancel_delete_button`}
                   className="btn-link"
                   onClick={closeModal}
                   >

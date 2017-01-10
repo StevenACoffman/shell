@@ -19,9 +19,11 @@ export const initializeState = () => ({
     }],
     list: {
         citationStyle: "",
+        listId: 1,
         listItems: []
     },
-    outlineState: { isPristine: true }
+    outlineState: { isPristine: true },
+    userId: "mockuser"
 });
 
 const store = mockStore(initializeState());

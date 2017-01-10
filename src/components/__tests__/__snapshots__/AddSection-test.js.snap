@@ -31,6 +31,7 @@ exports[`test renders correctly 1`] = `
     </div>
     <button
       className="button button-jstor secondary disabled"
+      data-capn-logger="{\"uuid\":\"\",\"engagement_kpi_v1\":true,\"myjstor_userid\":\"mockuser\",\"mylists_list_id\":1,\"event_type\":\"save_outline\"}"
       disabled={true}
       id="save-outline"
       onClick={[Function]}
@@ -39,6 +40,7 @@ exports[`test renders correctly 1`] = `
     </button>
     <button
       className="button button-jstor"
+      data-capn-logger="{\"uuid\":\"\",\"engagement_kpi_v1\":true,\"myjstor_userid\":\"mockuser\",\"mylists_list_id\":1,\"event_type\":\"download_outline\"}"
       id="download-outline"
       onClick={[Function]}
       type="button">

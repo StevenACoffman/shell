@@ -8,7 +8,7 @@ class CloseDeleteSectionModal extends Component {
                 aria-label="Close Overlay"
                 onClick={closeModal}
                 >
-                <span className="visuallyhidden">Close Overlay</span>
+                × <span className="visuallyhidden">Close Overlay</span>
             </a>
         );
     }

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "colors": "^1.1.2",
     "enzyme": "^2.6.0",
+    "http-proxy": "^1.16.2",
     "jest": "^18.0.0",
     "react-addons-test-utils": "^15.4.1",
     "react-axe": "^2.1.0",

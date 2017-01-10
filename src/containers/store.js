@@ -32,6 +32,8 @@ if (initialData !== null) {
         thesis: {thesis_value: initialData.thesis},
         userId
     };
+} else {
+    initialState = {userId};
 }
     
 const store = configureStore(initialState);

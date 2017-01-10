@@ -18,7 +18,7 @@ export const getUserId = () => {
 
 export const getOutLineInitialData = () => {
     const outlineInitialDataElement = document.getElementById("outline-initial-data");
-    let initialData;
+    let initialData=null;
     if (outlineInitialDataElement && outlineInitialDataElement.textContent) {
         try {
             initialData = JSON.parse(outlineInitialDataElement.textContent);
