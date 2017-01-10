@@ -1,4 +1,4 @@
-//Intended to proxy from http://localhost:8012 to https://firefly.jstor.org
+//Intended to proxy from http://localhost:4000 to https://firefly.jstor.org
 
 const https = require('https'),
     http  = require('http'),
@@ -47,6 +47,6 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 //
 // Create a HTTP Proxy server with a HTTPS target
 //
-proxy.listen(8012);
+proxy.listen(4000);
 
 console.log('http proxy server'.blue + ' started '.green.bold + 'on port '.blue + '8012'.yellow);

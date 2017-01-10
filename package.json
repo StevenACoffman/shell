@@ -31,7 +31,8 @@
     "lint": "./node_modules/.bin/eslint -c .eslintrc.js --fix --ext js --ext jsx src; exit 0",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "stitch": "node light-stitch.js"
   },
   "proxy": "http://localhost:4000/",
   "eslintConfig": ".eslintrc.js"
