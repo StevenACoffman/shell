@@ -49,4 +49,4 @@ proxy.on('proxyRes', (proxyRes, req, res) => {
 //
 proxy.listen(4000);
 
-console.log('http proxy server'.blue + ' started '.green.bold + 'on port '.blue + '8012'.yellow);
+console.log('http proxy server'.blue + ' started '.green.bold + 'on port '.blue + '4000'.yellow);
