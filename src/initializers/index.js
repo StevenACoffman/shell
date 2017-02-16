@@ -16,6 +16,10 @@ export const getUserId = () => {
     return userId;
 };
 
+export const getListIdFromLocation = () => {
+    return window.location.search.split("?listId=").pop() || window.location.pathname.split("/myjstor/outline/").pop().replace("/", "") || undefined;
+};
+
 export const getOutLineInitialData = () => {
     const outlineInitialDataElement = document.getElementById("outline-initial-data");
     let initialData=null;
@@ -28,4 +32,3 @@ export const getOutLineInitialData = () => {
     }
     return initialData;
 };
-
