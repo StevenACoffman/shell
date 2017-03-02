@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Provider} from "react-redux";
-import store from "./containers/store";
 import OutlineContainer from "./containers/OutlineContainer.jsx";
+import store from "./containers/store";
 
 import "./App.css";
 
