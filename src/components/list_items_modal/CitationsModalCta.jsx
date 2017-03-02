@@ -15,7 +15,7 @@ class CitationsModalCta extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="mtxl">
                 <button
                     className="button button-jstor"
                     onClick={this.hideModal}

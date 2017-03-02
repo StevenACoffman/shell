@@ -7,7 +7,7 @@ class SectionNotes extends Component {
         const { notesId, notes, sectionId, dispatch } = this.props;
         return (
             <div>
-                <label htmlFor={notesId} >Section Notes</label>
+                <label className="bold" htmlFor={notesId} >Section Notes</label>
                 <textarea
                   name="notes"
                   id={notesId}

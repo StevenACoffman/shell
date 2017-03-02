@@ -7,7 +7,7 @@ class SectionName extends Component {
         const { nameId, name, sectionId, dispatch }  = this.props;
         return (
             <div>
-                <label htmlFor={nameId} >Section Name</label>
+                <label className="bold" htmlFor={nameId} >Section Name</label>
                 <input
                   type="text"
                   id={nameId}

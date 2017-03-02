@@ -8,12 +8,14 @@ class SectionList extends Component {
         return (
             <div>
                 {sections && sections.map((section, index)=>
-                    <SectionComponent
-                        id={index}
-                        key={index}
-                        listItems={listItems}
-                        {...section}
-                    />
+                  <SectionComponent
+                    id = {index}
+                    key = {index}
+                    listItems = {listItems}
+                    {...
+                      section
+                    }
+                  />
                 )}
             </div>
         );

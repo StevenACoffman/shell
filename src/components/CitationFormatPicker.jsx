@@ -1,21 +1,22 @@
 import React, { Component, PropTypes } from "react";
+import Dropdown from 'react-dropdown';
+
 
 export default class CitationFormatPicker extends Component {
     render() {
         const { id, value, onChange, options } = this.props;
+        const mappedOptions = options.map(option => {
+          return {label: option.toUpperCase(), value: option}
+        });
 
         return (
-            <span>
-                <label htmlFor={id}>Citation Format:</label>
-                <select id={id} onChange={e => onChange(e.target.value)}
-                value={value}>
-                    {options.map(option =>
-                        <option value={option} key={option}>
-                            {option.toUpperCase()}
-                        </option>)
-                    }
-                </select>
-            </span>
+                <Dropdown
+                    id={id}
+                    onChange={selection => onChange(selection.value)}
+                    value={value.toUpperCase()}
+                    options={mappedOptions}
+                  >
+                </Dropdown>
         );
     }
 }

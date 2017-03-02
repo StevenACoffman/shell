@@ -2,6 +2,7 @@
 import fetch from "isomorphic-fetch";
 import * as actionTypes from "./actionTypes";
 
+
 export const toggleCitationModal = (sectionId, isOpen) => ({
     type: actionTypes.TOGGLE_CITATION_MODAL,
     sectionId,
@@ -237,7 +238,7 @@ export const prepareToSaveOutline = (outlineState) => {
     };
     const outlineData = JSON.stringify({
         outline_body: {
-            thesis: outlineState.thesis.thesis_value,
+            thesis: outlineState.thesis.thesis_value || "",
             sections: sections,
             list: cleanList
         },
@@ -248,7 +249,9 @@ export const prepareToSaveOutline = (outlineState) => {
     const outlineId = outlineState.list.listId;
     return {url, crsfToken, outlineData, outlineId};
 };
+
 export const  requestSave = () => ({type: actionTypes.REQUEST_SAVE});
+
 export const  requestSaveAndThenDownload = () => ({type: actionTypes.REQUEST_SAVE_AND_THEN_DOWNLOAD});
 
 export const fetchSaveOutline = () => (

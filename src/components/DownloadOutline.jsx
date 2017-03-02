@@ -9,7 +9,7 @@ class DownloadOutline extends Component {
             <button
             id="download-outline"
             type="button"
-            className="button button-jstor"
+            className="button button-jstor mrl"
             onClick={event => {
                 dispatch(fetchSaveAndThenDownload());
             }}

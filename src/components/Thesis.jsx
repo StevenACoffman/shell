@@ -7,7 +7,7 @@ class Thesis extends Component {
         const { thesis_value, dispatch } = this.props;
         return (
             <div id="thesis-component">
-                <label htmlFor="thesis-body">Thesis Statement</label>
+                <label className="bold" htmlFor="thesis-body">Thesis Statement</label>
                 <textarea
                   type="text"
                   rows="5"
