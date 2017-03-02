@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import "./App.css";
+import "./legacy_v2.css";
+import "./my-jstor.css";
 import {Provider} from "react-redux";
 import OutlineContainer from "./containers/OutlineContainer.jsx";
 

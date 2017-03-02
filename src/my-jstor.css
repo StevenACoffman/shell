@@ -1,0 +1,2296 @@
+/* line 1, ../../shared/css/vendor/react-dropdown.scss */
+.result {
+  padding: 8px 0;
+}
+
+/* line 5, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-root {
+  position: relative;
+}
+
+/* line 9, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-control {
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #333;
+  cursor: default;
+  outline: none;
+  padding: 8px 52px 8px 10px;
+  transition: all 200ms ease;
+}
+
+/* line 23, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-control:hover {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* line 27, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: ' ';
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5);
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0;
+}
+
+/* line 41, ../../shared/css/vendor/react-dropdown.scss */
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+
+/* line 46, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-menu {
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 61, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-menu .Dropdown-group > .Dropdown-title {
+  padding: 8px 10px;
+  color: #333333;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* line 68, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+/* line 76, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-option:last-child {
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+/* line 81, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-option:hover {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+/* line 86, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-option.is-selected {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+/* line 91, ../../shared/css/vendor/react-dropdown.scss */
+.Dropdown-noresults {
+  box-sizing: border-box;
+  color: #ccc;
+  cursor: default;
+  display: block;
+  padding: 8px 10px;
+}
+
+/* Roboto uses a font-weight: 900 for bold */
+/* used in global nav; h5 */
+/* used in warning messaging */
+/* $base-line-height is 24px while $base-font-size is 16px */
+/***** SCREEN SIZE - If these values change, please update them in the siteVars.js : window.jstor.mediaQueryBreakpoints object *****/
+/* Not a foundation override, but needed to be placed here for $small-screen usage */
+/* Not a foundation override, but needed to be placed here for $medium-screen usage */
+/* Not a foundation override, but needed to be placed here for $large-screen usage */
+/* Not a foundation override, but needed to be placed here for $large-screen usage */
+/* Not a foundation override, but needed to be placed here for $medium-screen usage */
+/* Hiding Text Mixins */
+/* ==========================================================================
+   Hide
+   ========================================================================== */
+/**
+* @desc         Various techniques for hiding elements. Adapted from HTML5 Boilerplate.
+* @name         hide
+* @author       Fiona
+* @tested       IE6-9, Firefox, Chrome, Safari
+* @requires     N/A
+https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_hideText.scss
+*/
+/* Hide text off screen */
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+/* Extends the .hideVisually class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+/**** SPACING MIXINS ****/
+/**
+ * Spacing helpers
+ * Should be used to modify the default spacing between objects (not between nodes of the same object)
+ * Please use judiciously. You want to be using defaults most of the time, these are exceptions!
+ * <type><location><size>
+ *
+ * p,m 				padding,margin
+ * a,t,r,b,l,h,v	all,top,right,bottom,left,horizontal,vertical
+ * s,m,l,n 			small(5px),medium(10px),large(20px),none(0px)
+ */
+/**** MISC HELPER MIXINS ****/
+/* Global Foundation Mixins */
+/* We use this to control border radius. */
+/* We use this to create equal side border radius on elements. */
+/* We can control whether or not we have inset shadows edges. */
+/* We use this to add transitions to elements */
+/* We use this to add box-sizing across browser prefixes */
+/* We use this to create equilateral triangles */
+/* We use this to do clear floats */
+/* We use this to add a glowing effect to block elements */
+/* line 260, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-version {
+  font-family: "/5.2.2/";
+}
+
+/* line 264, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-mq-small {
+  font-family: "/only screen/";
+  width: 0px;
+}
+
+/* line 269, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-mq-medium {
+  font-family: "/only screen and (min-width:561px)/";
+  width: 561px;
+}
+
+/* line 274, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-mq-large {
+  font-family: "/only screen and (min-width:761px)/";
+  width: 761px;
+}
+
+/* line 279, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-mq-xlarge {
+  font-family: "/only screen and (min-width:1025px)/";
+  width: 1025px;
+}
+
+/* line 284, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-mq-xxlarge {
+  font-family: "/only screen and (min-width:120.063em)/";
+  width: 120.063em;
+}
+
+/* line 289, ../../shared/css/vendor/foundation5/scss/_global.scss */
+meta.foundation-data-attribute-namespace {
+  font-family: false;
+}
+
+/* line 162, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+/* line 164, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog, .reveal-modal, .overlay-jstor-modal,
+.overlay-jstor-positioned {
+  visibility: hidden;
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 0;
+  border: solid 5px #546d89;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+@media only screen and (max-width: 560px) {
+  /* line 164, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    min-height: 100vh;
+  }
+}
+@media only screen and (min-width: 561px) {
+  /* line 164, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    left: 50%;
+  }
+}
+/* line 85, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog .column,
+dialog .columns, .reveal-modal .column, .overlay-jstor-modal .column,
+.overlay-jstor-positioned .column,
+.reveal-modal .columns,
+.overlay-jstor-modal .columns,
+.overlay-jstor-positioned .columns {
+  min-width: 0;
+}
+/* line 89, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog > :first-child, .reveal-modal > :first-child, .overlay-jstor-modal > :first-child,
+.overlay-jstor-positioned > :first-child {
+  margin-top: 0;
+}
+/* line 90, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog > :last-child, .reveal-modal > :last-child, .overlay-jstor-modal > :last-child,
+.overlay-jstor-positioned > :last-child {
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 561px) {
+  /* line 164, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    margin-left: -40%;
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 561px) {
+  /* line 164, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    top: 6.25rem;
+  }
+}
+/* line 174, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog .close-reveal-modal, dialog .close-overlay, .reveal-modal .close-reveal-modal, .overlay-jstor-modal .close-reveal-modal,
+.overlay-jstor-positioned .close-reveal-modal, .reveal-modal .close-overlay, .overlay-jstor-modal .close-overlay,
+.overlay-jstor-positioned .close-overlay {
+  font-size: 2.5rem;
+  line-height: 1;
+  position: absolute;
+  top: 0.375rem;
+  right: 0.6875rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* line 177, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+dialog[open] {
+  display: block;
+  visibility: visible;
+}
+
+@media only screen and (min-width: 561px) {
+  /* line 184, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    padding: 0;
+  }
+  /* line 187, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.radius, .reveal-modal.radius, .radius.overlay-jstor-modal,
+  .radius.overlay-jstor-positioned {
+    border-radius: 3px;
+  }
+  /* line 188, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.round, .reveal-modal.round, .round.overlay-jstor-modal,
+  .round.overlay-jstor-positioned {
+    border-radius: 1000px;
+  }
+  /* line 190, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.collapse, .reveal-modal.collapse, .collapse.overlay-jstor-modal,
+  .collapse.overlay-jstor-positioned {
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 192, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.tiny, .reveal-modal.tiny, .tiny.overlay-jstor-modal,
+  .tiny.overlay-jstor-positioned {
+    margin-left: -15%;
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 193, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.small, .reveal-modal.small, .small.overlay-jstor-modal,
+  .small.overlay-jstor-positioned {
+    margin-left: -20%;
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 194, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.medium, .reveal-modal.medium, .medium.overlay-jstor-modal,
+  .medium.overlay-jstor-positioned {
+    margin-left: -30%;
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 195, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.large, .reveal-modal.large, .large.overlay-jstor-modal,
+  .large.overlay-jstor-positioned {
+    margin-left: -35%;
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 196, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.xlarge, .reveal-modal.xlarge, .xlarge.overlay-jstor-modal,
+  .xlarge.overlay-jstor-positioned {
+    margin-left: -47.5%;
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 561px) {
+  /* line 200, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.full, .reveal-modal.full, .full.overlay-jstor-modal,
+  .full.overlay-jstor-positioned {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    min-height: 100vh;
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (min-width: 561px) and (min-width: 561px) {
+  /* line 200, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog.full, .reveal-modal.full, .full.overlay-jstor-modal,
+  .full.overlay-jstor-positioned {
+    margin-left: -50vw;
+    width: 100vw;
+  }
+}
+
+@media print {
+  /* line 213, ../../shared/css/vendor/foundation5/scss/_reveal.scss */
+  dialog, .reveal-modal, .overlay-jstor-modal,
+  .overlay-jstor-positioned {
+    background: #fff !important;
+  }
+}
+/* line 110, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  transition: opacity 300ms ease-out;
+  background-color: #546D89;
+  border-color: #485e76;
+  color: #fff;
+}
+/* line 113, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box .close {
+  font-size: 1.375rem;
+  padding: 9px 6px 4px;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.6875rem;
+  right: 0.25rem;
+  color: #333;
+  opacity: 0.3;
+}
+/* line 94, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box .close:hover, .alert-box .close:focus {
+  opacity: 0.5;
+}
+/* line 115, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.radius {
+  border-radius: 3px;
+}
+/* line 116, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.round {
+  border-radius: 1000px;
+}
+/* line 118, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.success {
+  background-color: #5da423;
+  border-color: #508d1e;
+  color: #fff;
+}
+/* line 119, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.alert {
+  background-color: #c60f13;
+  border-color: #aa0d10;
+  color: #fff;
+}
+/* line 120, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.secondary {
+  background-color: #e9e9e9;
+  border-color: #c8c8c8;
+  color: #4f4f4f;
+}
+/* line 121, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.warning {
+  background-color: #f08a24;
+  border-color: #de770f;
+  color: #fff;
+}
+/* line 122, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.info {
+  background-color: #a0d3e8;
+  border-color: #74bfdd;
+  color: #4f4f4f;
+}
+/* line 123, ../../shared/css/vendor/foundation5/scss/_alert-boxes.scss */
+.alert-box.alert-close {
+  opacity: 0;
+}
+
+/* line 93, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table {
+  background: #fff;
+  margin-bottom: 1.25rem;
+  border: solid 0 #ddd;
+}
+/* line 54, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table thead,
+table tfoot {
+  background: #fff;
+}
+/* line 59, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
+  padding: 0.75rem 0.625rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #222;
+  text-align: left;
+}
+/* line 71, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table tr th,
+table tr td {
+  padding: 0.625rem;
+  font-size: 1rem;
+  color: #222;
+}
+/* line 78, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table tr.even, table tr.alt, table tr:nth-of-type(even) {
+  background: #fff;
+}
+/* line 83, ../../shared/css/vendor/foundation5/scss/_tables.scss */
+table thead tr th,
+table tfoot tr th,
+table tbody tr td,
+table tr td,
+table tfoot tr td {
+  display: table-cell;
+  line-height: 1.231;
+}
+
+/****ALERTS****/
+/* line 2, ../../shared/css/sass/components/_alerts.scss */
+.notify-error {
+  padding: 10px 20px;
+  color: #000;
+  background: #fef481;
+}
+
+/* line 8, ../../shared/css/sass/components/_alerts.scss */
+.alert-box-error {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  transition: opacity 300ms ease-out;
+  background-color: #fef481;
+  border-color: #feef4c;
+  color: #4f4f4f;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+/* line 14, ../../shared/css/sass/components/_alerts.scss */
+.alert-box-error .close {
+  /*Close button*/
+  text-decoration: none;
+}
+
+/* line 18, ../../shared/css/sass/components/_alerts.scss */
+.alert-box-success {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  transition: opacity 300ms ease-out;
+  background-color: #eaeff3;
+  border-color: #c0cfdb;
+  color: #4f4f4f;
+  font-weight: normal;
+  font-size: 1em;
+  border-width: 0px;
+}
+
+/* line 25, ../../shared/css/sass/components/_alerts.scss */
+.alert-box-warning {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding: 0.875rem 1.5rem 0.875rem 0.875rem;
+  font-size: 0.8125rem;
+  transition: opacity 300ms ease-out;
+  background-color: #ffba00;
+  border-color: #dba000;
+  color: #fff;
+  font-weight: normal;
+  font-size: 1em;
+  border-width: 0px;
+  color: #000;
+}
+
+/* line 1, ../../shared/css/sass/components/_tables.scss */
+table {
+  width: 100%;
+  margin-bottom: 0;
+}
+/* line 5, ../../shared/css/sass/components/_tables.scss */
+table thead input[type="checkbox"] + label {
+  vertical-align: middle;
+  margin: 0 0.875rem;
+}
+/* line 9, ../../shared/css/sass/components/_tables.scss */
+table thead input[type="checkbox"] {
+  margin: 0;
+}
+/* line 15, ../../shared/css/sass/components/_tables.scss */
+table tbody input[type="checkbox"] {
+  margin-top: 0.25rem;
+}
+/* line 20, ../../shared/css/sass/components/_tables.scss */
+table th {
+  margin: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0 6px 0;
+  white-space: nowrap;
+}
+/* line 25, ../../shared/css/sass/components/_tables.scss */
+table td {
+  vertical-align: top;
+}
+/* line 28, ../../shared/css/sass/components/_tables.scss */
+table tr, table th, table td {
+  text-align: left;
+}
+
+/* line 37, ../../shared/css/sass/components/_tables.scss */
+.browse-table .browse-table-col.access-icons {
+  width: 45px;
+}
+/* line 40, ../../shared/css/sass/components/_tables.scss */
+.browse-table .browse-table-col.titles {
+  width: 600px;
+}
+/* line 43, ../../shared/css/sass/components/_tables.scss */
+.browse-table .browse-table-col.date-published {
+  width: 150px;
+}
+/* line 49, ../../shared/css/sass/components/_tables.scss */
+.browse-table .browse-table-cell.no-content {
+  padding-left: 45px;
+}
+
+/* line 54, ../../shared/css/sass/components/_tables.scss */
+.tabs-content th {
+  border-top: none;
+}
+
+/****OVERLAYS****/
+/* line 2, ../../shared/css/sass/components/_overlays.scss */
+.overlay-jstor, .overlay-jstor-modal,
+.overlay-jstor-positioned {
+  /* Standard overlay */
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  padding: 1.75rem;
+}
+
+/* line 8, ../../shared/css/sass/components/_overlays.scss */
+.overlay-jstor-modal,
+.overlay-jstor-positioned {
+  /* For overlays that are absolutely positioned at (x,y) */
+}
+
+/* line 14, ../../shared/css/sass/components/_overlays.scss */
+.overlay-jstor-positioned.small {
+  /* Must define what small overlay looks like in mobile because of specificity in Foundation */
+  margin-left: -40%;
+  width: 80%;
+  min-height: 200px;
+}
+@media only screen and (min-width: 561px) {
+  /* line 14, ../../shared/css/sass/components/_overlays.scss */
+  .overlay-jstor-positioned.small {
+    margin-left: 0;
+    /* Remove negative margin so we can position absolutely (x,y) */
+    width: 40%;
+    /* Since we are extending .reveal-modal and changing the mobile style, make sure we enter the desktop value here */
+  }
+}
+
+/* line 24, ../../shared/css/sass/components/_overlays.scss */
+.overlay-header {
+  font-size: 1.0625rem;
+  font-weight: bold;
+}
+
+/* line 29, ../../shared/css/sass/components/_overlays.scss */
+.overlay-footer {
+  background: #c8d3dc;
+}
+
+/* line 37, ../../shared/css/sass/components/_overlays.scss */
+.acceptTC-text {
+  display: block;
+}
+@media only screen and (min-width: 1280px) {
+  /* line 37, ../../shared/css/sass/components/_overlays.scss */
+  .acceptTC-text {
+    display: inline;
+  }
+}
+
+/****OVERLAYS V2 ****/
+/* line 46, ../../shared/css/sass/components/_overlays.scss */
+.reveal-modal header, .overlay-jstor-modal header,
+.overlay-jstor-positioned header {
+  background-color: #546d89;
+  padding: 10px;
+  min-height: 40px;
+}
+/* line 51, ../../shared/css/sass/components/_overlays.scss */
+.reveal-modal header h2, .overlay-jstor-modal header h2,
+.overlay-jstor-positioned header h2 {
+  margin: 0;
+  color: #fff;
+}
+/* line 57, ../../shared/css/sass/components/_overlays.scss */
+.reveal-modal p, .overlay-jstor-modal p,
+.overlay-jstor-positioned p, .reveal-modal div.reveal-body, .overlay-jstor-modal div.reveal-body,
+.overlay-jstor-positioned div.reveal-body {
+  padding: 10px;
+}
+
+/* line 62, ../../shared/css/sass/components/_overlays.scss */
+.mylists-modal-list-wrapper {
+  height: 225px;
+  overflow-y: scroll;
+}
+
+/* line 67, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-content {
+  background-color: #546d89;
+  border-radius: 4px;
+  border: solid 5px;
+  border-color: #546d89;
+  bottom: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  left: 50%;
+  max-height: 90%;
+  max-width: 60rem;
+  min-height: 10rem;
+  min-width: 20rem;
+  outline: none;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+}
+
+/* line 92, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-inner-content {
+  background: #fff;
+  margin: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* line 100, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-overlay {
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+/* line 108, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-body {
+  background: #fff;
+  margin: 0;
+  min-height: 0px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* line 116, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-header {
+  background-color: #546d89;
+  min-height: 40px;
+  padding: 10px;
+}
+
+/* line 122, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-header-h2 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* line 128, ../../shared/css/sass/components/_overlays.scss */
+.outline-modal-close-link {
+  color: #ffffff;
+  font-size: 32.5px;
+  font-weight: bold;
+  height: 32px;
+  line-height: 32.5px;
+  position: absolute;
+  right: 8.9375px;
+  top: 4.875px;
+  visibility: visible;
+  width: 18.9844px;
+}
+
+/* line 141, ../../shared/css/sass/components/_overlays.scss */
+.Style__ReactModal__Body--open {
+  overflow: hidden;
+}
+
+/****ICONS****/
+/* Access Icons Legacy -- to combine with the styling below */
+/* line 4, ../../shared/css/sass/components/_icons.scss */
+.accessIcon {
+  margin: 0 4px 0 0;
+  vertical-align: text-top;
+}
+
+/* Access Icons -- new */
+/* line 10, ../../shared/css/sass/components/_icons.scss */
+.access-icons-heading, .access-icons {
+  width: 45px;
+}
+
+/* line 14, ../../shared/css/sass/components/_icons.scss */
+.access-icon {
+  display: block;
+  height: 17px;
+  width: 17px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  bottom: 1px;
+}
+
+/* line 24, ../../shared/css/sass/components/_icons.scss */
+.access-icon.partial {
+  background-image: url("../../shared/images/access-partial.gif");
+}
+
+/* line 27, ../../shared/css/sass/components/_icons.scss */
+.access-icon.none {
+  background-image: url("../../shared/images/access-none.gif");
+}
+
+/* line 31, ../../shared/css/sass/components/_icons.scss */
+.loading {
+  background: url("../../shared/images/throbber.gif") 0 50% no-repeat;
+  min-height: 50px;
+}
+
+/* Access Icon Dropdown */
+/* line 37, ../../shared/css/sass/components/_icons.scss */
+.access-icon + .f-dropdown {
+  width: 228px !important;
+  padding: 0.75rem 0.75rem;
+  font-size: 16px;
+  font-size: 1rem;
+  border-radius: 2px;
+}
+@media only screen and (max-width: 560px) {
+  /* line 37, ../../shared/css/sass/components/_icons.scss */
+  .access-icon + .f-dropdown {
+    margin-left: 5px;
+  }
+}
+
+/* line 48, ../../shared/css/sass/components/_icons.scss */
+.expand-arrow {
+  background: url("../../shared/images/expand.gif") 0 45% no-repeat;
+  text-indent: 0;
+  width: 12px;
+  height: 12px;
+  font-size: 0;
+  vertical-align: middle;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* line 59, ../../shared/css/sass/components/_icons.scss */
+.collapse-arrow {
+  background: url("../../shared/images/collapse.gif") 0 45% no-repeat;
+  text-indent: 0;
+  width: 12px;
+  height: 12px;
+  font-size: 0;
+  vertical-align: middle;
+  overflow: hidden;
+  display: inline-block;
+}
+
+@media only screen and (min-width: 761px) {
+  /* styling citation tools list & icons */
+  /* line 72, ../../shared/css/sass/components/_icons.scss */
+  .ct a {
+    padding-left: 16px;
+  }
+
+  /* line 76, ../../shared/css/sass/components/_icons.scss */
+  .ct .ct-save {
+    background: url("../../shared/images/sprite.gif") 0 -524px no-repeat;
+  }
+
+  /* line 80, ../../shared/css/sass/components/_icons.scss */
+  .ct .ct-email {
+    background: url("../../shared/images/sprite.gif") 0 -229px no-repeat;
+  }
+
+  /* line 84, ../../shared/css/sass/components/_icons.scss */
+  .ct .ct-export {
+    background: url("../../shared/images/sprite.gif") 0 -293px no-repeat;
+  }
+
+  /* line 88, ../../shared/css/sass/components/_icons.scss */
+  .ct .ct-track {
+    background: url("../../shared/images/sprite.gif") 0 -631px no-repeat;
+  }
+}
+/* Flair Icons */
+/* line 94, ../../shared/css/sass/components/_icons.scss */
+.flair-container {
+  display: inline-block;
+  border: 1px solid #747474;
+  background-color: #f2f2f2;
+  font-size: 9px;
+  color: #5B5B5B;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  font-weight: normal;
+}
+
+/* line 105, ../../shared/css/sass/components/_icons.scss */
+.green {
+  background-color: #2e6f2f;
+  color: #fff;
+}
+
+/* line 1, ../../shared/css/sass/components/_background.scss */
+.highlight-element {
+  background-color: #ebebeb;
+}
+
+/* line 1, ../../shared/css/sass/components/_content-meta-info.scss */
+.cover {
+  max-width: 150px;
+}
+
+/* line 5, ../../shared/css/sass/components/_content-meta-info.scss */
+.cover-image img {
+  border: 1px solid #f1f1f1;
+}
+
+/* line 9, ../../shared/css/sass/components/_content-meta-info.scss */
+.no-cover {
+  width: 144px;
+  height: 204px;
+  background-color: #fff;
+  border: 1px solid #5B5B5B;
+}
+
+/* line 16, ../../shared/css/sass/components/_content-meta-info.scss */
+.no-cover-text {
+  position: absolute;
+  top: 45%;
+  width: 144px;
+  font-size: 130%;
+  color: #5B5B5B;
+}
+
+/* line 25, ../../shared/css/sass/components/_content-meta-info.scss */
+.action-buttons {
+  list-style: none;
+  text-align: left;
+}
+@media only screen and (min-width: 1025px) {
+  /* line 25, ../../shared/css/sass/components/_content-meta-info.scss */
+  .action-buttons {
+    text-align: right;
+  }
+  /* line 31, ../../shared/css/sass/components/_content-meta-info.scss */
+  .action-buttons .social_sharing > div {
+    float: right;
+  }
+}
+/* line 36, ../../shared/css/sass/components/_content-meta-info.scss */
+.action-buttons > li:last-child .button {
+  margin-bottom: 0;
+}
+/* line 39, ../../shared/css/sass/components/_content-meta-info.scss */
+.action-buttons .button {
+  text-align: left;
+  white-space: nowrap;
+  width: 135px;
+  max-width: 100%;
+}
+/* line 46, ../../shared/css/sass/components/_content-meta-info.scss */
+.action-buttons .has-dropdown:after {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 5px;
+  border-color: #fff transparent transparent transparent;
+  border-top-style: solid;
+}
+/* line 56, ../../shared/css/sass/components/_content-meta-info.scss */
+.action-buttons .journal_info_button .f-dropdown.content, .action-buttons .book_info_button .f-dropdown.content {
+  width: 400px;
+}
+@media only screen and (min-width: 561px) {
+  /* line 59, ../../shared/css/sass/components/_content-meta-info.scss */
+  .action-buttons li {
+    display: inline-block;
+    padding-right: 10px;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  /* line 59, ../../shared/css/sass/components/_content-meta-info.scss */
+  .action-buttons li {
+    display: block;
+    padding-right: 0;
+  }
+}
+
+/* line 71, ../../shared/css/sass/components/_content-meta-info.scss */
+.citation-copy {
+  width: 80%;
+  min-height: 40px;
+}
+
+/* line 76, ../../shared/css/sass/components/_content-meta-info.scss */
+.non-js-info {
+  text-align: left;
+}
+@media only screen and (min-width: 1025px) {
+  /* line 76, ../../shared/css/sass/components/_content-meta-info.scss */
+  .non-js-info {
+    text-align: right;
+  }
+}
+
+/* line 83, ../../shared/css/sass/components/_content-meta-info.scss */
+.no-js .export_citations, .no-js .cite-this-item-button {
+  display: none !important;
+}
+
+/* line 6, ../../shared/css/vendor/_awesomplete.scss */
+[hidden] {
+  display: none;
+}
+
+/* line 10, ../../shared/css/vendor/_awesomplete.scss */
+.combo-wrapper {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* line 18, ../../shared/css/vendor/_awesomplete.scss */
+.combo-input {
+  height: 38px !important;
+  width: 92% !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+/* line 30, ../../shared/css/vendor/_awesomplete.scss */
+.combo-caret-button {
+  background: url("../../shared/images/dropdown.png") no-repeat scroll right center #FFFFFF;
+  overflow: hidden;
+  display: inline-block;
+  padding: 4px 6px;
+  vertical-align: top;
+  width: 7%;
+  float: right;
+  height: 38px;
+  border: none;
+  border-left: 1px solid #ccc;
+  margin-bottom: 0;
+  position: relative;
+}
+
+/* line 45, ../../shared/css/vendor/_awesomplete.scss */
+.visually-hidden {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* line 50, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/* line 55, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > input {
+  display: block;
+}
+
+/* line 59, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul {
+  position: absolute;
+  left: 0;
+  top: 38px;
+  max-height: 240px;
+  overflow-y: scroll;
+  z-index: 1;
+  min-width: 100%;
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  border-radius: .3em;
+  margin: .2em 0 0;
+  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(to bottom right, #ffffff, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0.05em 0.2em 0.6em rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+
+/* line 79, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul[hidden],
+div.combo-wrapper > ul:empty {
+  display: none;
+}
+
+@supports (transform: scale(0)) {
+  /* line 85, ../../shared/css/vendor/_awesomplete.scss */
+  div.combo-wrapper > ul {
+    transition: 0.3s cubic-bezier(0.4, 0.2, 0.5, 1.4);
+    transform-origin: 1.43em -.43em;
+  }
+
+  /* line 90, ../../shared/css/vendor/_awesomplete.scss */
+  div.combo-wrapper > ul[hidden],
+  div.combo-wrapper > ul:empty {
+    opacity: 0;
+    transform: scale(0);
+    display: block;
+    transition-timing-function: ease;
+  }
+}
+/* Pointer */
+/* line 100, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul:before {
+  content: "";
+  position: absolute;
+  top: -.43em;
+  left: 1em;
+  width: 0;
+  height: 0;
+  padding: .4em;
+  background: white;
+  border: inherit;
+  border-right: 0;
+  border-bottom: 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* line 116, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul > li {
+  position: relative;
+  padding: .2em .5em;
+  cursor: pointer;
+}
+
+/* line 122, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul > li:hover {
+  background: #c8d3dc;
+  color: black;
+}
+
+/* line 127, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper > ul > li[aria-selected="true"] {
+  background: #364364;
+  color: white;
+}
+
+/* line 132, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper mark {
+  background: #c8d3dc;
+}
+
+/* line 136, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper li:hover mark {
+  background: #ffffff;
+}
+
+/* line 140, ../../shared/css/vendor/_awesomplete.scss */
+div.combo-wrapper li[aria-selected="true"] mark {
+  background: #364364;
+  color: inherit;
+}
+
+/* line 1, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top.shepherd-target-attached-left .shepherd-content:before,
+.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-top.shepherd-target-attached-right .shepherd-content:before,
+.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-target-attached-left .shepherd-content:before,
+.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-target-attached-right .shepherd-content:before {
+  display: none;
+}
+
+/* line 8, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element, .shepherd-element:after, .shepherd-element:before, .shepherd-element *, .shepherd-element *:after, .shepherd-element *:before {
+  box-sizing: border-box;
+}
+
+/* line 12, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element {
+  position: absolute;
+  display: none;
+}
+
+/* line 17, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-open {
+  display: block;
+}
+
+/* line 21, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* line 26, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content {
+  border-radius: 5px;
+  border: 2px solid #747474;
+  position: relative;
+  font-family: inherit;
+  color: #444;
+  background: #eaeaea;
+  padding: 1em;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* line 42, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-width: 16px;
+  border-style: solid;
+  pointer-events: none;
+}
+
+/* line 54, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-content {
+  margin-bottom: 16px;
+}
+
+/* line 58, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-center .shepherd-content:before {
+  top: 100%;
+  left: 50%;
+  margin-left: -16px;
+  border-top-color: #747474;
+}
+
+/* line 65, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content {
+  margin-top: 16px;
+}
+
+/* line 69, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content:before {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -16px;
+  border-bottom-color: #747474;
+}
+
+/* line 76, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-right.shepherd-element-attached-middle .shepherd-content {
+  margin-right: 16px;
+}
+
+/* line 80, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-right.shepherd-element-attached-middle .shepherd-content:before {
+  left: 100%;
+  top: 50%;
+  margin-top: -16px;
+  border-left-color: #747474;
+}
+
+/* line 87, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-left.shepherd-element-attached-middle .shepherd-content {
+  margin-left: 16px;
+}
+
+/* line 91, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-left.shepherd-element-attached-middle .shepherd-content:before {
+  right: 100%;
+  top: 50%;
+  margin-top: -16px;
+  border-right-color: #747474;
+}
+
+/* line 98, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-left.shepherd-target-attached-center .shepherd-content {
+  left: -32px;
+}
+
+/* line 102, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-right.shepherd-target-attached-center .shepherd-content {
+  left: 32px;
+}
+
+/* line 106, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content {
+  margin-top: 16px;
+}
+
+/* line 110, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content:before {
+  bottom: 100%;
+  left: 16px;
+  border-bottom-color: #747474;
+}
+
+/* line 116, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content {
+  margin-top: 16px;
+}
+
+/* line 120, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content:before {
+  bottom: 100%;
+  right: 16px;
+  border-bottom-color: #747474;
+}
+
+/* line 126, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content {
+  margin-bottom: 16px;
+}
+
+/* line 130, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content:before {
+  top: 100%;
+  left: 16px;
+  border-top-color: #747474;
+}
+
+/* line 136, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content {
+  margin-bottom: 16px;
+}
+
+/* line 140, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content:before {
+  top: 100%;
+  right: 16px;
+  border-top-color: #747474;
+}
+
+/* line 146, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom .shepherd-content {
+  margin-top: 16px;
+}
+
+/* line 150, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom .shepherd-content:before {
+  bottom: 100%;
+  left: 16px;
+  border-bottom-color: #747474;
+}
+
+/* line 156, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom .shepherd-content {
+  margin-top: 16px;
+}
+
+/* line 160, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom .shepherd-content:before {
+  bottom: 100%;
+  right: 16px;
+  border-bottom-color: #747474;
+}
+
+/* line 166, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-top .shepherd-content {
+  margin-bottom: 16px;
+}
+
+/* line 170, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-top .shepherd-content:before {
+  top: 100%;
+  left: 16px;
+  border-top-color: #747474;
+}
+
+/* line 176, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top .shepherd-content {
+  margin-bottom: 16px;
+}
+
+/* line 180, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top .shepherd-content:before {
+  top: 100%;
+  right: 16px;
+  border-top-color: #747474;
+}
+
+/* line 186, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content {
+  margin-right: 16px;
+}
+
+/* line 190, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content:before {
+  top: 16px;
+  left: 100%;
+  border-left-color: #747474;
+}
+
+/* line 196, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content {
+  margin-left: 16px;
+}
+
+/* line 200, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content:before {
+  top: 16px;
+  right: 100%;
+  border-right-color: #747474;
+}
+
+/* line 206, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content {
+  margin-right: 16px;
+}
+
+/* line 210, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content:before {
+  bottom: 16px;
+  left: 100%;
+  border-left-color: #747474;
+}
+
+/* line 216, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content {
+  margin-left: 16px;
+}
+
+/* line 220, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content:before {
+  bottom: 16px;
+  right: 100%;
+  border-right-color: #747474;
+}
+
+/* line 226, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before {
+  border-bottom-color: #747474;
+}
+
+/* line 230, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-has-title .shepherd-content header {
+  background: #eee;
+  padding: 1em;
+}
+
+/* line 235, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-has-title .shepherd-content header a.shepherd-cancel-link {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+/* line 240, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-has-cancel-link .shepherd-content header h3 {
+  float: left;
+}
+
+/* line 244, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content {
+  padding: 0;
+}
+
+/* line 248, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content * {
+  font-size: inherit;
+}
+
+/* line 252, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content header {
+  *zoom: 1;
+  border-radius: 5px 5px 0 0;
+}
+
+/* line 257, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 263, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content header h3 {
+  margin: 0;
+  line-height: 1;
+  font-weight: normal;
+}
+
+/* line 269, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content header a.shepherd-cancel-link {
+  float: right;
+  text-decoration: none;
+  font-size: 1.25em;
+  line-height: .8em;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 0.25;
+  position: relative;
+  top: .1em;
+  padding: .8em;
+  margin-bottom: -.8em;
+}
+
+/* line 283, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content header a.shepherd-cancel-link:hover {
+  opacity: 1;
+}
+
+/* line 287, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content .shepherd-text {
+  padding: 1em;
+}
+
+/* line 291, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content .shepherd-text p {
+  margin: 0 0 .5em 0;
+  line-height: 1.3em;
+}
+
+/* line 296, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content .shepherd-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 300, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer {
+  padding: 0 1em 1em;
+}
+
+/* line 304, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons {
+  text-align: right;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 311, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 317, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  cursor: pointer;
+  border: 0;
+  margin: 0 .5em 0 0;
+  font-family: Arial, sans-serif;
+  letter-spacing: .1em;
+  font-size: 0.9em;
+  line-height: 1em;
+  padding: .75em 2em;
+  background: #547796;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 336, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
+  background: #eee;
+  color: #888;
+}
+
+/* line 341, ../../shared/css/vendor/shepherd-theme-arrows.scss */
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
+  margin-right: 0;
+}
+
+/* line 1, ../../shared/css/sass/components/_tooltip.scss */
+.outline__tooltip-uparrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #6E6E6F;
+  width: 0;
+  height: 0;
+  margin-top: -10px;
+  margin-left: 60px;
+}
+
+/* line 11, ../../shared/css/sass/components/_tooltip.scss */
+.outline__tooltip {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+}
+
+/* line 17, ../../shared/css/sass/components/_tooltip.scss */
+.outline__tooltip .outline__tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  height: 35px;
+  background-color: #6E6E6F;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  position: absolute;
+  top: 46px;
+  left: -37px;
+  z-index: 1;
+  font-family: sans-serif;
+}
+
+/* line 32, ../../shared/css/sass/components/_tooltip.scss */
+.outline__tooltip:hover .outline__tooltiptext {
+  visibility: visible;
+}
+
+/* line 1, ../../shared/css/sass/components/_form_validation.scss */
+#recaptcha_error, #id_acceptTermsConditions_error {
+  max-width: 300px;
+}
+
+/* line 5, ../../shared/css/sass/components/_form_validation.scss */
+#recaptcha_error {
+  margin-left: 12px;
+}
+
+/* line 9, ../../shared/css/sass/components/_form_validation.scss */
+.show-password-button {
+  cursor: pointer;
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  background-position: left 3px;
+  background-repeat: no-repeat;
+  background-size: 25px 14px;
+  padding-left: 30px;
+  width: 50px;
+  height: 25px;
+  color: #747474;
+}
+
+/* line 23, ../../shared/css/sass/components/_form_validation.scss */
+.eye-open {
+  background-image: url("../../shared/images/eye-open.png");
+}
+
+/* line 27, ../../shared/css/sass/components/_form_validation.scss */
+.eye-closed {
+  background-image: url("../../shared/images/eye-closed.png");
+}
+
+/* line 31, ../../shared/css/sass/components/_form_validation.scss */
+li.correct {
+  color: #747474;
+  background: url("../../shared/images/checkmark.png") no-repeat left;
+  background-size: 12px 12px;
+  padding-left: 15px;
+}
+
+/* line 38, ../../shared/css/sass/components/_form_validation.scss */
+li.incorrect {
+  background: url("../../shared/images/bullet.gif") no-repeat left;
+  background-size: 5px 5px;
+  padding-left: 15px;
+}
+
+/* line 1, ../scss/view/_my-jstor.scss */
+.outline-section__button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0px;
+  cursor: pointer;
+  background-color: white !important;
+}
+
+/* line 10, ../scss/view/_my-jstor.scss */
+.outline-section__button--delete {
+  background: url("../../my-jstor/images/outline-builder/delete-enabled.png") no-repeat;
+}
+/* line 13, ../scss/view/_my-jstor.scss */
+.outline-section__button--delete:hover {
+  background: url("../../my-jstor/images/outline-builder/delete-hover.png") no-repeat;
+  margin: 0;
+}
+/* line 18, ../scss/view/_my-jstor.scss */
+.outline-section__button--delete.disabled {
+  background: url("../../my-jstor/images/outline-builder/delete-disabled.png") no-repeat;
+}
+
+/* line 23, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-up {
+  background: url("../../my-jstor/images/outline-builder/uparrow-enabled.png") no-repeat;
+}
+/* line 26, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-up:hover {
+  background: url("../../my-jstor/images/outline-builder/uparrow-hover.png") no-repeat;
+  margin: 0;
+}
+/* line 31, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-up.disabled {
+  background: url("../../my-jstor/images/outline-builder/uparrow-disabled.png") no-repeat;
+}
+
+/* line 36, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-down {
+  background: url("../../my-jstor/images/outline-builder/downarrow-enabled.png") no-repeat;
+}
+/* line 39, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-down:hover {
+  background: url("../../my-jstor/images/outline-builder/downarrow-hover.png") no-repeat;
+  margin: 0;
+}
+/* line 44, ../scss/view/_my-jstor.scss */
+.outline-section__button--move-down.disabled {
+  background: url("../../my-jstor/images/outline-builder/downarrow-disabled.png") no-repeat;
+}
+
+/* line 49, ../scss/view/_my-jstor.scss */
+.Dropdown-control {
+  border: none;
+  color: #546d89;
+  margin-bottom: 1rem;
+  height: 3.09rem;
+  border-radius: 0;
+  width: 100px;
+}
+
+/* line 58, ../scss/view/_my-jstor.scss */
+.Dropdown-control:hover, .is-open .Dropdown-control {
+  background-color: #546d89;
+  color: #ffffff;
+}
+
+/* line 63, ../scss/view/_my-jstor.scss */
+.Dropdown-arrow {
+  border-color: #546d89 transparent transparent;
+  margin-top: 2px;
+}
+
+/* line 69, ../scss/view/_my-jstor.scss */
+.Dropdown-control:hover .Dropdown-arrow {
+  border-color: #ffffff transparent transparent;
+}
+
+/* line 74, ../scss/view/_my-jstor.scss */
+.Dropdown-placeholder {
+  padding-top: 4px;
+}
+
+/* line 78, ../scss/view/_my-jstor.scss */
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent #ffffff;
+  border-width: 0 5px 5px;
+}
+
+/* line 83, ../scss/view/_my-jstor.scss */
+.Dropdown-option:hover {
+  background-color: #c8d3dc;
+  color: #333;
+}
+
+/* line 88, ../scss/view/_my-jstor.scss */
+.button-flex-row {
+  display: flex;
+  flex-flow: row-nowrap;
+  align-items: center;
+}
+
+/* line 94, ../scss/view/_my-jstor.scss */
+#add-section {
+  border: 2px dashed #979797;
+  text-align: center;
+  padding: 30px;
+  font-size: 24px;
+  color: #7F8C8D;
+  background-color: #ECF0F1;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* line 105, ../scss/view/_my-jstor.scss */
+#add-section:hover {
+  background-color: #DEE3E4;
+  color: #676D6D;
+}
+
+/* line 110, ../scss/view/_my-jstor.scss */
+#save-outline {
+  background-color: #ffffff;
+  color: #546d89;
+  width: 10rem;
+  padding: none;
+  height: 3.09rem;
+  margin-top: 0;
+}
+
+/* line 119, ../scss/view/_my-jstor.scss */
+.revive-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 124, ../scss/view/_my-jstor.scss */
+ul.myjstorNav {
+  border-bottom: solid 1px #5B5B5B;
+}
+/* line 127, ../scss/view/_my-jstor.scss */
+ul.myjstorNav li {
+  border-top: solid 1px #5B5B5B;
+}
+/* line 131, ../scss/view/_my-jstor.scss */
+ul.myjstorNav :hover, ul.myjstorNav .active {
+  background-color: #547796;
+}
+/* line 133, ../scss/view/_my-jstor.scss */
+ul.myjstorNav :hover a, ul.myjstorNav .active a {
+  color: #fff;
+}
+/* line 138, ../scss/view/_my-jstor.scss */
+ul.myjstorNav a {
+  padding: 16px 24px;
+  font-weight: bold;
+  display: block;
+  font-size: 150%;
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 148, ../scss/view/_my-jstor.scss */
+.img {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 0;
+  line-height: 0;
+  font-size: 0;
+  vertical-align: middle;
+}
+
+/* line 158, ../scss/view/_my-jstor.scss */
+.img.facebook {
+  width: 16px;
+  height: 16px;
+  background: url("../../my-jstor/images/sprite-icons.png") 0 0 no-repeat;
+}
+
+/* line 164, ../scss/view/_my-jstor.scss */
+.img.twitter {
+  width: 16px;
+  height: 16px;
+  background: url("../../my-jstor/images/sprite-icons.png") 0 -20px no-repeat;
+}
+
+/* line 171, ../scss/view/_my-jstor.scss */
+.emptyView h3 {
+  font-weight: bold;
+  font-size: 1.375rem;
+  text-transform: capitalize;
+}
+
+/* line 178, ../scss/view/_my-jstor.scss */
+.year-plan {
+  border-bottom: 1px solid #ccc;
+}
+@media only screen and (min-width: 561px) {
+  /* line 178, ../scss/view/_my-jstor.scss */
+  .year-plan {
+    border-bottom: none;
+    border-right: 1px solid #ccc;
+    padding-left: 20px;
+  }
+}
+
+/* line 187, ../scss/view/_my-jstor.scss */
+.month-plan {
+  margin-top: 20px;
+}
+@media only screen and (min-width: 561px) {
+  /* line 187, ../scss/view/_my-jstor.scss */
+  .month-plan {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 761px) {
+  /* line 194, ../scss/view/_my-jstor.scss */
+  .download-column {
+    text-align: center;
+  }
+}
+
+/* line 200, ../scss/view/_my-jstor.scss */
+.download-label, .purchase-label {
+  font-weight: bold;
+  display: inline-block !important;
+}
+@media only screen and (min-width: 761px) {
+  /* line 200, ../scss/view/_my-jstor.scss */
+  .download-label, .purchase-label {
+    display: none !important;
+  }
+}
+
+/* line 208, ../scss/view/_my-jstor.scss */
+.purchase-header {
+  border-top: none;
+}
+
+/* line 212, ../scss/view/_my-jstor.scss */
+.provider-statement {
+  float: none;
+}
+@media only screen and (min-width: 561px) {
+  /* line 212, ../scss/view/_my-jstor.scss */
+  .provider-statement {
+    float: right;
+  }
+}
+
+/* line 219, ../scss/view/_my-jstor.scss */
+.candidate-item {
+  background-color: #f1db94;
+}
+
+/* line 223, ../scss/view/_my-jstor.scss */
+.empty-shelf-space {
+  border-style: dashed;
+}
+
+/* line 227, ../scss/view/_my-jstor.scss */
+.shelf-disabled {
+  border: 2px solid #ccc;
+}
+
+/* line 231, ../scss/view/_my-jstor.scss */
+.shelf-secondary {
+  background-color: #5B5B5B;
+}
+/* line 233, ../scss/view/_my-jstor.scss */
+.shelf-secondary:hover {
+  background-color: #424242;
+}
+
+/* line 238, ../scss/view/_my-jstor.scss */
+.basic-search-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 761px) {
+  /* line 243, ../scss/view/_my-jstor.scss */
+  .purchase-price, .purchase-date {
+    text-align: center;
+  }
+  /* line 247, ../scss/view/_my-jstor.scss */
+  .purchase-price .label, .purchase-date .label {
+    display: none;
+  }
+}
+
+/* line 254, ../scss/view/_my-jstor.scss */
+.no-js .tabs {
+  display: none;
+}
+
+/* line 259, ../scss/view/_my-jstor.scss */
+.checkbox-description {
+  margin-left: 35px;
+}
+
+/** MyLists Page Styles **/
+/* line 264, ../scss/view/_my-jstor.scss */
+.mylists-controls {
+  background: #ebebeb;
+}
+/* line 267, ../scss/view/_my-jstor.scss */
+.mylists-controls a.button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+/* line 272, ../scss/view/_my-jstor.scss */
+.mylists-controls a.export_citations {
+  background: linear-gradient(to right, #546d89 50%, #ffffff 50%);
+  background-size: 250% 100%;
+  background-position: right bottom;
+  transition: all .3s ease;
+  color: #546d89;
+}
+/* line 279, ../scss/view/_my-jstor.scss */
+.mylists-controls a.export_citations:after {
+  border-color: #546d89 transparent transparent transparent;
+}
+/* line 283, ../scss/view/_my-jstor.scss */
+.mylists-controls a.export_citations.active {
+  color: #fff;
+  background-position: left bottom;
+}
+/* line 287, ../scss/view/_my-jstor.scss */
+.mylists-controls a.export_citations.active:after {
+  border-color: #fff transparent transparent transparent;
+}
+/* line 293, ../scss/view/_my-jstor.scss */
+.mylists-controls .button-img {
+  vertical-align: middle;
+  margin-top: 4px;
+  margin-bottom: 0;
+  width: 50px;
+  height: 40px;
+}
+/* line 300, ../scss/view/_my-jstor.scss */
+.mylists-controls .button-img.new-list {
+  background-image: url("../images/mylists_images/jstor_lists_icons_v6.png");
+  background-position: 6px -90px;
+  background-color: transparent;
+}
+/* line 305, ../scss/view/_my-jstor.scss */
+.mylists-controls .button-img.delete {
+  background-image: url("../images/mylists_images/jstor_lists_icons_v6.png");
+  background-position: 6px -495px;
+  background-color: transparent;
+}
+/* line 310, ../scss/view/_my-jstor.scss */
+.mylists-controls .button-img.view-list-activity {
+  background-image: url("../images/mylists_images/jstor_lists_icons_v6.png");
+  background-position: 6px -359px;
+  background-color: transparent;
+}
+/* line 318, ../scss/view/_my-jstor.scss */
+.mylists-controls a.control .disabled, .mylists-controls button.control .disabled {
+  text-decoration: none;
+}
+/* line 322, ../scss/view/_my-jstor.scss */
+.mylists-controls a.control:hover, .mylists-controls button.control:hover {
+  color: #364364;
+}
+/* line 325, ../scss/view/_my-jstor.scss */
+.mylists-controls a.control:hover .new-list, .mylists-controls button.control:hover .new-list {
+  background-color: transparent;
+  background-position: -73px -90px;
+}
+/* line 330, ../scss/view/_my-jstor.scss */
+.mylists-controls a.control:hover .delete, .mylists-controls button.control:hover .delete {
+  background-color: transparent;
+  background-position: -73px -495px;
+}
+/* line 335, ../scss/view/_my-jstor.scss */
+.mylists-controls a.control:hover .view-list-activity, .mylists-controls button.control:hover .view-list-activity {
+  background-color: transparent;
+  background-position: -73px -359px;
+}
+/* line 342, ../scss/view/_my-jstor.scss */
+.mylists-controls button.disabled, .mylists-controls button.disabled:hover {
+  cursor: default !important;
+  color: #333;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+/* line 349, ../scss/view/_my-jstor.scss */
+.mylists-controls button.disabled .new-list, .mylists-controls button.disabled .new-list:hover, .mylists-controls button.disabled:hover .new-list, .mylists-controls button.disabled:hover .new-list:hover {
+  cursor: default !important;
+  background-color: transparent;
+  background-position: -225px -90px;
+}
+/* line 355, ../scss/view/_my-jstor.scss */
+.mylists-controls button.disabled .delete, .mylists-controls button.disabled .delete:hover, .mylists-controls button.disabled:hover .delete, .mylists-controls button.disabled:hover .delete:hover {
+  cursor: default !important;
+  background-color: transparent;
+  background-position: -225px -495px;
+}
+/* line 361, ../scss/view/_my-jstor.scss */
+.mylists-controls button.disabled .view-list-activity, .mylists-controls button.disabled .view-list-activity:hover, .mylists-controls button.disabled:hover .view-list-activity, .mylists-controls button.disabled:hover .view-list-activity:hover {
+  cursor: default !important;
+  background-color: transparent;
+  background-position: -225px -359px;
+}
+
+/* line 373, ../scss/view/_my-jstor.scss */
+.mylists-content .mylists-filters .mylists-filter a {
+  color: #222;
+  text-decoration: none;
+}
+/* line 377, ../scss/view/_my-jstor.scss */
+.mylists-content .mylists-filters .mylists-filter.toggle::after {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin-left: 0.2rem;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 5px;
+  border-color: #222 transparent transparent transparent;
+  border-top-style: solid;
+}
+
+/* line 388, ../scss/view/_my-jstor.scss */
+.mylists-list-row .mylists-list-col {
+  display: inline-block;
+}
+
+/* line 393, ../scss/view/_my-jstor.scss */
+.shepherd-content {
+  background: #ffffff !important;
+  font-size: 18px !important;
+  line-height: 24px;
+  font-weight: normal;
+  max-width: 550px;
+  border: 4px solid #747474;
+  border-radius: 10px;
+}
+/* line 401, ../scss/view/_my-jstor.scss */
+.shepherd-content header {
+  background: #ffffff !important;
+}
+/* line 403, ../scss/view/_my-jstor.scss */
+.shepherd-content header h3 {
+  font-size: 30px !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+}
+
+/* line 413, ../scss/view/_my-jstor.scss */
+.shepherd-active .shepherd-step {
+  z-index: 10000;
+}
+/* line 419, ../scss/view/_my-jstor.scss */
+.shepherd-active .shepherd-target.shepherd-enabled {
+  z-index: 1000;
+}
+/* line 424, ../scss/view/_my-jstor.scss */
+.shepherd-active .glass-pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+}
+/* line 434, ../scss/view/_my-jstor.scss */
+.shepherd-active .peephole {
+  position: absolute;
+  left: -200px;
+  top: -200px;
+  width: 200px;
+  height: 100px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 4px 10px rgba(0, 0, 0, 0.4) inset, 0px 0px 0px 10000px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* line 447, ../scss/view/_my-jstor.scss */
+html[data-useragent*='Safari'] .peephole {
+  box-shadow: 0px 0px 4px 10px rgba(0, 0, 0, 0.4) inset, 0px 0px 100px 10000px rgba(0, 0, 0, 0.4);
+}
+
+/* line 451, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center .shepherd-content:before {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -16px;
+  border-bottom-color: #ffffff !important;
+}
+
+/* line 458, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-right.shepherd-element-attached-middle .shepherd-content:before {
+  left: 100%;
+  top: 50%;
+  margin-top: -16px;
+  border-left-color: #ffffff !important;
+}
+
+/* line 465, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-left.shepherd-element-attached-middle .shepherd-content:before {
+  right: 100%;
+  top: 50%;
+  margin-top: -16px;
+  border-right-color: #ffffff !important;
+}
+
+/* line 472, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content:before {
+  bottom: 100%;
+  left: 16px;
+  border-bottom-color: #ffffff !important;
+}
+
+/* line 478, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content:before {
+  bottom: 100%;
+  right: 16px;
+  border-bottom-color: #ffffff !important;
+}
+
+/* line 484, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-middle .shepherd-content:before {
+  top: 100%;
+  left: 16px;
+  border-top-color: #ffffff !important;
+}
+
+/* line 490, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-middle .shepherd-content:before {
+  top: 100%;
+  right: 16px;
+  border-top-color: #ffffff !important;
+}
+
+/* line 496, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom .shepherd-content:before {
+  bottom: 100%;
+  left: 16px;
+  border-bottom-color: #ffffff !important;
+}
+
+/* line 502, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom .shepherd-content:before {
+  bottom: 100%;
+  right: 16px;
+  border-bottom-color: #ffffff !important;
+}
+
+/* line 508, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-top .shepherd-content:before {
+  top: 100%;
+  left: 16px;
+  border-top-color: #ffffff !important;
+}
+
+/* line 514, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top .shepherd-content:before {
+  top: 100%;
+  right: 16px;
+  border-top-color: #ffffff !important;
+}
+
+/* line 520, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content:before {
+  top: 16px;
+  left: 100%;
+  border-left-color: #ffffff !important;
+}
+
+/* line 526, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content:before {
+  top: 16px;
+  right: 100%;
+  border-right-color: #ffffff !important;
+}
+
+/* line 532, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-left .shepherd-content:before {
+  bottom: 16px;
+  left: 100%;
+  border-left-color: #ffffff !important;
+}
+
+/* line 538, ../scss/view/_my-jstor.scss */
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-bottom.shepherd-element-attached-left.shepherd-target-attached-right .shepherd-content:before {
+  bottom: 16px;
+  right: 100%;
+  border-right-color: #ffffff !important;
+}
+
+/* line 544, ../scss/view/_my-jstor.scss */
+#visible-step-count {
+  text-align: right;
+  font-size: 24px;
+}
+
+/* line 549, ../scss/view/_my-jstor.scss */
+.listitem-checkbox-container {
+  width: 30px;
+}
