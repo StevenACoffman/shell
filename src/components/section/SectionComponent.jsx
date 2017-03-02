@@ -9,14 +9,19 @@ class SectionComponent extends Component {
     render() {
         const { id, name, notes, canMoveSectionUp, canMoveSectionDown } = this.props;
         return (
-            <div className="row">
+            <div className="row" >
+                <hr className="mhm"/>
                 <div className="small-9 columns">
                     <SectionName sectionId={id} name={name} nameId={`name_${id}`} />
-                    <SectionNotes sectionId={id} notes={notes} notesId={`notes_${id}`} />
-                    <div>
-                        <Citations sectionId={id} />
+                    <div className="row">
+                        <div className="small-10 small-offset-2 columns">
+                            <SectionNotes sectionId={id} notes={notes} notesId={`notes_${id}`} />
+                            <div>
+                                <Citations sectionId={id} />
+                            </div>
+                            <AddCitations sectionId={id} />
+                        </div>
                     </div>
-                    <AddCitations sectionId={id} />
                 </div>
                 <div className="small-3 columns">
                     <SectionButtons

@@ -1,12 +1,14 @@
 /*eslint react/no-danger: "off"*/
 
-import React, { Component, PropTypes } from "react";
-import { selectListItem, unselectListItem } from "../../actions";
-import { connect } from "react-redux";
+import React, {Component, PropTypes} from "react";
+import {selectListItem, unselectListItem} from "../../actions";
+import {connect} from "react-redux";
+
+const MAX_TITLE_LENGTH = 57;
 
 class CitationModalListItem extends Component {
     render() {
-        const { listItemIndex, sectionId, listItem, dispatch, selectedListItems} = this.props;
+        const {listItemIndex, sectionId, listItem, dispatch, selectedListItems} = this.props;
         const selected = selectedListItems.includes(listItemIndex);
         let contributors = "";
         let citationLine = "";
@@ -17,26 +19,31 @@ class CitationModalListItem extends Component {
             title = listItem.title[0];
         }
 
+        if (title.length > MAX_TITLE_LENGTH){
+            title = `${title.substring(0, MAX_TITLE_LENGTH)}...`;
+        }
         return (
             <li>
-                <div className="checkboxWrap mll">
+                <div className="checkboxWrap mvm">
                     <label htmlFor={`section_${sectionId}_item_${listItemIndex}`}>
                         <input
-                          className="mylists-single-option"
-                          id={`section_${sectionId}_item_${listItemIndex}`}
-                          type="checkbox"
-                          value={title}
-                          checked={selected}
-                          onChange={event => {
-                              if (selected) {
-                                  dispatch(unselectListItem(sectionId, listItemIndex));
-                              } else {
-                                  dispatch(selectListItem(sectionId, listItemIndex));
-                              }
-                          }} />
-                        <span className="pls title lookslikeh2" dangerouslySetInnerHTML={{__html: title}} />
-                        <div className="contrib" dangerouslySetInnerHTML={{__html: contributors}} />
-                        <div className="src" dangerouslySetInnerHTML={{__html: citationLine}} />
+                            className="mylists-single-option mvs"
+                            id={`section_${sectionId}_item_${listItemIndex}`}
+                            type="checkbox"
+                            value={title}
+                            checked={selected}
+                            onChange={event => {
+                                if (selected) {
+                                    dispatch(unselectListItem(sectionId, listItemIndex));
+                                } else {
+                                    dispatch(selectListItem(sectionId, listItemIndex));
+                                }
+                            }}/>
+                        <span className="plm title lookslikeh2" dangerouslySetInnerHTML={{__html: title}}/>
+                        <div className="mlxl pls">
+                            <div className="contrib" dangerouslySetInnerHTML={{__html: contributors}}/>
+                            <div className="src" dangerouslySetInnerHTML={{__html: citationLine}}/>
+                        </div>
                     </label>
                 </div>
             </li>

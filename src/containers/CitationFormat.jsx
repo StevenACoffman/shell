@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { requestChangedCitationFormat} from "../actions";
 import CitationFormatPicker from "../components/CitationFormatPicker.jsx";
 
+
 class CitationFormat extends Component {
     constructor(props) {
         super(props);

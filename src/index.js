@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import "./index.css";
+import "./App.css";
+import {Provider} from "react-redux";
+import OutlineContainer from "./containers/OutlineContainer.jsx";
+
 import store from "./containers/store";
 import { fetchListItems } from "./actions/index";
 
@@ -10,8 +13,14 @@ import { fetchListItems } from "./actions/index";
     axe(React, ReactDOM, 1000);
 }*/
 ReactDOM.render(
-    <App />,
-  document.getElementById("root")
+  <Provider store={store}>
+    <OutlineContainer/>
+  </Provider>,
+  document.getElementById("outline-react-app")
 );
+
+const getListIdFromLocation = () => {
+    return window.location.search.split("?listId=").pop() || window.location.pathname.split("/myjstor/outline/").pop().replace("/", "") || 70822;
+};
 
 store.dispatch(fetchListItems("70822"));

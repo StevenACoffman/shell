@@ -27,15 +27,14 @@ const defaultMyList = [];
 
 const listReducer = (state = {
     citationStyle: "mla",
-    listItems: defaultMyList
+    listItems: defaultMyList,
+    listId: ""
 }, action) => {
     switch (action.type) {
     case actionTypes.CHANGE_CITATION_FORMAT:
         return {
             ...state,
-            listItems: state.listItems.map((listItem, index) => {
-                    return listItemReducer(listItem, action);
-            }),
+            listItems: state.listItems.map((listItem, index) => listItemReducer(listItem, action)),
             citationStyle: action.citationStyle
         };
     case actionTypes.REQUEST_LIST_ITEMS: {

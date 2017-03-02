@@ -23,9 +23,9 @@ class Citations extends Component {
                 <li
                   key={`citation_${index}`}
                   id={`section_${sectionId}_citation_${index}`}>
-                    <div className="clearfix">
-                        <p className="left" dangerouslySetInnerHTML={{__html: listItemFormattedCitation}} />
-                        <button className="right btn-link" onClick={event => {
+                    <div className="row">
+                        <p className="small-10 columns left" dangerouslySetInnerHTML={{__html: listItemFormattedCitation}} />
+                        <button className="small-2 columns right btn-link mvn pvn" onClick={event => {
                             dispatch(deleteCitation(sectionId, index));
                         }}>remove</button>
                     </div>
@@ -34,8 +34,8 @@ class Citations extends Component {
         });
         return (
             <div>
-                <span className="subheader">Citations</span>
-                <ul className="list-jstor" id={citationsId}>
+                <span className="subheader visually-hidden">Citations</span>
+                <ul className="list-jstor mbn" id={citationsId}>
                     {citationsFragment}
                 </ul>
             </div>

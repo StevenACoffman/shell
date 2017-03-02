@@ -10,7 +10,7 @@ class AddCitations extends Component {
         return (
             <div>
                 <button
-                    className="btn-link"
+                    className="btn-link mhn phn"
                     id={`add_citations_section_${sectionId}`}
                     data-reveal-id={`sectionModal_${sectionId}`}
                     onClick={() => dispatch(toggleCitationModal(sectionId, true))}>

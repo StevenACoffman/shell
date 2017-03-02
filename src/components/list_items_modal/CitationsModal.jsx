@@ -37,8 +37,8 @@ class CitationsModal extends Component {
                 <div className="reveal-body outline-modal-body">
                     <div>
                         <h2>Select Citations To Add</h2>
-                        <hr/>
-                        <input className="mylists-single-option" type="checkbox"
+                        <hr className="mts mbm"/>
+                        <input id="title-citation-checkbox" className="mylists-single-option" type="checkbox"
                             onChange={event => {
                                 if (event.target.checked) {
                                     dispatch(selectAllListItems(sectionId, allListItemIndexes));
@@ -46,9 +46,9 @@ class CitationsModal extends Component {
                                     dispatch(clearSelectedListItems(sectionId));
                                 }
                             }}
-                            />Title
-                        <hr/>
-                        <ul>
+                        /><label for="title-citation-checkbox" className="lookslikeh2 mlm">Title</label>
+                        <hr className="mtn"/>
+                        <ul className="no-bullet">
                             {listItems.map((listItem, index) => {
                                 return (<CitationsModalListItem listItemIndex={index} sectionId={sectionId} listItem={listItem} key={`section_${sectionId}_list_item_${index}`}/>);
                             })}

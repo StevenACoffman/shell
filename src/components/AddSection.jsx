@@ -7,9 +7,7 @@ class AddSection extends Component {
         const { dispatch } = this.props;
         return (
             <button
-                className="button button-jstor"
                 id="add-section"
-                type="button"
                 onClick={event => {
                     dispatch(addSection());
                 }}

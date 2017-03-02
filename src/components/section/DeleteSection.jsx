@@ -8,9 +8,9 @@ class DeleteSection extends Component {
         const { sectionId, deleteSectionId, dispatch } = this.props;
         return (
             <div>
-                <button className="button button-jstor" id={deleteSectionId} onClick={event => {
+                <button className="outline-section__button outline-section__button--delete" id={deleteSectionId} onClick={event => {
                     dispatch(toggleDeleteSectionModal(sectionId, true));
-                }}>Delete Section</button>
+                }}></button>
                 <DeleteSectionModal {...this.props} />
             </div>    
         );

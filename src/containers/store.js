@@ -1,12 +1,16 @@
 /*eslint no-console: "off"*/
 import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { createEpicMiddleware } from "redux-observable";
+import { rootEpic } from "../reducers/index";
+
 import createLogger from "redux-logger";
 import rootReducer from "../reducers/index";
 import { getUserId, getOutLineInitialData } from "../initializers/index";
 import { updateSections } from "../reducers/sectionsReducer";
 
-const middleware = [thunkMiddleware];
+const epicMiddleware = createEpicMiddleware(rootEpic);
+const middleware = [thunkMiddleware, epicMiddleware];
 
 if (process.env.NODE_ENV === "development") {
     const loggerMiddleware = createLogger();

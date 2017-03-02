@@ -6,19 +6,22 @@ import SaveOutline from "../components/SaveOutline.jsx";
 import DownloadOutline from "../components/DownloadOutline.jsx";
 import CitationFormat from "./CitationFormat.jsx";
 
+
 export default class OutlineContainer extends Component {
     render() {
         return (
             <div>
-                <div className="row">
+                <div className="button-flex-row">
+                    <DownloadOutline />
                     <CitationFormat />
                     <SaveOutline />
-                    <DownloadOutline />
                 </div>
+              <hr/>
                 <div className="row">
-                    <div className="small-12 columns">
+                    <div className="columns">
                         <Thesis />
                         <SectionList />
+                        <hr/>
                         <AddSection />
                     </div>
                 </div>
